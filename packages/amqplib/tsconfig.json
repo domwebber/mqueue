@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.collection",
+      "es2015.promise",
+      "es2015.iterable"
+    ]
+  },
+  "include": ["src"]
+}

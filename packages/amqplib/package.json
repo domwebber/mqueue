@@ -1,8 +1,8 @@
 {
-  "name": "@mqueue/queue",
+  "name": "@mqueue/amqplib",
   "version": "0.0.1",
   "type": "module",
-  "description": "A simple queue interface with support for multiple backends",
+  "description": "MQueue adapter for amqplib AMQP v0.9.1",
   "author": "Dom Webber <dom.webber@hotmail.com>",
   "contributors": [
     "Dom Webber <dom.webber@hotmail.com>"
@@ -14,7 +14,9 @@
     "dist"
   ],
   "keywords": [
-    "queue"
+    "queue",
+    "mqueue",
+    "amqplib"
   ],
   "exports": {
     ".": {
@@ -36,5 +38,11 @@
   "publishConfig": {
     "access": "public",
     "provenance": false
+  },
+  "peerDependencies": {
+    "amqplib": "^0.10.8"
+  },
+  "devDependencies": {
+    "amqplib": "^0.10.8"
   }
 }
