@@ -43,6 +43,9 @@ importers:
 
   packages/amqplib:
     devDependencies:
+      "@mqueue/queue":
+        specifier: workspace:*
+        version: link:../queue
       amqplib:
         specifier: ^0.10.8
         version: 0.10.8

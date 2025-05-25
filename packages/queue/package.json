@@ -14,7 +14,8 @@
     "dist"
   ],
   "keywords": [
-    "queue"
+    "queue",
+    "adapter"
   ],
   "exports": {
     ".": {
