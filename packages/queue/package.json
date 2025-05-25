@@ -1,8 +1,8 @@
 {
-  "name": "@vqueue/queue",
+  "name": "@mqueue/queue",
   "version": "0.0.1",
   "type": "module",
-  "description": "",
+  "description": "A simple queue interface with support for multiple backends",
   "author": "Dom Webber <dom.webber@hotmail.com>",
   "contributors": [
     "Dom Webber <dom.webber@hotmail.com>"

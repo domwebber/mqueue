@@ -1,6 +1,18 @@
-# VQueue (Variable Queue)
+# mqueue (Multi-Queue)
 
 A simple queue interface with support for multiple backends
+
+## Adapters
+
+- [ ] amqplib
+- [ ] sqs
+- [ ] sqs-consumer
+- [ ] rhea
+- [ ] azure-service-bus
+
+## Strategies
+
+- [ ] Multicast
 
 ## Credit
 
