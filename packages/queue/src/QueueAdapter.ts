@@ -1,4 +1,4 @@
-export default interface Queue {
+export default interface QueueAdapter {
   type: string;
 
   /**

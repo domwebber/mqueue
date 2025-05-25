@@ -1,4 +1,4 @@
-import Queue from "./Queue.js";
+import Queue from "./QueueAdapter.js";
 import QueueMessage from "./QueueMessage.js";
 
 export type IncomingQueueMessageListener = (options: {
