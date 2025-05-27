@@ -1,7 +1,8 @@
 # Azure Service Bus for MQueue
 
 An AWS SQS adapter for MQueue, adding support for AWS Simple Queue Service
-queues with a multi-backend setup with MQueue.
+queues with a multi-backend setup with MQueue. Note: SQS Incoming queue
+consumption uses [sqs-consumer](https://github.com/bbc/sqs-consumer).
 
 ```ts
 const outgoingQueue = new MQueue.Outgoing(
