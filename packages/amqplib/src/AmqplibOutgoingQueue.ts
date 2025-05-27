@@ -2,7 +2,7 @@ import type { Channel, Options as AmqplibOptions } from "amqplib";
 import { connect } from "amqplib";
 import { OutgoingQueue, QueueMessage } from "@mqueue/queue";
 
-interface Options {
+interface AmqplibOutgoingQueueOptions {
   queueName: string;
 }
 
@@ -12,7 +12,7 @@ export default class AmqplibOutgoingQueue implements OutgoingQueue {
 
   constructor(
     public client: Channel,
-    { queueName }: Options,
+    { queueName }: AmqplibOutgoingQueueOptions,
   ) {
     this.queueName = queueName;
   }
