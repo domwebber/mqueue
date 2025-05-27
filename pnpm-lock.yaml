@@ -54,6 +54,12 @@ importers:
         specifier: ^0.10.8
         version: 0.10.8
 
+  packages/multicast:
+    devDependencies:
+      '@mqueue/queue':
+        specifier: workspace:*
+        version: link:../queue
+
   packages/queue: {}
 
 packages:
