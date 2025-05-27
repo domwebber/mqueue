@@ -20,6 +20,6 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      - run: pnpm ci --prefer-offline --no-audit --no-fund
+      - run: pnpm install --prod --prefer-offline --frozen-lockfile
       - run: pnpm run build
       - run: pnpm run lint
