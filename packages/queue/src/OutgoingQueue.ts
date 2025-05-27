@@ -1,7 +1,11 @@
 import OutgoingQueueAdapter from "./Adapter/OutgoingQueueAdapter.js";
 import QueueMessage from "./QueueMessage.js";
 
-export default class OutgoingQueue implements OutgoingQueueAdapter {
+export interface SendMessageOptions extends Omit<QueueMessage, "body"> {
+  body: Buffer | string;
+}
+
+export default class OutgoingQueue {
   constructor(protected _adapter: OutgoingQueueAdapter) {}
 
   public get type() {
@@ -16,7 +20,15 @@ export default class OutgoingQueue implements OutgoingQueueAdapter {
     return this._adapter.healthcheck();
   }
 
-  public sendMessage(message: QueueMessage): Promise<void> {
-    return this._adapter.sendMessage(message);
+  public sendMessage(message: SendMessageOptions): Promise<void> {
+    const body =
+      typeof message.body === "string"
+        ? Buffer.from(message.body)
+        : message.body;
+
+    return this._adapter.sendMessage({
+      ...message,
+      body,
+    });
   }
 }
