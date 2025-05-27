@@ -25,4 +25,4 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      - run: pnpm ci --prod --prefer-offline --frozen-lockfile
+      - run: pnpm install --prod --prefer-offline --frozen-lockfile
