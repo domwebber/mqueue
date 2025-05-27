@@ -12,6 +12,7 @@
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
     "lint:publint": "publint",
+    "release": "changeset publish",
     "lint:typecheck": "npm run typecheck"
   },
   "license": "MIT",
