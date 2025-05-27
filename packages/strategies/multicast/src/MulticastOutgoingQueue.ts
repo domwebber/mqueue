@@ -1,9 +1,24 @@
 import { OutgoingQueueAdapter, QueueMessage } from "@mqueue/queue";
 
+type MulticastOutgoingQueueFilter = (
+  adapters: OutgoingQueueAdapter[],
+) => OutgoingQueueAdapter[];
+
+export interface MulticastOutgoingQueueOptions {
+  filter?: MulticastOutgoingQueueFilter;
+}
+
 export default class MulticastOutgoingQueue implements OutgoingQueueAdapter {
   public type = "multicast";
 
-  constructor(protected _adapters: OutgoingQueueAdapter[]) {}
+  protected _filter: MulticastOutgoingQueueFilter;
+
+  constructor(
+    protected _adapters: OutgoingQueueAdapter[],
+    options: MulticastOutgoingQueueOptions = {},
+  ) {
+    this._filter = options.filter ?? ((adapters) => adapters);
+  }
 
   public async healthcheck() {
     await Promise.all(this._adapters.map((adapter) => adapter.healthcheck()));
