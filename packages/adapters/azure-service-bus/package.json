@@ -15,7 +15,8 @@
   ],
   "keywords": [
     "queue",
-    "adapter"
+    "adapter",
+    "azure-service-bus"
   ],
   "exports": {
     ".": {

@@ -15,7 +15,9 @@
   ],
   "keywords": [
     "queue",
-    "adapter"
+    "adapter",
+    "sqs",
+    "sqs-consumer"
   ],
   "exports": {
     ".": {

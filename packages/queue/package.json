@@ -15,7 +15,12 @@
   ],
   "keywords": [
     "queue",
-    "adapter"
+    "adapter",
+    "amqplib",
+    "rhea",
+    "sqs",
+    "sqs-consumer",
+    "azure-service-bus"
   ],
   "exports": {
     ".": {
