@@ -20,7 +20,7 @@ outgoingQueue.sendMessage({
 
 // ...
 
-const incomingQueue = new MQueue.Outgoing(
+const incomingQueue = new MQueue.Incoming(
   new MulticastQueue.Incoming([
     await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
     await AmqplibIncomingQueue.connect("amqp://rabbitmq:5272", "queue-name2"),
