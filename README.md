@@ -2,6 +2,31 @@
 
 A simple queue interface with support for multiple backends
 
+```ts
+const outgoingQueue new MQueue.Outgoing(
+  await AmqplibOutgoingQueue.connect(
+    "amqp://rabbitmq:5271",
+    "queue-name"
+  );
+);
+
+outgoingQueue.sendMessage({
+  headers: {
+    "Account-ID": "123",
+  },
+  body: "...",
+});
+
+// ...
+
+const incomingQueue new MQueue.Outgoing(
+  await AmqplibIncomingQueue.connect(
+    "amqp://rabbitmq:5271",
+    "queue-name"
+  );
+);
+```
+
 ## Adapters
 
 - [ ] amqplib
