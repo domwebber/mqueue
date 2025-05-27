@@ -1,18 +1,23 @@
-import Queue from "./QueueAdapter.js";
-import QueueMessage from "./QueueMessage.js";
+import IncomingQueueAdapter, {
+  IncomingQueueMessageListener,
+} from "./Adapter/IncomingQueueAdapter.js";
 
-export type IncomingQueueMessageListener = (options: {
-  accept: () => Promise<void>;
-  reject: (error?: Error) => Promise<void>;
-  message: QueueMessage;
-  [key: string]: unknown;
-}) => Promise<void>;
+export default class IncomingQueue implements IncomingQueueAdapter {
+  constructor(protected _adapter: IncomingQueueAdapter) {}
 
-export default interface IncomingQueueInterface extends Queue {
-  /**
-   * Listen for messages.
-   *
-   * @since 1.0.0
-   */
-  consume(callback: IncomingQueueMessageListener): Promise<void>;
+  public get type() {
+    return this._adapter.type;
+  }
+
+  public healthcheck(): Promise<void> {
+    return this._adapter.healthcheck();
+  }
+
+  public shutdown(): Promise<void> {
+    return this._adapter.healthcheck();
+  }
+
+  public consume(callback: IncomingQueueMessageListener): Promise<void> {
+    return this._adapter.consume(callback);
+  }
 }

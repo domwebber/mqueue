@@ -1,17 +1,9 @@
-import QueueAdapter from "./QueueAdapter.js";
+import IncomingQueue from "./IncomingQueue.js";
+import OutgoingQueue from "./OutgoingQueue.js";
 
-export default class MQueue implements QueueAdapter {
-  constructor(protected _adapter: QueueAdapter) {}
+export default class MQueue {
+  private constructor() {}
 
-  public get type() {
-    return this._adapter.type;
-  }
-
-  public healthcheck(): Promise<void> {
-    return this._adapter.healthcheck();
-  }
-
-  public shutdown(): Promise<void> {
-    return this._adapter.healthcheck();
-  }
+  public static outgoing = OutgoingQueue;
+  public static incoming = IncomingQueue;
 }
