@@ -1,0 +1,78 @@
+services:
+  elasticmq:
+    # https://github.com/softwaremill/elasticmq
+    image: softwaremill/elasticmq-native
+    profiles:
+      - sqs
+    ports:
+      - 9324:9324
+      - 9325:9325
+    networks:
+      elasticmq:
+
+  rabbitmq:
+    #region 📬 RABBITMQ
+    image: rabbitmq:4.1.0-management-alpine
+    restart: unless-stopped
+    profiles:
+      - rabbitmq
+    healthcheck:
+      test:
+        rabbitmq-diagnostics -q ping && rabbitmq-diagnostics -q check_running &&
+        rabbitmq-diagnostics -q status && rabbitmq-diagnostics -q
+        check_local_alarms
+      start_period: 60s
+      interval: 10s
+      timeout: 10s
+      retries: 3
+    volumes:
+      - ./var/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+      - ./var/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
+      - rabbitmq-data:/var/lib/rabbitmq
+      - rabbitmq-logs:/var/log/rabbitmq
+    ports:
+      - 15672:15672
+      - 5672:5672
+    networks:
+      - rabbitmq
+
+  azure-service-bus:
+    # https://github.com/Azure/azure-service-bus-emulator-installer
+    container_name: servicebus-emulator
+    image: mcr.microsoft.com/azure-messaging/servicebus-emulator:latest
+    profiles:
+      - azure-service-bus
+    ports:
+      - 5672:5672
+      - 5300:5300
+    environment:
+      SQL_SERVER: sqledge
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD} # Password should be same as what is set for SQL Edge
+      ACCEPT_EULA: ${ACCEPT_EULA}
+      SQL_WAIT_INTERVAL: ${SQL_WAIT_INTERVAL} # Optional: Time in seconds to wait for SQL to be ready (default is 15 seconds)
+    volumes:
+      - ${ASB_CONFIG_PATH}:/ServiceBus_Emulator/ConfigFiles/Config.json
+    depends_on:
+      - sqledge
+    networks:
+      sb-emulator:
+        aliases:
+          - sb-emulator
+
+  sqledge:
+    container_name: sqledge
+    image: mcr.microsoft.com/azure-sql-edge:latest
+    profiles:
+      - azure-service-bus
+    networks:
+      sb-emulator:
+        aliases:
+          - sqledge
+    environment:
+      ACCEPT_EULA: ${ACCEPT_EULA}
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+
+networks:
+  elasticmq:
+  rabbitmq:
+  sb-emulator:
