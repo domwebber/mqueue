@@ -40,11 +40,12 @@
     "provenance": false
   },
   "peerDependencies": {
-    "amqplib": "^0.10.8",
-    "@mqueue/queue": "workspace:*"
+    "@mqueue/queue": "workspace:*",
+    "amqplib": "^0.10.8"
   },
   "devDependencies": {
-    "amqplib": "^0.10.8",
-    "@mqueue/queue": "workspace:*"
+    "@mqueue/queue": "workspace:*",
+    "@types/amqplib": "^0.10.7",
+    "amqplib": "^0.10.8"
   }
 }
