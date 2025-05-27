@@ -1,0 +1,51 @@
+{
+  "name": "@mqueue/rhea",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "MQueue adapter for rhea AMQP v1.0",
+  "author": "Dom Webber <dom.webber@hotmail.com>",
+  "contributors": [
+    "Dom Webber <dom.webber@hotmail.com>"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "queue",
+    "mqueue"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsup src --no-config --dts --format esm,cjs --cjsInterop --minify --sourcemap --splitting --treeshake",
+    "typecheck": "tsc --noEmit"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "provenance": false
+  },
+  "peerDependencies": {
+    "@mqueue/queue": "workspace:*"
+  },
+  "devDependencies": {
+    "@mqueue/queue": "workspace:*"
+  },
+  "dependencies": {
+    "rhea": "^3.0.4",
+    "rhea-promise": "^3.0.3"
+  }
+}
