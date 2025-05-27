@@ -1,5 +1,4 @@
-import type { Channel, Options as AmqplibOptions } from "amqplib";
-import { connect } from "amqplib";
+import { connect, type Channel, type Options as AmqplibOptions } from "amqplib";
 import { OutgoingQueueAdapter, QueueMessage } from "@mqueue/queue";
 
 interface AmqplibOutgoingQueueOptions {
