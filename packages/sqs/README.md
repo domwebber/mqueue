@@ -5,10 +5,7 @@ queues with a multi-backend setup with MQueue.
 
 ```ts
 const outgoingQueue = new MQueue.Outgoing(
-  await SQSQueue.Outgoing.connect(
-    "amqp://rabbitmq:5271",
-    "queue-name",
-  ),
+  await SQSQueue.Outgoing.connect("amqp://rabbitmq:5271", "queue-name"),
 );
 
 outgoingQueue.sendMessage({
@@ -21,9 +18,6 @@ outgoingQueue.sendMessage({
 // ...
 
 const incomingQueue = new MQueue.Incoming(
-  await SQSQueue.Incoming.connect(
-    "amqp://rabbitmq:5271",
-    "queue-name",
-  ),
+  await SQSQueue.Incoming.connect("amqp://rabbitmq:5271", "queue-name"),
 );
 ```
