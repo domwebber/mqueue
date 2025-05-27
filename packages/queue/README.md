@@ -22,13 +22,13 @@ const incomingQueue = new MQueue.Incoming(
 );
 ```
 
-## Credit
+## Adapters
 
-This package was inspired by [Keyv](https://github.com/jaredwray/keyv),
-[Flystorage](https://github.com/duna-oss/flystorage), and
-[Flysystem](https://flysystem.thephpleague.com).
+- [ ] [amqplib](/packages/amqplib/README.md)
+- [ ] [sqs](/packages/sqs/README.md)
+- [ ] [rhea](/packages/rhea/README.md)
+- [ ] [azure-service-bus](/packages/azure-service-bus/README.md)
 
-The concept for this package was to create the
-[Keyv](https://github.com/jaredwray/keyv) for Queue backends - simply
-abstracting the interface for different queue backends to remain flexible and
-keep options open.
+## Strategies
+
+- [ ] [Multicast](/packages/multicast/README.md)
