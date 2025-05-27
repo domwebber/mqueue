@@ -90,29 +90,6 @@ importers:
         specifier: workspace:*
         version: link:../../queue
 
-  packages/amqplib:
-    dependencies:
-      amqplib:
-        specifier: ^0.10.8
-        version: 0.10.8
-    devDependencies:
-      "@mqueue/queue":
-        specifier: workspace:*
-        version: link:../queue
-      "@types/amqplib":
-        specifier: ^0.10.7
-        version: 0.10.7
-
-  packages/azure-service-bus:
-    dependencies:
-      "@azure/service-bus":
-        specifier: ^7.9.5
-        version: 7.9.5
-    devDependencies:
-      "@mqueue/queue":
-        specifier: workspace:*
-        version: link:../queue
-
   packages/multicast:
     devDependencies:
       "@mqueue/queue":
@@ -120,32 +97,6 @@ importers:
         version: link:../queue
 
   packages/queue: {}
-
-  packages/rhea:
-    dependencies:
-      rhea:
-        specifier: ^3.0.4
-        version: 3.0.4
-      rhea-promise:
-        specifier: ^3.0.3
-        version: 3.0.3
-    devDependencies:
-      "@mqueue/queue":
-        specifier: workspace:*
-        version: link:../queue
-
-  packages/sqs:
-    dependencies:
-      "@aws-sdk/client-sqs":
-        specifier: ^3.817.0
-        version: 3.817.0
-      sqs-consumer:
-        specifier: ^12.0.0
-        version: 12.0.0(@aws-sdk/client-sqs@3.817.0)
-    devDependencies:
-      "@mqueue/queue":
-        specifier: workspace:*
-        version: link:../queue
 
 packages:
   "@aws-crypto/sha256-browser@5.2.0":
