@@ -4,6 +4,6 @@ import OutgoingQueue from "./OutgoingQueue.js";
 export default class MQueue {
   private constructor() {}
 
-  public static outgoing = OutgoingQueue;
-  public static incoming = IncomingQueue;
+  public static Outgoing = OutgoingQueue;
+  public static Incoming = IncomingQueue;
 }
