@@ -1,0 +1,51 @@
+{
+  "name": "@mqueue/sqs",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "MQueue adapter for Amazon Web Services Simple Queue Service",
+  "author": "Dom Webber <dom.webber@hotmail.com>",
+  "contributors": [
+    "Dom Webber <dom.webber@hotmail.com>"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "queue",
+    "adapter"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsup src --no-config --dts --format esm,cjs --cjsInterop --minify --sourcemap --splitting --treeshake",
+    "typecheck": "tsc --noEmit"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "provenance": false
+  },
+  "peerDependencies": {
+    "@mqueue/queue": "workspace:*"
+  },
+  "devDependencies": {
+    "@mqueue/queue": "workspace:*"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.817.0",
+    "sqs-consumer": "^12.0.0"
+  }
+}
