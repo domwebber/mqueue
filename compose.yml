@@ -36,6 +36,24 @@ services:
     networks:
       - rabbitmq
 
+    activemq:
+      image: apache/activemq-artemis:latest-alpine
+      profiles:
+        - activemq
+      ports:
+        - 61616:61616 # Default ActiveMQ port
+        - 8161:8161 # ActiveMQ Web Console
+      healthcheck:
+        test: ["CMD", "curl", "-f", "http://localhost:8161/"]
+        interval: 30s
+        timeout: 10s
+        retries: 3
+        start_period: 60s
+      volumes:
+        - activemq-data: /var/lib/artemis-instance
+      networks:
+        - activemq
+
   azure-service-bus:
     # https://github.com/Azure/azure-service-bus-emulator-installer
     container_name: servicebus-emulator
@@ -76,3 +94,8 @@ networks:
   elasticmq:
   rabbitmq:
   sb-emulator:
+
+volumes:
+  rabbitmq-data:
+  rabbitmq-logs:
+  activemq-data:
