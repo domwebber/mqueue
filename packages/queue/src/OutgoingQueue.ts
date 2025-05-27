@@ -8,10 +8,6 @@ export interface SendMessageOptions extends Omit<QueueMessage, "body"> {
 export default class OutgoingQueue {
   constructor(protected _adapter: OutgoingQueueAdapter) {}
 
-  public get type() {
-    return this._adapter.type;
-  }
-
   public healthcheck(): Promise<void> {
     return this._adapter.healthcheck();
   }

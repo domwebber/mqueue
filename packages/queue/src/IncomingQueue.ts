@@ -2,12 +2,8 @@ import IncomingQueueAdapter, {
   IncomingQueueMessageListener,
 } from "./Adapter/IncomingQueueAdapter.js";
 
-export default class IncomingQueue implements IncomingQueueAdapter {
+export default class IncomingQueue {
   constructor(protected _adapter: IncomingQueueAdapter) {}
-
-  public get type() {
-    return this._adapter.type;
-  }
 
   public healthcheck(): Promise<void> {
     return this._adapter.healthcheck();
