@@ -6,6 +6,7 @@ export interface SQSOutgoingQueueConnectOptions {
   sdk?: typeof AWS;
   clientConfig: AWS.SQSClientConfig;
 }
+
 export default class SQSOutgoingQueue implements OutgoingQueueAdapter {
   public type = "sqs";
 
