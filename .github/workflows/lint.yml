@@ -20,7 +20,6 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      - run: pnpm install --prod --prefer-offline --frozen-lockfile
-      - run: tree
+      - run: pnpm install --prefer-offline --frozen-lockfile
       - run: pnpm run build
       - run: pnpm run lint
