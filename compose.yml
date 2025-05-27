@@ -3,14 +3,17 @@ services:
     # https://github.com/softwaremill/elasticmq
     image: softwaremill/elasticmq-native
     profiles:
-      - sqs
+      - elasticmq
     ports:
       - 9324:9324
       - 9325:9325
+    volumes:
+      - elasticmq-data:/data
     networks:
-      elasticmq:
+      - elasticmq
 
   rabbitmq:
+    # https://rabbitmq.com
     image: rabbitmq:4.1.0-management-alpine
     restart: unless-stopped
     profiles:
@@ -35,23 +38,24 @@ services:
     networks:
       - rabbitmq
 
-    activemq:
-      image: apache/activemq-artemis:latest-alpine
-      profiles:
-        - activemq
-      ports:
-        - 61616:61616 # Default ActiveMQ port
-        - 8161:8161 # ActiveMQ Web Console
-      healthcheck:
-        test: ["CMD", "curl", "-f", "http://localhost:8161/"]
-        interval: 30s
-        timeout: 10s
-        retries: 3
-        start_period: 60s
-      volumes:
-        - activemq-data: /var/lib/artemis-instance
-      networks:
-        - activemq
+  activemq:
+    # https://activemq.apache.org/components/artemis/documentation/latest/docker.html
+    image: apache/activemq-artemis:latest-alpine
+    profiles:
+      - activemq
+    ports:
+      - 61616:61616 # Default ActiveMQ port
+      - 8161:8161 # ActiveMQ Web Console
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8161/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    volumes:
+      - activemq-data:/var/lib/artemis-instance
+    networks:
+      - activemq
 
   azure-service-bus:
     # https://github.com/Azure/azure-service-bus-emulator-installer
@@ -66,7 +70,7 @@ services:
       SQL_SERVER: sqledge
       MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD} # Password should be same as what is set for SQL Edge
       ACCEPT_EULA: ${ACCEPT_EULA}
-      SQL_WAIT_INTERVAL: ${SQL_WAIT_INTERVAL} # Optional: Time in seconds to wait for SQL to be ready (default is 15 seconds)
+      SQL_WAIT_INTERVAL: ${SQL_WAIT_INTERVAL:-0} # Optional: Time in seconds to wait for SQL to be ready (default is 15 seconds)
     volumes:
       - ${ASB_CONFIG_PATH}:/ServiceBus_Emulator/ConfigFiles/Config.json
     depends_on:
@@ -92,9 +96,11 @@ services:
 networks:
   elasticmq:
   rabbitmq:
+  activemq:
   sb-emulator:
 
 volumes:
+  elasticmq-data:
   rabbitmq-data:
   rabbitmq-logs:
   activemq-data:
