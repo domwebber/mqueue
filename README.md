@@ -3,11 +3,8 @@
 A simple queue interface with support for multiple backends
 
 ```ts
-const outgoingQueue new MQueue.Outgoing(
-  await AmqplibOutgoingQueue.connect(
-    "amqp://rabbitmq:5271",
-    "queue-name"
-  );
+const outgoingQueue = new MQueue.Outgoing(
+  await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
 );
 
 outgoingQueue.sendMessage({
@@ -19,11 +16,8 @@ outgoingQueue.sendMessage({
 
 // ...
 
-const incomingQueue new MQueue.Outgoing(
-  await AmqplibIncomingQueue.connect(
-    "amqp://rabbitmq:5271",
-    "queue-name"
-  );
+const incomingQueue = new MQueue.Outgoing(
+  await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
 );
 ```
 
