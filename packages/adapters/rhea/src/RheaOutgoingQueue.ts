@@ -6,6 +6,7 @@ export interface RheaOutgoingQueueConnectOptions {
     address: string;
   };
 }
+
 export default class RheaOutgoingQueue implements OutgoingQueueAdapter {
   public type = "rhea";
 
