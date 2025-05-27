@@ -9,9 +9,9 @@ export default interface QueueAdapter {
   healthcheck(): Promise<void>;
 
   /**
-   * Shutdown the connection.
+   * Close the connection.
    *
    * @since 1.0.0
    */
-  shutdown(): Promise<void>;
+  close(): Promise<void>;
 }

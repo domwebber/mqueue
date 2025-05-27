@@ -13,7 +13,7 @@ export default class IncomingQueue implements IncomingQueueAdapter {
     return this._adapter.healthcheck();
   }
 
-  public shutdown(): Promise<void> {
+  public close(): Promise<void> {
     return this._adapter.healthcheck();
   }
 
