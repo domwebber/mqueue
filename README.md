@@ -1,6 +1,7 @@
 # mqueue (Multi-Queue)
 
-A simple queue interface with support for multiple backends
+A simple queue interface with support for multiple backends. Keep your
+options open.
 
 ```ts
 const outgoingQueue = new MQueue.Outgoing(
