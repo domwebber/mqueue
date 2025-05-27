@@ -24,15 +24,15 @@ const incomingQueue = new MQueue.Incoming(
 
 ## Adapters
 
-- [ ] amqplib
-- [ ] sqs
+- [ ] [amqplib](./packages/amqplib/README.md)
+- [ ] [sqs](./packages/sqs/README.md)
 - [ ] sqs-consumer
-- [ ] rhea
-- [ ] azure-service-bus
+- [ ] [rhea](./packages/rhea/README.md)
+- [ ] [azure-service-bus](./packages/azure-service-bus/README.md)
 
 ## Strategies
 
-- [ ] Multicast
+- [ ] [Multicast](./packages/multicast/README.md)
 
 ## Credit
 
