@@ -1,12 +1,12 @@
 import type { Channel, Options as AmqplibOptions } from "amqplib";
 import { connect } from "amqplib";
-import { OutgoingQueue, QueueMessage } from "@mqueue/queue";
+import { OutgoingQueueAdapter, QueueMessage } from "@mqueue/queue";
 
 interface AmqplibOutgoingQueueOptions {
   queueName: string;
 }
 
-export default class AmqplibOutgoingQueue implements OutgoingQueue {
+export default class AmqplibOutgoingQueue implements OutgoingQueueAdapter {
   public type = "amqplib";
   public queueName: string;
 

@@ -1,9 +1,12 @@
-import { IncomingQueue, IncomingQueueMessageListener } from "@mqueue/queue";
+import {
+  IncomingQueueAdapter,
+  IncomingQueueMessageListener,
+} from "@mqueue/queue";
 
-export default class MulticastIncomingQueue implements IncomingQueue {
+export default class MulticastIncomingQueue implements IncomingQueueAdapter {
   public type = "multicast";
 
-  constructor(protected _adapters: IncomingQueue[]) {}
+  constructor(protected _adapters: IncomingQueueAdapter[]) {}
 
   public async healthcheck() {
     await Promise.all(this._adapters.map((adapter) => adapter.healthcheck()));

@@ -1,4 +1,4 @@
-import { OutgoingQueue, QueueMessage } from "@mqueue/queue";
+import { OutgoingQueueAdapter, QueueMessage } from "@mqueue/queue";
 import { Connection, ConnectionOptions, Sender } from "rhea-promise";
 
 export interface RheaOutgoingQueueConnectOptions {
@@ -6,7 +6,7 @@ export interface RheaOutgoingQueueConnectOptions {
     address: string;
   };
 }
-export default class RheaOutgoingQueue implements OutgoingQueue {
+export default class RheaOutgoingQueue implements OutgoingQueueAdapter {
   public type = "rhea";
 
   constructor(protected _sender: Sender) {}
