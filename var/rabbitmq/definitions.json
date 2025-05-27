@@ -17,9 +17,7 @@
       "name": "guest",
       "password_hash": "BMfxN8drrYcIqXZMr+pWTpDT0nMcOagMduLX0bjr4jwud/pN",
       "hashing_algorithm": "rabbit_password_hashing_sha256",
-      "tags": [
-        "administrator"
-      ],
+      "tags": ["administrator"],
       "limits": {}
     }
   ],
