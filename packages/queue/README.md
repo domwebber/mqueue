@@ -86,8 +86,8 @@ const incomingQueue = new MQueue.Incoming(
 
 ## Broadcast Strategies
 
-- [`@mqueue/multicast`][]:
-  Multi-queue simultaneous publishing/consumption strategy
+- [`@mqueue/multicast`][]: Multi-queue simultaneous publishing/consumption
+  strategy
 
 [`@mqueue/amqplib`]:
   https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md
