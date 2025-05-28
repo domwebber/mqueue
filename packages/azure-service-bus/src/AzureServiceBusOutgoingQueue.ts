@@ -15,9 +15,9 @@ export default class AzureServiceBusOutgoingQueue
   public type = "azure-service-bus";
 
   constructor(
-    protected _connection: ServiceBusClient,
-    protected _channel: ServiceBusSender,
-    protected _queueName: string,
+    public connection: ServiceBusClient,
+    public channel: ServiceBusSender,
+    public queueName: string,
   ) {}
 
   public static async connect(
@@ -31,7 +31,7 @@ export default class AzureServiceBusOutgoingQueue
   }
 
   public async healthcheck(): Promise<void> {
-    if (this._channel.isClosed) {
+    if (this.channel.isClosed) {
       throw new Error(
         "Azure Service Bus Sender unexpectedly closed connection",
       );
@@ -39,11 +39,11 @@ export default class AzureServiceBusOutgoingQueue
   }
 
   public async close(): Promise<void> {
-    return await this._connection.close();
+    return await this.connection.close();
   }
 
   public async sendMessage(message: QueueMessage): Promise<void> {
-    await this._channel.sendMessages({
+    await this.channel.sendMessages({
       // contentType: "application/json",
       applicationProperties: message.headers,
       body: message.body,

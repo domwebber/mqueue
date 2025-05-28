@@ -18,14 +18,14 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
   protected _callback?: IncomingQueueMessageListener;
 
   constructor(
-    protected _client: AWS.SQS,
+    public client: AWS.SQS,
     protected _queueURL: string,
-    protected _queueName: string,
+    public queueName: string,
   ) {
     this._consumer = Consumer.create({
       extendedAWSErrors: true,
       queueUrl: this._queueURL,
-      sqs: this._client,
+      sqs: this.client,
       attributeNames: ["All"],
       messageAttributeNames: ["All"],
       batchSize: 10,
@@ -93,7 +93,7 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
     await this._callback?.({
       // raw: message,
       accept: async () => {
-        await this._client.deleteMessage({
+        await this.client.deleteMessage({
           QueueUrl: this._queueURL,
           ReceiptHandle: message.ReceiptHandle,
         });

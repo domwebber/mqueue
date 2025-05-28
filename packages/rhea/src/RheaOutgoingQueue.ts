@@ -10,7 +10,7 @@ export interface RheaOutgoingQueueConnectOptions {
 export default class RheaOutgoingQueue implements OutgoingQueueAdapter {
   public type = "rhea";
 
-  constructor(protected _sender: Sender) {}
+  constructor(public sender: Sender) {}
 
   public static async connect(
     connectionOptions: ConnectionOptions,
@@ -31,18 +31,18 @@ export default class RheaOutgoingQueue implements OutgoingQueueAdapter {
   }
 
   public async healthcheck() {
-    if (!this._sender.isOpen()) {
+    if (!this.sender.isOpen()) {
       throw new Error("AMQPv1.0 Sender unexpectedly disconnected");
     }
   }
 
   public async close() {
-    await this._sender.close();
-    await this._sender.connection.close();
+    await this.sender.close();
+    await this.sender.connection.close();
   }
 
   public async sendMessage(message: QueueMessage): Promise<void> {
-    const delivery = this._sender.send({
+    const delivery = this.sender.send({
       body: message.body, // .toString(AMQP10OutgoingQueue.BODY_ENCODING),
       // content_type: "application/json",
       // content_encoding: AMQP10OutgoingQueue.BODY_ENCODING,

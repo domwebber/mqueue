@@ -13,9 +13,9 @@ export interface RheaIncomingQueueConnectOptions {
 export default class RheaIncomingQueue implements IncomingQueueAdapter {
   public type = "rhea";
 
-  protected _receiver?: Receiver;
+  public receiver?: Receiver;
 
-  constructor(protected _connection: Connection) {}
+  constructor(public connection: Connection) {}
 
   public static async connect(
     connectionOptions: ConnectionOptions,
@@ -35,18 +35,18 @@ export default class RheaIncomingQueue implements IncomingQueueAdapter {
   }
 
   public async healthcheck() {
-    if (!this._receiver?.isOpen()) {
+    if (!this.receiver?.isOpen()) {
       throw new Error("AMQPv1.0 Receiver unexpectedly disconnected");
     }
   }
 
   public async close() {
-    await this._receiver!.close();
-    await this._receiver!.connection.close();
+    await this.receiver?.close();
+    await this.receiver?.connection.close();
   }
 
   public async consume(callback: IncomingQueueMessageListener): Promise<void> {
-    this._receiver = await this._connection.createReceiver({
+    this.receiver = await this.connection.createReceiver({
       autoaccept: false,
       credit_window: 500,
       onMessage: (context) => {

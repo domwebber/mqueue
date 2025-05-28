@@ -8,8 +8,8 @@ export default class AmqplibIncomingQueue implements IncomingQueueAdapter {
   public type = "amqplib";
 
   constructor(
-    protected _channel: Channel,
-    protected _queueName: string,
+    public channel: Channel,
+    public queueName: string,
   ) {}
 
   public static async connect(
@@ -24,18 +24,18 @@ export default class AmqplibIncomingQueue implements IncomingQueueAdapter {
   }
 
   public async healthcheck() {
-    await this._channel.assertQueue(this._queueName, {
+    await this.channel.assertQueue(this.queueName, {
       durable: true,
     });
   }
 
   public async close() {
-    await this._channel.close();
+    await this.channel.close();
   }
 
   public async consume(callback: IncomingQueueMessageListener): Promise<void> {
-    await this._channel.consume(
-      this._queueName,
+    await this.channel.consume(
+      this.queueName,
       async (message) => {
         // Check whether the worker, message, or queue service was cancelled (rudimentary)
         if (message === null) {
@@ -48,10 +48,10 @@ export default class AmqplibIncomingQueue implements IncomingQueueAdapter {
         await callback({
           raw: message,
           accept: async () => {
-            this._channel.ack(message);
+            this.channel.ack(message);
           },
           reject: async () => {
-            this._channel.nack(message, false, false);
+            this.channel.nack(message, false, false);
           },
           message: {
             isRedelivered: message.fields.redelivered,

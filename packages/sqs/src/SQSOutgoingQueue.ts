@@ -11,9 +11,9 @@ export default class SQSOutgoingQueue implements OutgoingQueueAdapter {
   public type = "sqs";
 
   constructor(
-    protected _client: AWS.SQS,
+    public client: AWS.SQS,
     protected _queueURL: string,
-    protected _queueName: string,
+    public queueName: string,
   ) {}
 
   public static async connect(
@@ -29,7 +29,7 @@ export default class SQSOutgoingQueue implements OutgoingQueueAdapter {
   }
 
   public async healthcheck() {
-    await this._client.getQueueAttributes({
+    await this.client.getQueueAttributes({
       QueueUrl: this._queueURL,
     });
   }
@@ -53,7 +53,7 @@ export default class SQSOutgoingQueue implements OutgoingQueueAdapter {
       };
     }
 
-    await this._client.sendMessage({
+    await this.client.sendMessage({
       QueueUrl: this._queueURL,
       MessageBody: message.body.toString(),
       MessageAttributes: messageAttributes,
