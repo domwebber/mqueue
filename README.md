@@ -1,6 +1,6 @@
 # mqueue (Multi-Queue)
 
-A simple queue interface with support for multiple backends. Keep your options
+Simple queue interface with support for multiple backends. Keep your options
 open.
 
 ```ts
@@ -31,7 +31,8 @@ that adapter under [Queue Adapters](#queue-adapters).
 
 ## Packages
 
-- [MQueue](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md)
+- [MQueue](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md):
+  Simple queue interface with support for multiple backends
 
 ## Queue Adapters
 

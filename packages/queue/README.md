@@ -1,6 +1,6 @@
 # mqueue (Multi-Queue)
 
-A simple queue interface with support for multiple backends. Keep your options
+Simple queue interface with support for multiple backends. Keep your options
 open.
 
 ## Installation
