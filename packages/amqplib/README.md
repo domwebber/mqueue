@@ -27,3 +27,7 @@ const incomingQueue = new MQueue.Incoming(
   await AmqplibQueue.Incoming.connect("amqp://rabbitmq:5271", "queue-name"),
 );
 ```
+
+## Compatibility
+
+- [RabbitMQ](https://rabbitmq.com)

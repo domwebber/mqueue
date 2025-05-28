@@ -1,6 +1,6 @@
 # Azure Service Bus for MQueue
 
-An AWS SQS adapter for
+An [AWS SQS](https://aws.amazon.com/sqs/) adapter for
 [MQueue](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md),
 adding support for AWS Simple Queue Service queues with a multi-backend setup
 with MQueue. Note: SQS Incoming queue consumption uses
@@ -29,3 +29,8 @@ const incomingQueue = new MQueue.Incoming(
   await SQSQueue.Incoming.connect("amqp://rabbitmq:5271", "queue-name"),
 );
 ```
+
+## Compatibility
+
+- [AWS Simple Queue Service (SQS)](https://aws.amazon.com/sqs/)
+- [ElasticMQ (SQS-Compatible)](https://github.com/softwaremill/elasticmq)
