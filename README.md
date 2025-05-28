@@ -27,6 +27,32 @@ const incomingQueue = new MQueue.Incoming(
 );
 ```
 
+```ts
+// Example: Switching between AMQP v0.9.1 and SQS for live and production
+const isProduction = process.env.NODE_ENV === "production";
+
+const outgoingQueue = new MQueue.Outgoing(
+  isProduction
+    ? await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name")
+    : await SQSOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
+);
+
+outgoingQueue.sendMessage({
+  headers: {
+    "Account-ID": "123",
+  },
+  body: "...",
+});
+
+// ...
+
+const incomingQueue = new MQueue.Incoming(
+  isProduction
+    ? await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name")
+    : await SQSIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
+);
+```
+
 ## Credit
 
 This package was inspired by [Keyv](https://github.com/jaredwray/keyv),
