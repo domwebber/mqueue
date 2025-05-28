@@ -44,6 +44,7 @@ that adapter under [Queue Adapters](#queue-adapters).
   AMQP v1.0 queue adapter
 - [`@mqueue/azure-service-bus`](https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md):
   Azure Service Bus queue adapter
+- [ ] Kafka Queue Adapter (TODO)
 - [ ] MQTT Queue Adapter (TODO)
 
 ## Broadcast Strategies
