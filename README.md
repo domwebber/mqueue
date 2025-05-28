@@ -50,7 +50,7 @@ that adapter under [Queue Adapters](#queue-adapters).
 ## Broadcast Strategies
 
 - [`@mqueue/multicast`](https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md):
-  Multi-queue simultaneous publishing strategy
+  Multi-queue simultaneous publishing/consumption strategy
 
 ## Credit
 
