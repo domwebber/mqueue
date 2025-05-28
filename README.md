@@ -31,23 +31,23 @@ that adapter under [Queue Adapters](#queue-adapters).
 
 ## Packages
 
-- [MQueue](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md):
+- [`@mqueue/queue`](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md):
   Simple queue interface with support for multiple backends
 
 ## Queue Adapters
 
-- [amqplib](https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md):
+- [`@mqueue/amqplib`](https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md):
   AMQP v0.9.1 queue adapter
-- [sqs](https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md):
+- [`@mqueue/sqs`](https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md):
   AWS Simple Queue Service (SQS) queue adapter
-- [rhea](https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md):
+- [`@mqueue/rhea`](https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md):
   AMQP v1.0 queue adapter
-- [azure-service-bus](https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md):
+- [`@mqueue/azure-service-bus`](https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md):
   Azure Service Bus queue adapter
 
 ## Broadcast Strategies
 
-- [Multicast](https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md):
+- [`@mqueue/multicast`](https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md):
   Multi-queue simultaneous publishing strategy
 
 ## Credit
