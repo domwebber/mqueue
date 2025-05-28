@@ -7,6 +7,11 @@ thus compatible with the Rhea MQueue adapter (which it uses under-the-hood),
 however, you may achieve a better experience (particularly with Azure
 authentication and identity) by using the specialised adapter.
 
+```bash
+npm install --save @mqueue/queue @mqueue/azure-service-bus
+# or use pnpm/yarn
+```
+
 ```ts
 const outgoingQueue = new MQueue.Outgoing(
   await AzureServiceBusQueue.Outgoing.connect(

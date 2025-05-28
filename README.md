@@ -3,6 +3,11 @@
 A simple queue interface with support for multiple backends. Keep your options
 open.
 
+```bash
+npm install --save @mqueue/queue @mqueue/amqplib
+# or use pnpm/yarn
+```
+
 ```ts
 const outgoingQueue = new MQueue.Outgoing(
   await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),

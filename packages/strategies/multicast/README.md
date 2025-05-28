@@ -6,6 +6,11 @@ the same interface. Publish to [amqplib](/packages/adapters/amqplib/README.md),
 [rhea](/packages/adapters/rhea/README.md), and
 [sqs](/packages/adapters/sqs/README.md) with one call.
 
+```bash
+npm install --save @mqueue/queue @mqueue/multicast # + Adapter(s)...
+# or use pnpm/yarn
+```
+
 ```ts
 const outgoingQueue = new MQueue.Outgoing(
   new MulticastQueue.Outgoing([
