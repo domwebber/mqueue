@@ -32,7 +32,7 @@ const incomingQueue = new MQueue.Incoming(
 
 - [RabbitMQ v4 and later](https://rabbitmq.com)
 - [RabbitMQ v3 and earler, with the AMQP v1.0 plugin](https://rabbitmq.com)
-- [ActiveMQ](https://activemq.apache.org)
+- [Apache ActiveMQ](https://activemq.apache.org)
 - [Azure Service Bus](https://azure.microsoft.com/products/service-bus) -
   **Note**: identity and authentication is easier with the
   [dedicated Azure Service Bus queue adapter](https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md)

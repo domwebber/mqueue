@@ -66,16 +66,33 @@ const incomingQueue = new MQueue.Incoming(
 
 ## Queue Adapters
 
-- [`@mqueue/amqplib`](https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md):
-  AMQP v0.9.1 queue adapter
-- [`@mqueue/sqs`](https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md):
-  AWS Simple Queue Service (SQS) queue adapter
-- [`@mqueue/rhea`](https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md):
-  AMQP v1.0 queue adapter
-- [`@mqueue/azure-service-bus`](https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md):
-  Azure Service Bus queue adapter
+- [`@mqueue/amqplib`][]: AMQP v0.9.1 queue adapter
+- [`@mqueue/sqs`][]: AWS Simple Queue Service (SQS) queue adapter
+- [`@mqueue/rhea`][]: AMQP v1.0 queue adapter
+- [`@mqueue/azure-service-bus`][]: Azure Service Bus queue adapter
+
+### Queues
+
+| Queue Platform                 | Queue Adapter                                         |
+| ------------------------------ | ----------------------------------------------------- |
+| AWS Simple Queue Service (SQS) | [`@mqueue/sqs`][]                                     |
+| ElasticMQ (SQS-Compatible)     | [`@mqueue/sqs`][]                                     |
+| RabbitMQ (AMQP v0.9.1)         | [`@mqueue/amqplib`][]                                 |
+| RabbitMQ (AMQP v1.0)           | [`@mqueue/rhea`][]                                    |
+| Apache ActiveMQ (AMQP v1.0)    | [`@mqueue/rhea`][]                                    |
+| Azure Service Bus              | [`@mqueue/azure-service-bus`][] or [`@mqueue/rhea`][] |
 
 ## Broadcast Strategies
 
-- [`@mqueue/multicast`](https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md):
-  Multi-queue simultaneous publishing strategy
+- [`@mqueue/multicast`][]: Multi-queue simultaneous publishing strategy
+
+[`@mqueue/amqplib`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md
+[`@mqueue/sqs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md
+[`@mqueue/rhea`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md
+[`@mqueue/azure-service-bus`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md
+[`@mqueue/multicast`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
