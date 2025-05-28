@@ -24,33 +24,53 @@ const incomingQueue = new MQueue.Incoming(
 
 ## Getting Started
 
-To learn how to use MQueue, check out the
-[`@mqueue/queue`](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md)
-README. To learn how to use a specific queue adapter, check out the README for
-that adapter under [Queue Adapters](#queue-adapters).
+To learn how to use MQueue, check out the [`@mqueue/queue`][] README. To learn
+how to use a specific queue adapter, check out the README for that adapter under
+[Queue Adapters](#queue-adapters).
 
 ## Packages
 
-- [`@mqueue/queue`](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md):
-  Simple queue interface with support for multiple backends
+- [`@mqueue/queue`][]: Simple queue interface with support for multiple backends
 
 ## Queue Adapters
 
-- [`@mqueue/amqplib`](https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md):
-  AMQP v0.9.1 queue adapter
-- [`@mqueue/sqs`](https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md):
-  AWS Simple Queue Service (SQS) queue adapter
-- [`@mqueue/rhea`](https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md):
-  AMQP v1.0 queue adapter
-- [`@mqueue/azure-service-bus`](https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md):
-  Azure Service Bus queue adapter
+- [`@mqueue/amqplib`][]: AMQP v0.9.1 queue adapter
+- [`@mqueue/sqs`][]: AWS Simple Queue Service (SQS) queue adapter
+- [`@mqueue/rhea`][]: AMQP v1.0 queue adapter
+- [`@mqueue/azure-service-bus`][]: Azure Service Bus queue adapter
 - [ ] Kafka Queue Adapter (TODO)
 - [ ] MQTT Queue Adapter (TODO)
 
+### Queues
+
+[Why might you need a Message Queue?](https://blog.bytebytego.com/p/why-do-we-need-a-message-queue)
+
+| Queue Platform                 | Queue Adapter                                         |
+| ------------------------------ | ----------------------------------------------------- |
+| AWS Simple Queue Service (SQS) | [`@mqueue/sqs`][]                                     |
+| ElasticMQ (SQS-Compatible)     | [`@mqueue/sqs`][]                                     |
+| RabbitMQ (AMQP v0.9.1)         | [`@mqueue/amqplib`][]                                 |
+| RabbitMQ (AMQP v1.0)           | [`@mqueue/rhea`][]                                    |
+| Apache ActiveMQ (AMQP v1.0)    | [`@mqueue/rhea`][]                                    |
+| Azure Service Bus              | [`@mqueue/azure-service-bus`][] or [`@mqueue/rhea`][] |
+
 ## Broadcast Strategies
 
-- [`@mqueue/multicast`](https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md):
-  Multi-queue simultaneous publishing/consumption strategy
+- [`@mqueue/multicast`][]: Multi-queue simultaneous publishing/consumption
+  strategy
+
+[`@mqueue/queue`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md
+[`@mqueue/amqplib`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md
+[`@mqueue/sqs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md
+[`@mqueue/rhea`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md
+[`@mqueue/azure-service-bus`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md
+[`@mqueue/multicast`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
 
 ## Credit
 

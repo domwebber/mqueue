@@ -73,6 +73,8 @@ const incomingQueue = new MQueue.Incoming(
 
 ### Queues
 
+[Why might you need a Message Queue?](https://blog.bytebytego.com/p/why-do-we-need-a-message-queue)
+
 | Queue Platform                 | Queue Adapter                                         |
 | ------------------------------ | ----------------------------------------------------- |
 | AWS Simple Queue Service (SQS) | [`@mqueue/sqs`][]                                     |
@@ -84,7 +86,8 @@ const incomingQueue = new MQueue.Incoming(
 
 ## Broadcast Strategies
 
-- [`@mqueue/multicast`][]: Multi-queue simultaneous publishing strategy
+- [`@mqueue/multicast`][]:
+  Multi-queue simultaneous publishing/consumption strategy
 
 [`@mqueue/amqplib`]:
   https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md
