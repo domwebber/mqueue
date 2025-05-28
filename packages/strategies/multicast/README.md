@@ -35,3 +35,28 @@ const incomingQueue = new MQueue.Incoming(
   ]),
 );
 ```
+
+## Filtering & Randomisation
+
+```ts
+// Select one random adapter (for example)
+const filter = (adapters) => [adapters[randomInt(adapters.length)]];
+
+const outgoingQueue = new MQueue.Outgoing(
+  new MulticastQueue.Outgoing([
+    await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
+    await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5272", "queue-name2"),
+  ]),
+  { filter },
+);
+
+// ...
+
+const incomingQueue = new MQueue.Incoming(
+  new MulticastQueue.Incoming([
+    await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
+    await AmqplibIncomingQueue.connect("amqp://rabbitmq:5272", "queue-name2"),
+  ]),
+  { filter },
+);
+```
