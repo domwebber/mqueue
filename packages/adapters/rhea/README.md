@@ -1,7 +1,8 @@
 # rhea for MQueue
 
-An [rhea](https://github.com/amqp/rhea) adapter (AMQP v1.0) for MQueue, adding
-support for rhea queues with a multi-backend setup with MQueue.
+An [rhea](https://github.com/amqp/rhea) adapter (AMQP v1.0) for
+[MQueue](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md),
+adding support for rhea queues with a multi-backend setup with MQueue.
 
 ```bash
 npm install --save @mqueue/queue @mqueue/rhea

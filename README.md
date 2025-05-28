@@ -3,11 +3,6 @@
 A simple queue interface with support for multiple backends. Keep your options
 open.
 
-```bash
-npm install --save @mqueue/queue @mqueue/amqplib
-# or use pnpm/yarn
-```
-
 ```ts
 const outgoingQueue = new MQueue.Outgoing(
   await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
@@ -27,31 +22,27 @@ const incomingQueue = new MQueue.Incoming(
 );
 ```
 
-```ts
-// Example: Switching between AMQP v0.9.1 and SQS for live and production
-const isProduction = process.env.NODE_ENV === "production";
+## Getting Started
 
-const outgoingQueue = new MQueue.Outgoing(
-  isProduction
-    ? await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name")
-    : await SQSOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
-);
+To learn how to use MQueue, check out the
+[`@mqueue/queue`](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md)
+README. To learn how to use a specific queue adapter, check out the README for
+that adapter under [Queue Adapters](#queue-adapters).
 
-outgoingQueue.sendMessage({
-  headers: {
-    "Account-ID": "123",
-  },
-  body: "...",
-});
+## Packages
 
-// ...
+- [MQueue](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md)
 
-const incomingQueue = new MQueue.Incoming(
-  isProduction
-    ? await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name")
-    : await SQSIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
-);
-```
+## Queue Adapters
+
+- [amqplib](https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md)
+- [sqs](https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md)
+- [rhea](https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md)
+- [azure-service-bus](https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md)
+
+## Broadcast Strategies
+
+- [Multicast](https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md)
 
 ## Credit
 
@@ -63,3 +54,7 @@ The concept for this package was to create the
 [Keyv](https://github.com/jaredwray/keyv) for Queue backends - simply
 abstracting the interface for different queue backends to remain flexible and
 keep options open.
+
+## License
+
+[MIT © Dom Webber](./LICENSE)

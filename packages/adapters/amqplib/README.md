@@ -1,8 +1,8 @@
 # amqplib for MQueue
 
 An [amqplib](https://github.com/amqp-node/amqplib) adapter (AMQP v0.9.1) for
-MQueue, adding support for amqplib queues with a multi-backend setup with
-MQueue.
+[MQueue](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md),
+adding support for amqplib queues with a multi-backend setup with MQueue.
 
 ```bash
 npm install --save @mqueue/queue @mqueue/amqplib

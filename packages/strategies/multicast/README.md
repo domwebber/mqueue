@@ -1,7 +1,9 @@
 # Mulitcast Strategy for MQueue
 
-Broadcast a message to multiple different queue backends simultaneously, with
-the same interface. Publish to [amqplib](/packages/adapters/amqplib/README.md),
+Broadcast a message to multiple different
+[MQueue](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md)
+queue backends simultaneously, with the same interface. Publish to
+[amqplib](/packages/adapters/amqplib/README.md),
 [azure-service-bus](/packages/adapters/azure-service-bus/README.md),
 [rhea](/packages/adapters/rhea/README.md), and
 [sqs](/packages/adapters/sqs/README.md) with one call.
