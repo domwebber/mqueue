@@ -1,4 +1,4 @@
-# amqplib for MQTT.js
+# MQTT.js for MQueue
 
 An [MQTT](https://github.com/mqttjs/MQTT.js) adapter for
 [MQueue](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md),

@@ -39,7 +39,7 @@ how to use a specific queue adapter, check out the README for that adapter under
 - [`@mqueue/rhea`][]: AMQP v1.0 queue adapter
 - [`@mqueue/azure-service-bus`][]: Azure Service Bus queue adapter
 - [`@mqueue/mqtt`][]: MQTT Queue Adapter
-- [ ] Kafka Queue Adapter (TODO)
+- [`@mqueue/kafkajs`][]: Kafka Queue Adapter
 - [ ] STOMP Queue Adapter (TODO)
 
 ### Queues
@@ -52,6 +52,7 @@ how to use a specific queue adapter, check out the README for that adapter under
 | Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]                                    |
 | Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]                                    |
 | Apache ActiveMQ (STOMP)                       | TODO                                                  |
+| Apache Kafka                                  | [`@mqueue/kafkajs`][]                                 |
 | Azure Service Bus                             | [`@mqueue/azure-service-bus`][] or [`@mqueue/rhea`][] |
 | Eclipe Mosquitto                              | [`@mqueue/mqtt`][]                                    |
 | ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]                                     |
@@ -77,6 +78,8 @@ how to use a specific queue adapter, check out the README for that adapter under
   https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md
 [`@mqueue/mqtt`]:
   https://github.com/domwebber/mqueue/blob/main/packages/mqtt/README.md
+[`@mqueue/kafkajs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/kafka/README.md
 [`@mqueue/multicast`]:
   https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
 

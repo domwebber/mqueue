@@ -81,6 +81,7 @@ const incomingQueue = new MQueue.Incoming(
 | Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]                                    |
 | Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]                                    |
 | Apache ActiveMQ (STOMP)                       | TODO                                                  |
+| Apache Kafka                                  | [`@mqueue/kafkajs`][]                                 |
 | Azure Service Bus                             | [`@mqueue/azure-service-bus`][] or [`@mqueue/rhea`][] |
 | Eclipe Mosquitto                              | [`@mqueue/mqtt`][]                                    |
 | ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]                                     |
@@ -104,5 +105,7 @@ const incomingQueue = new MQueue.Incoming(
   https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md
 [`@mqueue/mqtt`]:
   https://github.com/domwebber/mqueue/blob/main/packages/mqtt/README.md
+[`@mqueue/kafkajs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/kafka/README.md
 [`@mqueue/multicast`]:
   https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
