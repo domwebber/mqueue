@@ -40,7 +40,7 @@ how to use a specific queue adapter, check out the README for that adapter under
 - [`@mqueue/azure-service-bus`][]: Azure Service Bus queue adapter
 - [`@mqueue/mqtt`][]: MQTT Queue Adapter
 - [`@mqueue/kafkajs`][]: Kafka Queue Adapter
-- [ ] STOMP Queue Adapter (TODO)
+- [`@mqueue/stompjs`][]: STOMP Queue Adapter
 
 ### Queues
 
@@ -51,7 +51,7 @@ how to use a specific queue adapter, check out the README for that adapter under
 | AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]                                     |
 | Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]                                    |
 | Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]                                    |
-| Apache ActiveMQ (STOMP)                       | TODO                                                  |
+| Apache ActiveMQ (STOMP)                       | [`@mqueue/stompjs`][]                                 |
 | Apache Kafka                                  | [`@mqueue/kafkajs`][]                                 |
 | Azure Service Bus                             | [`@mqueue/azure-service-bus`][] or [`@mqueue/rhea`][] |
 | Eclipe Mosquitto                              | [`@mqueue/mqtt`][]                                    |
@@ -59,7 +59,7 @@ how to use a specific queue adapter, check out the README for that adapter under
 | RabbitMQ (AMQP v0.9.1)                        | [`@mqueue/amqplib`][]                                 |
 | RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]                                    |
 | RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]                                    |
-| RabbitMQ (with STOMP Plugin)                  | TODO                                                  |
+| RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]                                 |
 
 ## Broadcast Strategies
 
@@ -79,7 +79,9 @@ how to use a specific queue adapter, check out the README for that adapter under
 [`@mqueue/mqtt`]:
   https://github.com/domwebber/mqueue/blob/main/packages/mqtt/README.md
 [`@mqueue/kafkajs`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/kafka/README.md
+  https://github.com/domwebber/mqueue/blob/main/packages/kafkajs/README.md
+[`@mqueue/stompjs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/stompjs/README.md
 [`@mqueue/multicast`]:
   https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
 

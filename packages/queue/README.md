@@ -70,6 +70,9 @@ const incomingQueue = new MQueue.Incoming(
 - [`@mqueue/sqs`][]: AWS Simple Queue Service (SQS) queue adapter
 - [`@mqueue/rhea`][]: AMQP v1.0 queue adapter
 - [`@mqueue/azure-service-bus`][]: Azure Service Bus queue adapter
+- [`@mqueue/mqtt`][]: MQTT Queue Adapter
+- [`@mqueue/kafkajs`][]: Kafka Queue Adapter
+- [`@mqueue/stompjs`][]: STOMP Queue Adapter
 
 ### Queues
 
@@ -80,7 +83,7 @@ const incomingQueue = new MQueue.Incoming(
 | AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]                                     |
 | Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]                                    |
 | Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]                                    |
-| Apache ActiveMQ (STOMP)                       | TODO                                                  |
+| Apache ActiveMQ (STOMP)                       | [`@mqueue/stompjs`][]                                 |
 | Apache Kafka                                  | [`@mqueue/kafkajs`][]                                 |
 | Azure Service Bus                             | [`@mqueue/azure-service-bus`][] or [`@mqueue/rhea`][] |
 | Eclipe Mosquitto                              | [`@mqueue/mqtt`][]                                    |
@@ -88,7 +91,7 @@ const incomingQueue = new MQueue.Incoming(
 | RabbitMQ (AMQP v0.9.1)                        | [`@mqueue/amqplib`][]                                 |
 | RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]                                    |
 | RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]                                    |
-| RabbitMQ (with STOMP Plugin)                  | TODO                                                  |
+| RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]                                 |
 
 ## Broadcast Strategies
 
@@ -107,5 +110,7 @@ const incomingQueue = new MQueue.Incoming(
   https://github.com/domwebber/mqueue/blob/main/packages/mqtt/README.md
 [`@mqueue/kafkajs`]:
   https://github.com/domwebber/mqueue/blob/main/packages/kafka/README.md
+[`@mqueue/stompjs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/stompjs/README.md
 [`@mqueue/multicast`]:
   https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
