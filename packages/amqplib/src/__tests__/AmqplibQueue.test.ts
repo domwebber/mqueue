@@ -6,7 +6,7 @@ import RabbitMQContainer, {
 } from "./RabbitMQContainer.js";
 import AmqplibOutgoingQueue from "../AmqplibOutgoingQueue.js";
 
-describe("AmqplibQueue", () => {
+describe("AmqplibQueue", { timeout: 180_000 }, () => {
   let container: StartedRabbitMQContainer;
 
   test.before(async () => {
