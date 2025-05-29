@@ -38,21 +38,27 @@ how to use a specific queue adapter, check out the README for that adapter under
 - [`@mqueue/sqs`][]: AWS Simple Queue Service (SQS) queue adapter
 - [`@mqueue/rhea`][]: AMQP v1.0 queue adapter
 - [`@mqueue/azure-service-bus`][]: Azure Service Bus queue adapter
+- [`@mqueue/mqtt`][]: MQTT Queue Adapter
 - [ ] Kafka Queue Adapter (TODO)
-- [ ] MQTT Queue Adapter (TODO)
+- [ ] STOMP Queue Adapter (TODO)
 
 ### Queues
 
 [Why might you need a Message Queue?](https://blog.bytebytego.com/p/why-do-we-need-a-message-queue)
 
-| Queue Platform                 | Queue Adapter                                         |
-| ------------------------------ | ----------------------------------------------------- |
-| AWS Simple Queue Service (SQS) | [`@mqueue/sqs`][]                                     |
-| ElasticMQ (SQS-Compatible)     | [`@mqueue/sqs`][]                                     |
-| RabbitMQ (AMQP v0.9.1)         | [`@mqueue/amqplib`][]                                 |
-| RabbitMQ (AMQP v1.0)           | [`@mqueue/rhea`][]                                    |
-| Apache ActiveMQ (AMQP v1.0)    | [`@mqueue/rhea`][]                                    |
-| Azure Service Bus              | [`@mqueue/azure-service-bus`][] or [`@mqueue/rhea`][] |
+| Queue Platform                                | Queue Adapter                                         |
+| --------------------------------------------- | ----------------------------------------------------- |
+| AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]                                     |
+| Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]                                    |
+| Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]                                    |
+| Apache ActiveMQ (STOMP)                       | TODO                                                  |
+| Azure Service Bus                             | [`@mqueue/azure-service-bus`][] or [`@mqueue/rhea`][] |
+| Eclipe Mosquitto                              | [`@mqueue/mqtt`][]                                    |
+| ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]                                     |
+| RabbitMQ (AMQP v0.9.1)                        | [`@mqueue/amqplib`][]                                 |
+| RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]                                    |
+| RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]                                    |
+| RabbitMQ (with STOMP Plugin)                  | TODO                                                  |
 
 ## Broadcast Strategies
 
@@ -69,6 +75,8 @@ how to use a specific queue adapter, check out the README for that adapter under
   https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md
 [`@mqueue/azure-service-bus`]:
   https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md
+[`@mqueue/mqtt`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/mqtt/README.md
 [`@mqueue/multicast`]:
   https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
 
