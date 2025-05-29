@@ -33,7 +33,8 @@
   "scripts": {
     "build": "tsup src --no-config --dts --format esm,cjs --cjsInterop --minify --sourcemap --splitting --treeshake",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test --experimental-test-coverage src/__tests__/**/*.test.ts src/__tests__/*.test.ts"
+    "test": "node --import tsx --test --experimental-test-coverage src/__tests__/**/*.test.ts src/__tests__/*.test.ts",
+    "lint:publint": "publint"
   },
   "license": "MIT",
   "publishConfig": {

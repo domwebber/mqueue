@@ -12,7 +12,7 @@
     "lint": "npm-run-all --parallel lint:*",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
-    "lint:publint": "publint",
+    "lint:publint": "pnpm -r lint:publint",
     "release": "changeset publish",
     "lint:typecheck": "npm run typecheck"
   },

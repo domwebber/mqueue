@@ -31,7 +31,8 @@
   },
   "scripts": {
     "build": "tsup src --no-config --dts --format esm,cjs --cjsInterop --minify --sourcemap --splitting --treeshake",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "lint:publint": "publint"
   },
   "license": "MIT",
   "publishConfig": {
