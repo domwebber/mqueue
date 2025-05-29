@@ -46,5 +46,8 @@
   },
   "devDependencies": {
     "@mqueue/queue": "workspace:*"
+  },
+  "dependencies": {
+    "mqtt": "^5.13.0"
   }
 }
