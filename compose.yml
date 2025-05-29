@@ -106,6 +106,17 @@ services:
       - ./var/mosquitto:/mosquitto/config:rw
       - mosquitto-data:/mosquitto/data:rw
 
+  hivemq:
+    # https://hivemq.com
+    image: hivemq/hivemq4:latest
+    profiles:
+      - hivemq
+    restart: unless-stopped
+    ports:
+      - 1883:1883
+    volumes:
+      - hivemq-data:/opt/hivemq/data:rw
+
 networks:
   elasticmq:
   rabbitmq:
