@@ -34,8 +34,9 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --prefer-offline --frozen-lockfile
-      - run: pnpm run test -r -- --test-shard ${{ matrix.shard }}
+      - run: pnpm run test
 
+      # - run: pnpm run test -r -- --test-shard ${{ matrix.shard }}
       # - run:
       #     pnpm -r exec -- node --import tsx --test --test-shard=${{ matrix.shard
       #     }} src/__tests__/**/*.test.ts src/__tests__/*.test.ts
