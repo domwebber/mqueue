@@ -46,5 +46,8 @@
   },
   "devDependencies": {
     "@mqueue/queue": "workspace:*"
+  },
+  "dependencies": {
+    "@stomp/stompjs": "^7.1.1"
   }
 }
