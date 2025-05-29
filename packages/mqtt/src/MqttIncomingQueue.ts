@@ -42,10 +42,10 @@ export default class MqttIncomingQueue implements IncomingQueueAdapter {
   }
 
   public async consume(callback: IncomingQueueMessageListener): Promise<void> {
-    this._consumer = (topic, payload, packet) => {
+    this._consumer = async (topic, payload, packet) => {
       console.log({ topic, payload, packet });
 
-      callback({
+      await callback({
         accept: async () => {},
         reject: async () => {},
         message: {
