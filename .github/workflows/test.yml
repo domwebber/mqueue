@@ -13,7 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         # EOL Verisons are excluded here: 21.x
-        node-version: [20.x, 22.x, 23.x, 24.x]
+        # Also excluded is versions that don't support node --test: 20.x
+        node-version: [22.x, 23.x, 24.x]
         shard: [1/1]
     name:
       Node v${{ matrix.node-version }} on ${{ inputs.os }} ${{ matrix.shard }}
@@ -34,9 +35,8 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --prefer-offline --frozen-lockfile
-      - run: pnpm run test
+      - run: pnpm run test -r -- --test-shard ${{ matrix.shard }}
 
-      # - run: pnpm run test -r -- --test-shard ${{ matrix.shard }}
       # - run:
       #     pnpm -r exec -- node --import tsx --test --test-shard=${{ matrix.shard
       #     }} src/__tests__/**/*.test.ts src/__tests__/*.test.ts
