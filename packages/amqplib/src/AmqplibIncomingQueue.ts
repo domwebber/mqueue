@@ -23,13 +23,13 @@ export default class AmqplibIncomingQueue implements IncomingQueueAdapter {
     return new this(connectionChannel, queueName);
   }
 
-  public async healthcheck() {
+  public async healthcheck(): Promise<void> {
     await this.channel.assertQueue(this.queueName, {
       durable: true,
     });
   }
 
-  public async close() {
+  public async close(): Promise<void> {
     await this.channel.close();
   }
 

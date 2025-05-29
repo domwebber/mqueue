@@ -39,7 +39,7 @@ export default class AmqplibOutgoingQueue implements OutgoingQueueAdapter {
     }
   }
 
-  public async healthcheck() {
+  public async healthcheck(): Promise<void> {
     await this.client
       .assertQueue(this.queueName, {
         durable: true,
@@ -49,7 +49,7 @@ export default class AmqplibOutgoingQueue implements OutgoingQueueAdapter {
       });
   }
 
-  public async close() {
+  public async close(): Promise<void> {
     await this.client.close();
     // await this._channel.connection.close();
   }
