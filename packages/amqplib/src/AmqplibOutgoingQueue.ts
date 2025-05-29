@@ -19,7 +19,7 @@ export default class AmqplibOutgoingQueue implements OutgoingQueueAdapter {
   public static async connect(
     options: string | AmqplibOptions.Connect,
     queueName: string,
-    { socketOptions }: { socketOptions: Parameters<typeof connect>[1] },
+    { socketOptions }: { socketOptions?: Parameters<typeof connect>[1] } = {},
   ) {
     const connection = await connect(options, socketOptions);
     const channel = await connection.createChannel();
