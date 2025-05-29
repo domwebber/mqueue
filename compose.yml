@@ -94,7 +94,7 @@ services:
       MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
       
   mosquitto:
-    # docker exec mosquitto mosquitto_passwd -U /etc/mosquitto/passwd
+    # https://github.com/eclipse/mosquitto
     image: eclipse-mosquitto
     profiles:
       - mosquitto
