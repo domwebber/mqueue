@@ -25,6 +25,8 @@ const incomingQueue = new MQueue.Incoming(
 ## TODOs
 
 - [ ] Allow queue events to be consumed via callback or RxJS subject attachment
+- [ ] https://github.com/taskforcesh/bullmq & https://github.com/OptimalBits/bull
+- [ ] https://github.com/bee-queue/bee-queue
 
 ## Getting Started
 
