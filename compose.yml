@@ -95,7 +95,7 @@ services:
       
   mosquitto:
     # https://github.com/eclipse/mosquitto
-    image: eclipse-mosquitto
+    image: eclipse-mosquitto:latest
     profiles:
       - mosquitto
     restart: unless-stopped
