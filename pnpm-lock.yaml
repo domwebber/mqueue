@@ -129,10 +129,16 @@ importers:
       "@stomp/stompjs":
         specifier: ^7.1.1
         version: 7.1.1
+      ws:
+        specifier: ^8.18.2
+        version: 8.18.2
     devDependencies:
       "@mqueue/queue":
         specifier: workspace:*
         version: link:../queue
+      "@types/ws":
+        specifier: ^8.18.1
+        version: 8.18.1
 
 packages:
   "@aws-crypto/sha256-browser@5.2.0":
@@ -1567,6 +1573,12 @@ packages:
     resolution:
       {
         integrity: sha512-N1ASjp/nXH3ovBHddRJpli4ozpk6UdDYIX4RJWFa9L1YKnzdhTlVmiGHm4DZnj/jLbqZpes4aeR30EFGQtvhQQ==,
+      }
+
+  "@types/ws@8.18.1":
+    resolution:
+      {
+        integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==,
       }
 
   "@typescript-eslint/eslint-plugin@8.32.1":
@@ -6085,6 +6097,10 @@ snapshots:
   "@types/ssh2@1.15.5":
     dependencies:
       "@types/node": 18.19.105
+
+  "@types/ws@8.18.1":
+    dependencies:
+      "@types/node": 22.15.21
 
   "@typescript-eslint/eslint-plugin@8.32.1(@typescript-eslint/parser@8.32.1(eslint@9.27.0)(typescript@5.8.3))(eslint@9.27.0)(typescript@5.8.3)":
     dependencies:
