@@ -27,7 +27,7 @@ export default class StompOutgoingQueue implements OutgoingQueueAdapter {
       !this.client.connected ||
       this.client.state !== ActivationState.ACTIVE
     ) {
-      throw new Error("MQTT Sender unexpectedly disconnected");
+      throw new Error("STOMP Sender unexpectedly disconnected");
     }
   }
 

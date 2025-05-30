@@ -33,7 +33,7 @@ export default class StompIncomingQueue implements IncomingQueueAdapter {
       !this.client.connected ||
       this.client.state !== ActivationState.ACTIVE
     ) {
-      throw new Error("MQTT Receiver unexpectedly disconnected");
+      throw new Error("STOMP Receiver unexpectedly disconnected");
     }
   }
 
