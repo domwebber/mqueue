@@ -78,20 +78,22 @@ const incomingQueue = new MQueue.Incoming(
 
 [Why might you need a Message Queue?](https://blog.bytebytego.com/p/why-do-we-need-a-message-queue)
 
-| Queue Platform                                | Queue Adapter                                         |
-| --------------------------------------------- | ----------------------------------------------------- |
-| AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]                                     |
-| Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]                                    |
-| Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]                                    |
-| Apache ActiveMQ (STOMP)                       | [`@mqueue/stompjs`][]                                 |
-| Apache Kafka                                  | [`@mqueue/kafkajs`][]                                 |
-| Azure Service Bus                             | [`@mqueue/azure-service-bus`][] or [`@mqueue/rhea`][] |
-| Eclipe Mosquitto                              | [`@mqueue/mqtt`][]                                    |
-| ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]                                     |
-| RabbitMQ (AMQP v0.9.1)                        | [`@mqueue/amqplib`][]                                 |
-| RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]                                    |
-| RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]                                    |
-| RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]                                 |
+| Queue Platform                                | Queue Adapter                   |
+| --------------------------------------------- | ------------------------------- |
+| AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]               |
+| Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]              |
+| Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]              |
+| Apache ActiveMQ (STOMP)                       | [`@mqueue/stompjs`][]           |
+| Apache Kafka                                  | [`@mqueue/kafkajs`][]           |
+| Azure Service Bus                             | [`@mqueue/azure-service-bus`][] |
+| Azure Service Bus (AMQP v1.0)                 | [`@mqueue/rhea`][]              |
+| Eclipe Mosquitto                              | [`@mqueue/mqtt`][]              |
+| ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]               |
+| Fastq                                         | [`@mqueue/fastq`][]             |
+| RabbitMQ (AMQP v0.9.1)                        | [`@mqueue/amqplib`][]           |
+| RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]              |
+| RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]              |
+| RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]           |
 
 ## Broadcast Strategies
 
@@ -112,5 +114,7 @@ const incomingQueue = new MQueue.Incoming(
   https://github.com/domwebber/mqueue/blob/main/packages/kafka/README.md
 [`@mqueue/stompjs`]:
   https://github.com/domwebber/mqueue/blob/main/packages/stompjs/README.md
+[`@mqueue/fastq`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/fastq/README.md
 [`@mqueue/multicast`]:
   https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md

@@ -22,9 +22,7 @@ outgoingQueue.sendMessage({
 
 // ...
 
-const incomingQueue = new MQueue.Incoming(
-  new FastqQueue.Incoming(fastq),
-);
+const incomingQueue = new MQueue.Incoming(new FastqQueue.Incoming(fastq));
 ```
 
 ## Compatibility
