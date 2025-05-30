@@ -33,7 +33,7 @@ export default class MqttOutgoingQueue implements OutgoingQueueAdapter {
   }
 
   public async sendMessage(message: QueueMessage): Promise<void> {
-    this.client.publishAsync(this.topic, message.body, {
+    await this.client.publishAsync(this.topic, message.body, {
       properties: {
         contentType: "application/json",
         userProperties: message.headers as Exclude<
