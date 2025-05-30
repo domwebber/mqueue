@@ -58,9 +58,6 @@ export default class AmqplibIncomingQueue implements IncomingQueueAdapter {
             headers: message.properties.headers ?? {},
             body: message.content,
           },
-        }).catch((error) => {
-          // Hoist error scope
-          throw error;
         });
       },
       {
