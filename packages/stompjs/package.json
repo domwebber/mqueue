@@ -16,7 +16,7 @@
   "keywords": [
     "queue",
     "mqueue",
-    "mqtt"
+    "stomp"
   ],
   "exports": {
     ".": {
