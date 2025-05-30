@@ -22,6 +22,10 @@ const incomingQueue = new MQueue.Incoming(
 );
 ```
 
+## TODOs
+
+- [ ] Allow queue events to be consumed via callback or RxJS subject attachment
+
 ## Getting Started
 
 To learn how to use MQueue, check out the [`@mqueue/queue`][] README. To learn
