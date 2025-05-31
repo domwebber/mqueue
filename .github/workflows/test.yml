@@ -30,6 +30,9 @@ jobs:
       - name: Install Docker
         run: sudo apt-get update && sudo apt-get install -y docker-compose
 
+      - name: Install build essentials
+        run: sudo apt-get install -y build-essential python3 make g++
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
@@ -42,12 +45,13 @@ jobs:
       - run: pnpm install --prefer-offline --frozen-lockfile
       - run: pnpm run build
       - run:
-          DEBUG="testcontainers*" CI=true pnpm run test -- --test-force-exit
-          --test-shard ${{matrix.shard}} --test-reporter=spec
-          --test-reporter=junit --test-reporter-destination=stdout
+          pnpm run test -- --test-force-exit --test-shard=${{matrix.shard}}
+          --test-reporter=spec --test-reporter=junit
+          --test-reporter-destination=stdout
           --test-reporter-destination=coverage/junit.xml
         env:
           CI: true
+          DEBUG: testcontainers
 
       # - run:
       #     pnpm -r exec -- node --import tsx --test --test-shard=${{ matrix.shard
