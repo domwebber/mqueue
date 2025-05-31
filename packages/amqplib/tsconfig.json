@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "outDir": "dist",
-    "rootDir": "src",
+    "rootDir": ".",
     "lib": [
       "dom",
       "es5",
@@ -12,6 +12,12 @@
       "es2015.iterable"
     ]
   },
-  "include": ["src", "tests"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src",
+    "tests"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
