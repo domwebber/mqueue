@@ -20,7 +20,7 @@ describe("MosquittoQueue", { timeout }, () => {
 
   test.after(
     async () => {
-      await container.stop();
+      await container.stop({ timeout: 10_000 });
     },
     { timeout },
   );
