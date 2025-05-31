@@ -17,9 +17,8 @@ jobs:
         # Also excluded is versions that don't support node --test: 20.x
         node-version: [22.x, 23.x, 24.x]
         shard: [1/1]
-    name:
-      Node v${{ matrix.node-version }} on ${{ inputs.os }} ${{ matrix.shard }}
-    runs-on: ${{ inputs.os }}
+    name: Node v${{matrix.node-version}} on ${{inputs.os}} ${{matrix.shard}}
+    runs-on: ${{inputs.os}}
 
     steps:
       - uses: actions/checkout@v4
@@ -29,14 +28,18 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js ${{matrix.node-version}}
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{matrix.node-version}}
           cache: pnpm
 
       - run: pnpm install --prefer-offline --frozen-lockfile
-      - run: pnpm run test -r -- --test-shard ${{ matrix.shard }}
+      - run:
+          pnpm run test -r -- --test-shard ${{matrix.shard}}
+          --test-reporter=spec --test-reporter=junit
+          --test-reporter-destination=stdout
+          --test-reporter-destination=coverage/junit.xml
 
       # - run:
       #     pnpm -r exec -- node --import tsx --test --test-shard=${{ matrix.shard
