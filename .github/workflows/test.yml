@@ -46,7 +46,7 @@ jobs:
           pnpm install --prefer-offline --frozen-lockfile && pnpm install
           --global ssh2
       - name: Rebuild native modules
-        run: pnpm rebuild
+        run: pnpm rebuild && npm rebuild ssh2 --update-binary
       - run: pnpm run build
       - run:
           pnpm run test -- --test-force-exit --test-shard=${{matrix.shard}}
