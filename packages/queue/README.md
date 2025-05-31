@@ -74,9 +74,35 @@ const incomingQueue = new MQueue.Incoming(
 - [`@mqueue/kafkajs`][]: Kafka Queue Adapter
 - [`@mqueue/stompjs`][]: STOMP Queue Adapter
 
-### Queues
+## Broadcast Strategies
+
+- [`@mqueue/multicast`][]: Multi-queue simultaneous publishing/consumption
+  strategy
+
+[`@mqueue/amqplib`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md
+[`@mqueue/sqs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md
+[`@mqueue/rhea`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md
+[`@mqueue/azure-service-bus`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md
+[`@mqueue/mqtt`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/mqtt/README.md
+[`@mqueue/kafkajs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/kafka/README.md
+[`@mqueue/stompjs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/stompjs/README.md
+[`@mqueue/fastq`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/fastq/README.md
+[`@mqueue/multicast`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
+
+## Compatibility
 
 [Why might you need a Message Queue?](https://blog.bytebytego.com/p/why-do-we-need-a-message-queue)
+
+- **NodeJS** v18+, tested on v22+
 
 | Queue Platform                                | Queue Adapter                   |
 | --------------------------------------------- | ------------------------------- |
@@ -95,11 +121,8 @@ const incomingQueue = new MQueue.Incoming(
 | RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]              |
 | RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]           |
 
-## Broadcast Strategies
-
-- [`@mqueue/multicast`][]: Multi-queue simultaneous publishing/consumption
-  strategy
-
+[`@mqueue/queue`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md
 [`@mqueue/amqplib`]:
   https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md
 [`@mqueue/sqs`]:
@@ -111,7 +134,7 @@ const incomingQueue = new MQueue.Incoming(
 [`@mqueue/mqtt`]:
   https://github.com/domwebber/mqueue/blob/main/packages/mqtt/README.md
 [`@mqueue/kafkajs`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/kafka/README.md
+  https://github.com/domwebber/mqueue/blob/main/packages/kafkajs/README.md
 [`@mqueue/stompjs`]:
   https://github.com/domwebber/mqueue/blob/main/packages/stompjs/README.md
 [`@mqueue/fastq`]:

@@ -46,9 +46,16 @@ how to use a specific queue adapter, check out the README for that adapter under
 - [`@mqueue/stompjs`][]: STOMP Queue Adapter
 - [`@mqueue/fastq`][]: Fastq In-Memory Queue Adapter
 
-### Queues
+## Broadcast Strategies
+
+- [`@mqueue/multicast`][]: Multi-queue simultaneous publishing/consumption
+  strategy
+
+## Compatibility
 
 [Why might you need a Message Queue?](https://blog.bytebytego.com/p/why-do-we-need-a-message-queue)
+
+- **NodeJS** v18+, tested on v22+
 
 | Queue Platform                                | Queue Adapter                   |
 | --------------------------------------------- | ------------------------------- |
@@ -67,10 +74,20 @@ how to use a specific queue adapter, check out the README for that adapter under
 | RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]              |
 | RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]           |
 
-## Broadcast Strategies
+## Credit
 
-- [`@mqueue/multicast`][]: Multi-queue simultaneous publishing/consumption
-  strategy
+This package was inspired by [Keyv](https://github.com/jaredwray/keyv),
+[Flystorage](https://github.com/duna-oss/flystorage), and
+[Flysystem](https://flysystem.thephpleague.com).
+
+The concept for this package was to create the
+[Keyv](https://github.com/jaredwray/keyv) for Queue backends - simply
+abstracting the interface for different queue backends to remain flexible and
+keep options open.
+
+## License
+
+[MIT © Dom Webber](./LICENSE)
 
 [`@mqueue/queue`]:
   https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md
@@ -92,18 +109,3 @@ how to use a specific queue adapter, check out the README for that adapter under
   https://github.com/domwebber/mqueue/blob/main/packages/fastq/README.md
 [`@mqueue/multicast`]:
   https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
-
-## Credit
-
-This package was inspired by [Keyv](https://github.com/jaredwray/keyv),
-[Flystorage](https://github.com/duna-oss/flystorage), and
-[Flysystem](https://flysystem.thephpleague.com).
-
-The concept for this package was to create the
-[Keyv](https://github.com/jaredwray/keyv) for Queue backends - simply
-abstracting the interface for different queue backends to remain flexible and
-keep options open.
-
-## License
-
-[MIT © Dom Webber](./LICENSE)
