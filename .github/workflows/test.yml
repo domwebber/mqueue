@@ -38,6 +38,7 @@ jobs:
           cache: pnpm
 
       - run: pnpm install --prefer-offline --frozen-lockfile
+      - run: pnpm run build
       - run:
           DEBUG="testcontainers:containers" pnpm run test -- --test-shard
           ${{matrix.shard}} --test-reporter=spec --test-reporter=junit
