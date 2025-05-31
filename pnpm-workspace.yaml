@@ -1,2 +1,9 @@
 packages:
   - packages/**
+onlyBuiltDependencies:
+  - cpu-features
+  - esbuild
+  - tsup
+  - protobufjs
+  - ssh2
+  - turbo
