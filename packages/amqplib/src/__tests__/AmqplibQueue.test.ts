@@ -6,19 +6,26 @@ import RabbitMQContainer, {
 } from "./RabbitMQContainer.js";
 import AmqplibOutgoingQueue from "../AmqplibOutgoingQueue.js";
 
-describe("AmqplibQueue", { timeout: 180_000 }, () => {
+const timeout = 180_000;
+describe("AmqplibQueue", { timeout }, () => {
   let container: StartedRabbitMQContainer;
 
-  test.before(async () => {
-    container = await new RabbitMQContainer().start();
-  });
+  test.before(
+    async () => {
+      container = await new RabbitMQContainer().start();
+    },
+    { timeout },
+  );
 
-  test.after(async () => {
-    await container.stop();
-  });
+  test.after(
+    async () => {
+      await container.stop();
+    },
+    { timeout },
+  );
 
   describe("Queue sender connection", () => {
-    test("Should connect and disconnect", async () => {
+    test("Should connect and disconnect", { timeout }, async () => {
       // Arrange
 
       // Act
@@ -35,22 +42,28 @@ describe("AmqplibQueue", { timeout: 180_000 }, () => {
     });
   });
 
-  describe("Healthchecking connection", () => {
+  describe("Healthchecking connection", { timeout }, () => {
     let connection: AmqplibOutgoingQueue;
 
-    test.before(async () => {
-      connection = await AmqplibQueue.Outgoing.connect(
-        container.getAmqpUrl(),
-        container.getQueueName(),
-        {},
-      );
-    });
+    test.before(
+      async () => {
+        connection = await AmqplibQueue.Outgoing.connect(
+          container.getAmqpUrl(),
+          container.getQueueName(),
+          {},
+        );
+      },
+      { timeout },
+    );
 
-    test.after(async () => {
-      await connection.close();
-    });
+    test.after(
+      async () => {
+        await connection.close();
+      },
+      { timeout },
+    );
 
-    test("Should succeed when healthchecked", async () => {
+    test("Should succeed when healthchecked", { timeout }, async () => {
       // Act
       const result = await connection.healthcheck();
 
@@ -59,22 +72,28 @@ describe("AmqplibQueue", { timeout: 180_000 }, () => {
     });
   });
 
-  describe("Sending messages", () => {
+  describe("Sending messages", { timeout }, () => {
     let connection: AmqplibOutgoingQueue;
 
-    test.before(async () => {
-      connection = await AmqplibQueue.Outgoing.connect(
-        container.getAmqpUrl(),
-        container.getQueueName(),
-        {},
-      );
-    });
+    test.before(
+      async () => {
+        connection = await AmqplibQueue.Outgoing.connect(
+          container.getAmqpUrl(),
+          container.getQueueName(),
+          {},
+        );
+      },
+      { timeout },
+    );
 
-    test.after(async () => {
-      await connection.close();
-    });
+    test.after(
+      async () => {
+        await connection.close();
+      },
+      { timeout },
+    );
 
-    test("Should send a message", async () => {
+    test("Should send a message", { timeout }, async () => {
       // Arrange
       const body = "This is a message";
 

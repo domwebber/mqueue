@@ -6,17 +6,24 @@ import MosquittoContainer, {
 import MqttQueue from "../MqttQueue.js";
 import MqttOutgoingQueue from "../MqttOutgoingQueue.js";
 
-describe("MosquittoQueue", { timeout: 180_000 }, () => {
+const timeout = 180_000;
+describe("MosquittoQueue", { timeout }, () => {
   let container: StartedMosquittoContainer;
 
-  test.before(async () => {
-    container = await new MosquittoContainer().start();
-    console.log("Port", container.getMqttUrl());
-  });
+  test.before(
+    async () => {
+      container = await new MosquittoContainer().start();
+      console.log("Port", container.getMqttUrl());
+    },
+    { timeout },
+  );
 
-  test.after(async () => {
-    await container.stop();
-  });
+  test.after(
+    async () => {
+      await container.stop();
+    },
+    { timeout },
+  );
 
   describe("Queue sender connection", () => {
     test("Should connect and disconnect", async () => {
