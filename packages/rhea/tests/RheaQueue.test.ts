@@ -1,10 +1,10 @@
 import assert from "node:assert";
 import test, { describe } from "node:test";
-import RheaQueue from "../RheaQueue.js";
+import RheaQueue from "../src/RheaQueue.js";
 import RabbitMQContainer, {
   StartedRabbitMQContainer,
 } from "./RabbitMQContainer.js";
-import RheaOutgoingQueue from "../RheaOutgoingQueue.js";
+import RheaOutgoingQueue from "../src/RheaOutgoingQueue.js";
 
 const timeout = 180_000;
 describe("RheaQueue", { timeout }, () => {

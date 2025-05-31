@@ -3,8 +3,8 @@ import test, { describe } from "node:test";
 import MosquittoContainer, {
   StartedMosquittoContainer,
 } from "./MosquittoContainer.js";
-import MqttQueue from "../MqttQueue.js";
-import MqttOutgoingQueue from "../MqttOutgoingQueue.js";
+import MqttQueue from "../src/MqttQueue.js";
+import MqttOutgoingQueue from "../src/MqttOutgoingQueue.js";
 
 const timeout = 180_000;
 describe("MosquittoQueue", { timeout }, () => {

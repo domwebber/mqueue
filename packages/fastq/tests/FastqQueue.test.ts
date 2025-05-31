@@ -1,8 +1,8 @@
 import assert from "node:assert";
 import test, { describe } from "node:test";
-import FastqQueue from "../FastqQueue.js";
-import FastqIncomingQueue from "../FastqIncomingQueue.js";
-import FastqOutgoingQueue from "../FastqOutgoingQueue.js";
+import FastqQueue from "../src/FastqQueue.js";
+import FastqIncomingQueue from "../src/FastqIncomingQueue.js";
+import FastqOutgoingQueue from "../src/FastqOutgoingQueue.js";
 
 const timeout = 180_000;
 describe("FastqQueue", { timeout }, () => {

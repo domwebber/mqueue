@@ -12,6 +12,6 @@
       "es2015.iterable"
     ]
   },
-  "include": ["src"],
+  "include": ["src", "tests"],
   "exclude": ["node_modules", "dist"]
 }
