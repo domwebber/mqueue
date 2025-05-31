@@ -24,7 +24,7 @@ describe("AmqplibQueue", { timeout }, () => {
     { timeout },
   );
 
-  describe("Queue sender connection", () => {
+  describe("Queue sender connection", { timeout }, () => {
     test("Should connect and disconnect", { timeout }, async () => {
       // Arrange
 
