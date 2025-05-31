@@ -32,12 +32,6 @@ importers:
       publint:
         specifier: ^0.3.12
         version: 0.3.12
-      testcontainers:
-        specifier: ^11.0.0
-        version: 11.0.0
-      tsup:
-        specifier: ^8.5.0
-        version: 8.5.0(tsx@4.19.4)(typescript@5.8.3)(yaml@2.8.0)
       tsx:
         specifier: ^4.19.4
         version: 4.19.4
