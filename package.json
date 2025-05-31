@@ -1,7 +1,8 @@
 {
-  "name": "@mqueue/mqueue",
+  "name": "mqueue-root",
   "version": "0.0.1",
   "type": "module",
+  "private": true,
   "scripts": {
     "changeset": "changeset",
     "build": "turbo build",
