@@ -80,11 +80,11 @@ const incomingQueue = new MQueue.Incoming(
 
 | Queue Platform                                | Queue Adapter                   |
 | --------------------------------------------- | ------------------------------- |
-| AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]               |
 | Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]              |
 | Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]              |
 | Apache ActiveMQ (STOMP)                       | [`@mqueue/stompjs`][]           |
 | Apache Kafka                                  | [`@mqueue/kafkajs`][]           |
+| AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]               |
 | Azure Service Bus                             | [`@mqueue/azure-service-bus`][] |
 | Azure Service Bus (AMQP v1.0)                 | [`@mqueue/rhea`][]              |
 | Eclipe Mosquitto                              | [`@mqueue/mqtt`][]              |

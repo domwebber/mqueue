@@ -22,18 +22,6 @@ const incomingQueue = new MQueue.Incoming(
 );
 ```
 
-## TODOs
-
-- [ ] Allow queue events to be consumed via callback or RxJS subject attachment
-- [ ] https://github.com/taskforcesh/bullmq &
-      https://github.com/OptimalBits/bull
-- [ ] https://github.com/bee-queue/bee-queue
-- [ ] https://github.com/jessetane/queue
-- [ ] https://github.com/iarna/run-queue
-- [ ] https://github.com/mcollina/fastq
-- [ ] https://github.com/sindresorhus/p-queue
-- [ ] https://github.com/sindresorhus/yocto-queue
-
 ## Getting Started
 
 To learn how to use MQueue, check out the [`@mqueue/queue`][] README. To learn
@@ -61,11 +49,11 @@ how to use a specific queue adapter, check out the README for that adapter under
 
 | Queue Platform                                | Queue Adapter                   |
 | --------------------------------------------- | ------------------------------- |
-| AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]               |
 | Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]              |
 | Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]              |
 | Apache ActiveMQ (STOMP)                       | [`@mqueue/stompjs`][]           |
 | Apache Kafka                                  | [`@mqueue/kafkajs`][]           |
+| AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]               |
 | Azure Service Bus                             | [`@mqueue/azure-service-bus`][] |
 | Azure Service Bus (AMQP v1.0)                 | [`@mqueue/rhea`][]              |
 | Eclipe Mosquitto                              | [`@mqueue/mqtt`][]              |
