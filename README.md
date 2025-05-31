@@ -3,8 +3,8 @@
 Simple queue interface with support for multiple backends. Keep your options
 open.
 
-> Note: This project is currently a Work in Progress. Its not ready for production
-> use yet - [make a contribution](./CONTRIBUTING.md).
+> Note: This project is currently a Work in Progress. Its not ready for
+> production use yet - [make a contribution](./CONTRIBUTING.md).
 
 ```ts
 const outgoingQueue = new MQueue.Outgoing(
