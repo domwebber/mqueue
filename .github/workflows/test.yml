@@ -49,7 +49,7 @@ jobs:
         run: pnpm rebuild
       - run: pnpm run build
       - run:
-          turbo test -- --test-force-exit --test-shard=${{matrix.shard}}
+          pnpm run test -- --test-force-exit --test-shard=${{matrix.shard}}
           --test-reporter=spec --test-reporter=junit
           --test-reporter-destination=stdout
           --test-reporter-destination=coverage/junit.xml
