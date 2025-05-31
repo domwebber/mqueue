@@ -46,7 +46,8 @@
   },
   "devDependencies": {
     "@mqueue/queue": "workspace:*",
-    "@types/ws": "^8.18.1"
+    "@types/ws": "^8.18.1",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "@stomp/stompjs": "^7.1.1",

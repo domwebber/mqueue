@@ -44,5 +44,8 @@
   "publishConfig": {
     "access": "public",
     "provenance": false
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
   }
 }

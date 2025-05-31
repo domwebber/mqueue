@@ -4,15 +4,15 @@
   "type": "module",
   "scripts": {
     "changeset": "changeset",
-    "build": "pnpm -r build",
+    "build": "turbo build",
     "fix": "npm-run-all fix:*",
     "fix:prettier": "prettier --write .",
-    "typecheck": "pnpm -r typecheck",
-    "test": "pnpm -r --if-present --aggregate-output test",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
     "lint": "npm-run-all --parallel lint:*",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
-    "lint:publint": "pnpm -r lint:publint",
+    "lint:publint": "turbo lint:publint",
     "release": "changeset publish",
     "lint:typecheck": "npm run typecheck"
   },
@@ -30,6 +30,7 @@
     "testcontainers": "^11.0.0",
     "tsup": "^8.5.0",
     "tsx": "^4.19.4",
+    "turbo": "^2.5.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.1"
   }

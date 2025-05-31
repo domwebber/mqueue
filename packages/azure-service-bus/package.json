@@ -45,7 +45,8 @@
     "@mqueue/queue": "workspace:*"
   },
   "devDependencies": {
-    "@mqueue/queue": "workspace:*"
+    "@mqueue/queue": "workspace:*",
+    "typescript": "^5.8.3"
   },
   "dependencies": {
     "@azure/service-bus": "^7.9.5"
