@@ -7,7 +7,8 @@
     "typecheck": {},
     "lint:publint": {},
     "test": {
-      "outputs": ["coverage/**"]
+      "outputs": ["coverage/**"],
+      "env": ["DEBUG"]
     },
     "dev": {
       "persistent": true,
