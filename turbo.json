@@ -6,7 +6,10 @@
     },
     "typecheck": {},
     "lint:publint": {},
-    "test": {},
+    "test": {
+      "outputs": ["coverage/**"],
+      "dependsOn": ["build"]
+    },
     "dev": {
       "persistent": true,
       "cache": false
