@@ -4,6 +4,8 @@ An [KafkaJS](https://github.com/tulios/kafkajs) adapter for
 [MQueue](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md),
 adding support for Kafka queues with a multi-backend setup with MQueue.
 
+> Note: This Queue Adapter is a Work in Progress.
+
 ```bash
 npm install --save @mqueue/queue @mqueue/kafkajs
 # or use pnpm/yarn
