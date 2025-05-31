@@ -1,10 +1,10 @@
 import assert from "node:assert";
 import test, { describe } from "node:test";
-import AmqplibQueue from "../AmqplibQueue.js";
+import AmqplibQueue from "../src/AmqplibQueue.js";
 import RabbitMQContainer, {
   StartedRabbitMQContainer,
 } from "./RabbitMQContainer.js";
-import AmqplibOutgoingQueue from "../AmqplibOutgoingQueue.js";
+import AmqplibOutgoingQueue from "../src/AmqplibOutgoingQueue.js";
 
 const timeout = 180_000;
 describe("AmqplibQueue", { timeout }, () => {
