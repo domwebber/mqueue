@@ -53,7 +53,7 @@ jobs:
           --test-reporter-destination=coverage/junit.xml
         env:
           CI: true
-          DEBUG: testcontainers
+          DEBUG: testcontainers*
 
       # - run:
       #     pnpm -r exec -- node --import tsx --test --test-shard=${{ matrix.shard
