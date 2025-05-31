@@ -42,7 +42,9 @@ jobs:
           node-version: ${{matrix.node-version}}
           cache: pnpm
 
-      - run: pnpm install --prefer-offline --frozen-lockfile
+      - run:
+          pnpm install --prefer-offline --frozen-lockfile && pnpm install
+          --global ssh2
       - name: Rebuild native modules
         run: pnpm rebuild
       - run: pnpm run build
