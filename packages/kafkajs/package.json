@@ -1,6 +1,6 @@
 {
   "name": "@mqueue/kafkajs",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "type": "module",
   "description": "MQueue adapter for Kafka",
   "author": "Dom Webber <dom.webber@hotmail.com>",
