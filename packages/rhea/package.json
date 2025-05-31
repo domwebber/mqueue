@@ -1,6 +1,6 @@
 {
   "name": "@mqueue/rhea",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "description": "MQueue adapter for rhea AMQP v1.0",
   "author": "Dom Webber <dom.webber@hotmail.com>",
