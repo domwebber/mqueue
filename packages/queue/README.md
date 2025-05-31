@@ -17,6 +17,10 @@ npm install --save @mqueue/amqplib
 npm install --save @mqueue/azure-service-bus
 npm install --save @mqueue/rhea
 npm install --save @mqueue/sqs
+npm install --save @mqueue/mqtt
+npm install --save @mqueue/kafkajs
+npm install --save @mqueue/stompjs
+npm install --save @mqueue/fastq
 ```
 
 ```ts
