@@ -1,6 +1,7 @@
 packages:
   - packages/**
 onlyBuiltDependencies:
+  - crypto-js
   - cpu-features
   - esbuild
   - tsup
