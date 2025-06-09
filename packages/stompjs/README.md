@@ -30,4 +30,5 @@ const incomingQueue = new MQueue.Incoming(
 
 ## Compatibility
 
-- [Apache Kafka](https://kafka.apache.org)
+- [RabbitMQ (with STOMP plugin)](https://rabbitmq.com)
+- [Apache ActiveMQ](https://activemq.apache.org)
