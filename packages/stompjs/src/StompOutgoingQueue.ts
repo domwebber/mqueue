@@ -1,6 +1,12 @@
 import { OutgoingQueueAdapter, QueueMessage } from "@mqueue/queue";
-import { Client, ActivationState, StompHeaders } from "@stomp/stompjs";
-import { WebSocket } from "ws";
+import {
+  Client,
+  ActivationState,
+  StompHeaders,
+  StompConfig,
+} from "@stomp/stompjs";
+
+export type OutgoingConnectOptions = Omit<StompConfig, "webSocketFactory">;
 
 export default class StompOutgoingQueue implements OutgoingQueueAdapter {
   public type = "stomp";
@@ -10,14 +16,27 @@ export default class StompOutgoingQueue implements OutgoingQueueAdapter {
     public destination: string,
   ) {}
 
-  public static async connect(url: string | URL, destination: string) {
+  public static async connect(
+    url: string | URL,
+    destination: string,
+    options: OutgoingConnectOptions = {},
+  ) {
     const client = new Client({
+      ...options,
       webSocketFactory: () => {
         return new WebSocket(url);
       },
     });
 
+    const connectPromise = new Promise<void>((resolve, reject) => {
+      client.onConnect = () => resolve();
+      client.onStompError = (frame) => reject(new Error(frame.body));
+      client.onWebSocketError = (event) =>
+        reject(new Error("WebSocket error: " + event));
+    });
+
     client.activate();
+    await connectPromise;
 
     return new this(client, destination);
   }

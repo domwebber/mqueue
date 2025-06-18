@@ -3,8 +3,15 @@ import {
   IncomingQueueAdapter,
   IncomingQueueMessageListener,
 } from "@mqueue/queue";
-import { Client, ActivationState, StompSubscription } from "@stomp/stompjs";
+import {
+  Client,
+  ActivationState,
+  StompSubscription,
+  StompConfig,
+} from "@stomp/stompjs";
 import { WebSocket } from "ws";
+
+export type IncomingConnectOptions = Omit<StompConfig, "webSocketFactory">;
 
 export default class StompIncomingQueue implements IncomingQueueAdapter {
   public type = "stomp";
@@ -16,14 +23,27 @@ export default class StompIncomingQueue implements IncomingQueueAdapter {
     public destination: string,
   ) {}
 
-  public static async connect(url: string | URL, destination: string) {
+  public static async connect(
+    url: string | URL,
+    destination: string,
+    options: IncomingConnectOptions = {},
+  ) {
     const client = new Client({
+      ...options,
       webSocketFactory: () => {
         return new WebSocket(url);
       },
     });
 
+    const connectPromise = new Promise<void>((resolve, reject) => {
+      client.onConnect = () => resolve();
+      client.onStompError = (frame) => reject(new Error(frame.body));
+      client.onWebSocketError = (event) =>
+        reject(new Error("WebSocket error: " + event));
+    });
+
     client.activate();
+    await connectPromise;
 
     return new this(client, destination);
   }
