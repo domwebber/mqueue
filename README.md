@@ -65,7 +65,7 @@ how to use a specific queue adapter, check out the README for that adapter under
 | Apache Kafka                                  | [`@mqueue/kafkajs`][]           |
 | AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]               |
 | Azure Service Bus                             | [`@mqueue/azure-service-bus`][] |
-| Azure Service Bus (AMQP v1.0)                 | [`@mqueue/rhea`][]              |
+| Azure Service Bus (AMQP v1.0) [^1]            | [`@mqueue/rhea`][]              |
 | Eclipe Mosquitto                              | [`@mqueue/mqtt`][]              |
 | ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]               |
 | Fastq                                         | [`@mqueue/fastq`][]             |
@@ -73,6 +73,10 @@ how to use a specific queue adapter, check out the README for that adapter under
 | RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]              |
 | RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]              |
 | RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]           |
+
+[^1]:
+    Better authentication integration may be achieved with Azure Service bus by
+    using [`@mqueue/azure-service-bus`][] instead of [`@mqueue/rhea`][].
 
 ## Credit
 

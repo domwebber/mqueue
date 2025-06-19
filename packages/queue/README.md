@@ -116,7 +116,7 @@ const incomingQueue = new MQueue.Incoming(
 | Apache Kafka                                  | [`@mqueue/kafkajs`][]           |
 | AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]               |
 | Azure Service Bus                             | [`@mqueue/azure-service-bus`][] |
-| Azure Service Bus (AMQP v1.0)                 | [`@mqueue/rhea`][]              |
+| Azure Service Bus (AMQP v1.0) [^1]            | [`@mqueue/rhea`][]              |
 | Eclipe Mosquitto                              | [`@mqueue/mqtt`][]              |
 | ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]               |
 | Fastq                                         | [`@mqueue/fastq`][]             |
@@ -124,6 +124,10 @@ const incomingQueue = new MQueue.Incoming(
 | RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]              |
 | RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]              |
 | RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]           |
+
+[^1]:
+    Better authentication integration may be achieved with Azure Service bus by
+    using [`@mqueue/azure-service-bus`][] instead of [`@mqueue/rhea`][].
 
 [`@mqueue/queue`]:
   https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md
