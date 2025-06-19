@@ -4,7 +4,7 @@ import * as AWS from "@aws-sdk/client-sqs";
 
 export interface SQSOutgoingQueueConnectOptions {
   sdk?: typeof AWS;
-  clientConfig: AWS.SQSClientConfig;
+  clientConfig?: AWS.SQSClientConfig;
 }
 
 export default class SQSOutgoingQueue implements OutgoingQueueAdapter {
@@ -13,19 +13,17 @@ export default class SQSOutgoingQueue implements OutgoingQueueAdapter {
   constructor(
     public client: AWS.SQS,
     protected _queueURL: string,
-    public queueName: string,
   ) {}
 
   public static async connect(
     url: string,
-    queueName: string,
-    { clientConfig, sdk = AWS }: SQSOutgoingQueueConnectOptions,
+    { clientConfig, sdk = AWS }: SQSOutgoingQueueConnectOptions = {},
   ) {
     const connection = new sdk.SQS({
       ...clientConfig,
     });
 
-    return new this(connection, url, queueName);
+    return new this(connection, url);
   }
 
   public async healthcheck() {

@@ -8,7 +8,7 @@ import { Consumer } from "sqs-consumer";
 
 export interface SQSIncomingQueueConnectOptions {
   sdk?: typeof AWS;
-  clientConfig: AWS.SQSClientConfig;
+  clientConfig?: AWS.SQSClientConfig;
 }
 
 export default class SQSIncomingQueue implements IncomingQueueAdapter {
@@ -20,7 +20,6 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
   constructor(
     public client: AWS.SQS,
     protected _queueURL: string,
-    public queueName: string,
   ) {
     this._consumer = Consumer.create({
       extendedAWSErrors: true,
@@ -36,14 +35,13 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
 
   public static async connect(
     url: string,
-    queueName: string,
-    { clientConfig, sdk = AWS }: SQSIncomingQueueConnectOptions,
+    { clientConfig, sdk = AWS }: SQSIncomingQueueConnectOptions = {},
   ) {
     const connection = new sdk.SQS({
       ...clientConfig,
     });
 
-    return new this(connection, url, queueName);
+    return new this(connection, url);
   }
 
   public async healthcheck() {
