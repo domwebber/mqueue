@@ -58,8 +58,14 @@ export default class StompIncomingQueue implements IncomingQueueAdapter {
   }
 
   public async close() {
+    const disconnectPromise = new Promise<void>((resolve) => {
+      this.client.onWebSocketClose = () => resolve();
+      this.client.onDisconnect = () => resolve();
+    });
+
     this._subscription?.unsubscribe();
     await this.client.deactivate();
+    await disconnectPromise;
   }
 
   public async consume(callback: IncomingQueueMessageListener): Promise<void> {
