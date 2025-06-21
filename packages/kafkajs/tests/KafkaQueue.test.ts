@@ -12,7 +12,9 @@ describe("KafkaQueue", { timeout }, () => {
 
   test.before(
     async () => {
-      container = await new KafkaContainer("apache/kafka:latest").start();
+      container = await new KafkaContainer("apache/kafka:latest")
+        .withExposedPorts(9093)
+        .start();
     },
     { timeout },
   );
