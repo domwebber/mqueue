@@ -10,7 +10,7 @@ import { Network, StartedNetwork } from "testcontainers";
 
 const timeout = 180_000;
 const topic = "topic.1";
-describe("SQSQueue", { timeout }, () => {
+describe("AzureServiceBusQueue", { timeout }, () => {
   let network: StartedNetwork;
   let sqledge: StartedMSSQLContainer;
   let container: StartedAzureServiceBusContainer;
