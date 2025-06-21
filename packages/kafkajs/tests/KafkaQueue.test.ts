@@ -21,7 +21,7 @@ describe("KafkaQueue", { timeout }, () => {
 
   test.after(
     async () => {
-      await container.stop({ timeout: 10_000 });
+      await container.stop({ timeout });
     },
     { timeout },
   );
