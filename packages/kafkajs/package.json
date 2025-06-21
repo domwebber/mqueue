@@ -53,6 +53,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "@testcontainers/kafka": "^11.0.3",
     "kafkajs": "^2.2.4"
   }
 }
