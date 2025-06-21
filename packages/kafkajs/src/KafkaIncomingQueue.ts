@@ -15,8 +15,8 @@ export default class KafkaIncomingQueue implements IncomingQueueAdapter {
   public type = "kafka";
 
   constructor(
-    protected _client: Consumer,
-    protected _topic: string,
+    public client: Consumer,
+    public topic: string,
   ) {}
 
   public static async connect({
@@ -33,16 +33,16 @@ export default class KafkaIncomingQueue implements IncomingQueueAdapter {
   public async healthcheck(): Promise<void> {}
 
   public async close(): Promise<void> {
-    await this._client.disconnect();
+    await this.client.disconnect();
   }
 
   public async consume(callback: IncomingQueueMessageListener): Promise<void> {
-    await this._client.subscribe({
-      topics: [this._topic],
+    await this.client.subscribe({
+      topics: [this.topic],
       fromBeginning: true,
     });
 
-    await this._client.run({
+    await this.client.run({
       autoCommit: false,
       eachMessage: async ({ /* topic, partition, */ message }) => {
         if (!message.value) {
@@ -59,6 +59,9 @@ export default class KafkaIncomingQueue implements IncomingQueueAdapter {
           raw: message,
           accept: async () => {},
           reject: async () => {},
+          transport: {
+            name: this.topic,
+          },
           message: {
             isRedelivered: false,
             headers,

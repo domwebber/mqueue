@@ -81,6 +81,9 @@ export default class RheaIncomingQueue implements IncomingQueueAdapter {
           reject: async () => {
             delivery.reject();
           },
+          transport: {
+            name: context.receiver?.source?.address ?? "",
+          },
           message: {
             isRedelivered: (message.delivery_count ?? 0) > 0,
             headers: message.application_properties ?? {},

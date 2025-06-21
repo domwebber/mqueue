@@ -53,6 +53,9 @@ export default class AmqplibIncomingQueue implements IncomingQueueAdapter {
           reject: async () => {
             this.channel.nack(message, false, false);
           },
+          transport: {
+            name: this.queueName,
+          },
           message: {
             isRedelivered: message.fields.redelivered,
             headers: message.properties.headers ?? {},

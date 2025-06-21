@@ -48,6 +48,9 @@ export default class MqttIncomingQueue implements IncomingQueueAdapter {
       await callback({
         accept: async () => {},
         reject: async () => {},
+        transport: {
+          name: topic,
+        },
         message: {
           headers: packet.properties?.userProperties ?? {},
           body: payload,

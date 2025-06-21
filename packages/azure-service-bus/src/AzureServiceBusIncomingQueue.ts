@@ -84,6 +84,9 @@ export default class AzureServiceBusIncomingQueue
                   : undefined,
               );
             },
+            transport: {
+              name: this.queueName,
+            },
             message: {
               isRedelivered: (message.deliveryCount ?? 0) > 0,
               headers,

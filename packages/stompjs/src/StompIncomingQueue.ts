@@ -89,6 +89,9 @@ export default class StompIncomingQueue implements IncomingQueueAdapter {
           reject: async () => {
             message.nack();
           },
+          transport: {
+            name: this.destination,
+          },
           message: {
             headers,
             body: message.isBinaryBody

@@ -34,6 +34,9 @@ export default class FastqIncomingQueue implements IncomingQueueAdapter {
       await callback({
         accept: async () => {},
         reject: async () => {},
+        transport: {
+          name: "",
+        },
         message,
       });
     };

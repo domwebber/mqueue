@@ -4,6 +4,9 @@ import QueueMessage from "../QueueMessage.js";
 export type IncomingQueueMessageListener = (options: {
   accept: () => Promise<void>;
   reject: (error?: Error) => Promise<void>;
+  transport: {
+    name: string;
+  };
   message: QueueMessage;
   [key: string]: unknown;
 }) => Promise<void>;

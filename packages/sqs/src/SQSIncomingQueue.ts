@@ -97,6 +97,9 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
         });
       },
       reject: async () => {},
+      transport: {
+        name: this._queueURL,
+      },
       message: {
         headers,
         body: Buffer.from(message.Body),
