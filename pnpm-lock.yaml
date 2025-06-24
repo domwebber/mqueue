@@ -197,6 +197,27 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
 
+  packages/null:
+    devDependencies:
+      '@mqueue/queue':
+        specifier: workspace:*
+        version: link:../queue
+      publint:
+        specifier: ^0.3.12
+        version: 0.3.12
+      testcontainers:
+        specifier: ^11.0.3
+        version: 11.0.3
+      tsup:
+        specifier: ^8.5.0
+        version: 8.5.0(tsx@4.20.3)(typescript@5.8.3)(yaml@2.8.0)
+      tsx:
+        specifier: ^4.20.3
+        version: 4.20.3
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
+
   packages/queue:
     devDependencies:
       publint:
