@@ -1,8 +1,9 @@
 import assert from "node:assert";
-import test, { describe } from "node:test";
+import test, { describe, mock } from "node:test";
 import { KafkaContainer, StartedKafkaContainer } from "@testcontainers/kafka";
 import KafkaQueue from "../src/KafkaQueue.js";
 import KafkaOutgoingQueue from "../src/KafkaOutgoingQueue.js";
+import KafkaIncomingQueue from "../src/KafkaIncomingQueue.js";
 
 const timeout = 180_000;
 const topic = "test-topic";
@@ -80,6 +81,7 @@ describe("KafkaQueue", { timeout }, () => {
 
   describe("Sending messages", { timeout }, () => {
     let connection: KafkaOutgoingQueue;
+    let incoming: KafkaIncomingQueue;
 
     test.before(
       async () => {
@@ -89,6 +91,18 @@ describe("KafkaQueue", { timeout }, () => {
             brokers: [
               `${container.getHost()}:${container.getMappedPort(9093)}`,
             ],
+          },
+        });
+
+        incoming = await KafkaQueue.Incoming.connect({
+          topic,
+          clientOptions: {
+            brokers: [
+              `${container.getHost()}:${container.getMappedPort(9093)}`,
+            ],
+          },
+          consumerOptions: {
+            groupId: "test-group",
           },
         });
       },
@@ -105,8 +119,10 @@ describe("KafkaQueue", { timeout }, () => {
     test("Should send a message", { timeout }, async () => {
       // Arrange
       const body = "This is a message";
+      const consumer = mock.fn<() => Promise<void>>();
 
       // Act
+      await incoming.consume(consumer);
       const result = await connection.sendMessage({
         headers: {
           Example: "Example",
