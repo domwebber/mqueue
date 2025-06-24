@@ -8,7 +8,8 @@ export interface SendMessageOptions extends Omit<QueueMessage, "body"> {
 
 export default class OutgoingQueue {
   public on = {
-    send: new HookSet<SendMessageOptions>(),
+    send: new HookSet<QueueMessage>(),
+    close: new HookSet(),
   };
 
   constructor(protected _adapter: OutgoingQueueAdapter) {}
@@ -19,11 +20,12 @@ export default class OutgoingQueue {
       .catch(() => false);
   }
 
-  public healthcheck(): Promise<void> {
+  public async healthcheck(): Promise<void> {
     return this._adapter.healthcheck();
   }
 
-  public close(): Promise<void> {
+  public async close(): Promise<void> {
+    await resolveHooks(this.on.close, undefined);
     return this._adapter.healthcheck();
   }
 
@@ -33,16 +35,11 @@ export default class OutgoingQueue {
         ? Buffer.from(message.body)
         : message.body;
 
-    const sendMessageOptions = {
-      ...message,
-      body,
-    };
-
-    await resolveHooks(sendMessageOptions, this.on.send);
-
-    return this._adapter.sendMessage({
+    const sendMessageOptions = await resolveHooks(this.on.send, {
       ...message,
       body,
     });
+
+    return this._adapter.sendMessage(sendMessageOptions);
   }
 }

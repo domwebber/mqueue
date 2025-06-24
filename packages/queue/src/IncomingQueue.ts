@@ -7,6 +7,7 @@ import { HookSet, resolveHooks } from "./utils/hooks.js";
 export default class IncomingQueue {
   public on = {
     receipt: new HookSet<IncomingQueueMessageListenerInput>(),
+    close: new HookSet(),
   };
 
   constructor(protected _adapter: IncomingQueueAdapter) {}
@@ -17,17 +18,18 @@ export default class IncomingQueue {
       .catch(() => false);
   }
 
-  public healthcheck(): Promise<void> {
+  public async healthcheck(): Promise<void> {
     return this._adapter.healthcheck();
   }
 
-  public close(): Promise<void> {
+  public async close(): Promise<void> {
+    await resolveHooks(this.on.close, undefined);
     return this._adapter.healthcheck();
   }
 
   public consume(callback?: IncomingQueueMessageListener): Promise<void> {
     return this._adapter.consume(async (input) => {
-      const payload = await resolveHooks(input, this.on.receipt);
+      const payload = await resolveHooks(this.on.receipt, input);
       await callback?.(payload);
     });
   }
