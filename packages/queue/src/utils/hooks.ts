@@ -1,6 +1,4 @@
 export type Hook<T> = (input: T) => Promise<T> | T;
-// export type HookSet<T> = Set<Hook<T>>;
-
 export class HookSet<T> extends Set<Hook<T>> {}
 
 export async function resolveHooks<T>(
