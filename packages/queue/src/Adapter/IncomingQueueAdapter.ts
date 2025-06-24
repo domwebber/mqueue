@@ -1,7 +1,7 @@
 import QueueAdapter from "./QueueAdapter.js";
 import QueueMessage from "../QueueMessage.js";
 
-export type IncomingQueueMessageListener = (options: {
+export type IncomingQueueMessageListenerInput = {
   accept: () => Promise<void>;
   reject: (error?: Error) => Promise<void>;
   transport: {
@@ -9,7 +9,11 @@ export type IncomingQueueMessageListener = (options: {
   };
   message: QueueMessage;
   [key: string]: unknown;
-}) => Promise<void>;
+};
+
+export type IncomingQueueMessageListener = (
+  options: IncomingQueueMessageListenerInput,
+) => Promise<void>;
 
 export default interface IncomingQueueAdapter extends QueueAdapter {
   /**
