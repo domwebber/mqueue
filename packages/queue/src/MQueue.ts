@@ -1,6 +1,10 @@
 import IncomingQueue from "./IncomingQueue.js";
 import OutgoingQueue from "./OutgoingQueue.js";
 
+/**
+ * MQueue - A simple queue interface with support for multiple backends.
+ * @see https://github.com/domwebber/mqueue
+ */
 export default class MQueue {
   private constructor() {}
 
