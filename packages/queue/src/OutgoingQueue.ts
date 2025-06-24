@@ -9,6 +9,7 @@ export interface SendMessageOptions extends Omit<QueueMessage, "body"> {
 export default class OutgoingQueue {
   public on = {
     send: new HookSet<QueueMessage>(),
+    healthcheck: new HookSet(),
     close: new HookSet(),
   };
 
@@ -21,6 +22,7 @@ export default class OutgoingQueue {
   }
 
   public async healthcheck(): Promise<void> {
+    await resolveHooks(this.on.healthcheck, undefined);
     return this._adapter.healthcheck();
   }
 

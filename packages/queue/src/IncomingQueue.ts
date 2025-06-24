@@ -7,6 +7,7 @@ import { HookSet, resolveHooks } from "./utils/hooks.js";
 export default class IncomingQueue {
   public on = {
     receipt: new HookSet<IncomingQueueMessageListenerInput>(),
+    healthcheck: new HookSet(),
     close: new HookSet(),
   };
 
@@ -19,6 +20,7 @@ export default class IncomingQueue {
   }
 
   public async healthcheck(): Promise<void> {
+    await resolveHooks(this.on.healthcheck, undefined);
     return this._adapter.healthcheck();
   }
 
