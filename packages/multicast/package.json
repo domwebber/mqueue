@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@mqueue/queue": "workspace:*",
+    "@mqueue/null": "workspace:*",
     "publint": "^0.3.12",
     "testcontainers": "^11.0.3",
     "tsup": "^8.5.0",

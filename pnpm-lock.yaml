@@ -178,6 +178,9 @@ importers:
 
   packages/multicast:
     devDependencies:
+      '@mqueue/null':
+        specifier: workspace:*
+        version: link:../null
       '@mqueue/queue':
         specifier: workspace:*
         version: link:../queue
