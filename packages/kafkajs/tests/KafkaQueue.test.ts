@@ -102,7 +102,7 @@ describe("KafkaQueue", { timeout }, () => {
             ],
           },
           consumerOptions: {
-            groupId: "test-group",
+            groupId: topic,
           },
         });
       },
@@ -116,13 +116,12 @@ describe("KafkaQueue", { timeout }, () => {
       { timeout },
     );
 
-    test("Should send a message", { timeout }, async () => {
+    test("Should send and receive a message", { timeout }, async () => {
       // Arrange
       const body = "This is a message";
       const consumer = mock.fn<() => Promise<void>>();
 
       // Act
-      await incoming.consume(consumer);
       const result = await connection.sendMessage({
         headers: {
           Example: "Example",
@@ -130,8 +129,18 @@ describe("KafkaQueue", { timeout }, () => {
         body: Buffer.from(body),
       });
 
+      await new Promise<void>((resolve) => {
+        incoming.consume(async () => {
+          await consumer();
+          resolve();
+        });
+      });
+
+      await incoming.close();
+
       // Assert
       assert.strictEqual(result, undefined);
+      assert.strictEqual(consumer.mock.calls.length, 1);
     });
   });
 });
