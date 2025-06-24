@@ -84,8 +84,16 @@ describe("MulticastQueue", { timeout }, () => {
     );
 
     test("Should send a message", { timeout }, async () => {
+      // Arrange
+      const body = "This is a message";
+
       // Act
-      const result = await outgoing.sendMessage();
+      const result = await outgoing.sendMessage({
+        headers: {
+          Example: "Example",
+        },
+        body: Buffer.from(body),
+      });
 
       // Assert
       assert.strictEqual(result, undefined);
