@@ -124,14 +124,7 @@ describe("KafkaQueue", { timeout }, () => {
       const consumer = mock.fn<() => Promise<void>>();
 
       // Act
-      const result = await connection.sendMessage({
-        headers: {
-          Example: "Example",
-        },
-        body: Buffer.from(body),
-      });
-
-      const received = await new Promise<IncomingQueueMessageListenerInput>(
+      const receipt = new Promise<IncomingQueueMessageListenerInput>(
         (resolve) => {
           incoming.consume(async (payload) => {
             await consumer();
@@ -140,6 +133,14 @@ describe("KafkaQueue", { timeout }, () => {
         },
       );
 
+      const result = await connection.sendMessage({
+        headers: {
+          Example: "Example",
+        },
+        body: Buffer.from(body),
+      });
+
+      const received = await receipt;
       await incoming.close();
 
       // Assert

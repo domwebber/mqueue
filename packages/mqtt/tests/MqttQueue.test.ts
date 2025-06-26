@@ -6,6 +6,7 @@ import MosquittoContainer, {
 import MqttQueue from "../src/MqttQueue.js";
 import MqttOutgoingQueue from "../src/MqttOutgoingQueue.js";
 import MqttIncomingQueue from "../src/MqttIncomingQueue.js";
+import { IncomingQueueMessageListenerInput } from "@mqueue/queue";
 
 const timeout = 180_000;
 describe("MqttQueue", { timeout }, () => {
@@ -101,12 +102,14 @@ describe("MqttQueue", { timeout }, () => {
       const consumer = mock.fn<() => Promise<void>>();
 
       // Act
-      const receipt = new Promise<void>((resolve) => {
-        incoming.consume(async () => {
-          await consumer();
-          resolve();
-        });
-      });
+      const receipt = new Promise<IncomingQueueMessageListenerInput>(
+        (resolve) => {
+          incoming.consume(async (payload) => {
+            await consumer();
+            resolve(payload);
+          });
+        },
+      );
 
       const result = await connection.sendMessage({
         headers: {
@@ -115,11 +118,12 @@ describe("MqttQueue", { timeout }, () => {
         body: Buffer.from(body),
       });
 
-      await receipt;
+      const received = await receipt;
 
       // Assert
       assert.strictEqual(result, undefined);
       assert.strictEqual(consumer.mock.calls.length, 1);
+      assert.equal(received.message.body.toString(), body);
     });
   });
 });
