@@ -101,6 +101,13 @@ describe("MqttQueue", { timeout }, () => {
       const consumer = mock.fn<() => Promise<void>>();
 
       // Act
+      const receipt = new Promise<void>((resolve) => {
+        incoming.consume(async () => {
+          await consumer();
+          resolve();
+        });
+      });
+
       const result = await connection.sendMessage({
         headers: {
           Example: "Example",
@@ -108,12 +115,7 @@ describe("MqttQueue", { timeout }, () => {
         body: Buffer.from(body),
       });
 
-      await new Promise<void>((resolve) => {
-        incoming.consume(async () => {
-          await consumer();
-          resolve();
-        });
-      });
+      await receipt;
 
       // Assert
       assert.strictEqual(result, undefined);
