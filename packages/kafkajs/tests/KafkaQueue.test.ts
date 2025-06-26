@@ -112,6 +112,7 @@ describe("KafkaQueue", { timeout }, () => {
     test.after(
       async () => {
         await connection.close();
+        await incoming.close();
       },
       { timeout },
     );

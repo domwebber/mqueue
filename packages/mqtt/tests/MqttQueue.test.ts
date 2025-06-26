@@ -1,13 +1,14 @@
 import assert from "node:assert";
-import test, { describe } from "node:test";
+import test, { describe, mock } from "node:test";
 import MosquittoContainer, {
   StartedMosquittoContainer,
 } from "./MosquittoContainer.js";
 import MqttQueue from "../src/MqttQueue.js";
 import MqttOutgoingQueue from "../src/MqttOutgoingQueue.js";
+import MqttIncomingQueue from "../src/MqttIncomingQueue.js";
 
 const timeout = 180_000;
-describe("MosquittoQueue", { timeout }, () => {
+describe("MqttQueue", { timeout }, () => {
   let container: StartedMosquittoContainer;
 
   test.before(
@@ -71,9 +72,17 @@ describe("MosquittoQueue", { timeout }, () => {
 
   describe("Sending messages", () => {
     let connection: MqttOutgoingQueue;
+    let incoming: MqttIncomingQueue;
 
     test.before(async () => {
       connection = await MqttQueue.Outgoing.connect(
+        "example",
+        container.getMqttUrl(),
+        {},
+        true,
+      );
+
+      incoming = await MqttQueue.Incoming.connect(
         "example",
         container.getMqttUrl(),
         {},
@@ -83,11 +92,13 @@ describe("MosquittoQueue", { timeout }, () => {
 
     test.after(async () => {
       await connection.close();
+      await incoming.close();
     });
 
     test("Should send a message", async () => {
       // Arrange
       const body = "This is a message";
+      const consumer = mock.fn<() => Promise<void>>();
 
       // Act
       const result = await connection.sendMessage({
@@ -97,8 +108,16 @@ describe("MosquittoQueue", { timeout }, () => {
         body: Buffer.from(body),
       });
 
+      await new Promise<void>((resolve) => {
+        incoming.consume(async () => {
+          await consumer();
+          resolve();
+        });
+      });
+
       // Assert
       assert.strictEqual(result, undefined);
+      assert.strictEqual(consumer.mock.calls.length, 1);
     });
   });
 });
