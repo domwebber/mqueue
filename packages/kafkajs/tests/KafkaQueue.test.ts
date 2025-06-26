@@ -4,6 +4,7 @@ import { KafkaContainer, StartedKafkaContainer } from "@testcontainers/kafka";
 import KafkaQueue from "../src/KafkaQueue.js";
 import KafkaOutgoingQueue from "../src/KafkaOutgoingQueue.js";
 import KafkaIncomingQueue from "../src/KafkaIncomingQueue.js";
+import { IncomingQueueMessageListenerInput } from "@mqueue/queue";
 
 const timeout = 180_000;
 const topic = "test-topic";
@@ -130,18 +131,21 @@ describe("KafkaQueue", { timeout }, () => {
         body: Buffer.from(body),
       });
 
-      await new Promise<void>((resolve) => {
-        incoming.consume(async () => {
-          await consumer();
-          resolve();
-        });
-      });
+      const received = await new Promise<IncomingQueueMessageListenerInput>(
+        (resolve) => {
+          incoming.consume(async (payload) => {
+            await consumer();
+            resolve(payload);
+          });
+        },
+      );
 
       await incoming.close();
 
       // Assert
       assert.strictEqual(result, undefined);
       assert.strictEqual(consumer.mock.calls.length, 1);
+      assert.equal(received.message.body.toString(), body);
     });
   });
 });
