@@ -1,10 +1,12 @@
 import assert from "node:assert";
-import test, { describe } from "node:test";
+import test, { describe, mock } from "node:test";
 import AmqplibQueue from "../src/AmqplibQueue.js";
 import RabbitMQContainer, {
   StartedRabbitMQContainer,
 } from "./RabbitMQContainer.js";
 import AmqplibOutgoingQueue from "../src/AmqplibOutgoingQueue.js";
+import AmqplibIncomingQueue from "../src/AmqplibIncomingQueue.js";
+import { IncomingQueueMessageListenerInput } from "@mqueue/queue";
 
 const timeout = 180_000;
 describe("AmqplibQueue", { timeout }, () => {
@@ -74,10 +76,17 @@ describe("AmqplibQueue", { timeout }, () => {
 
   describe("Sending messages", { timeout }, () => {
     let connection: AmqplibOutgoingQueue;
+    let incoming: AmqplibIncomingQueue;
 
     test.before(
       async () => {
         connection = await AmqplibQueue.Outgoing.connect(
+          container.getAmqpUrl(),
+          container.getQueueName(),
+          {},
+        );
+
+        incoming = await AmqplibQueue.Incoming.connect(
           container.getAmqpUrl(),
           container.getQueueName(),
           {},
@@ -89,6 +98,7 @@ describe("AmqplibQueue", { timeout }, () => {
     test.after(
       async () => {
         await connection.close();
+        await incoming.close();
       },
       { timeout },
     );
@@ -96,8 +106,18 @@ describe("AmqplibQueue", { timeout }, () => {
     test("Should send a message", { timeout }, async () => {
       // Arrange
       const body = "This is a message";
+      const consumer = mock.fn<() => Promise<void>>();
 
       // Act
+      const receipt = new Promise<IncomingQueueMessageListenerInput>(
+        (resolve) => {
+          incoming.consume(async (payload) => {
+            await consumer();
+            resolve(payload);
+          });
+        },
+      );
+
       const result = await connection.sendMessage({
         headers: {
           Example: "Example",
@@ -105,8 +125,12 @@ describe("AmqplibQueue", { timeout }, () => {
         body: Buffer.from(body),
       });
 
+      const received = await receipt;
+
       // Assert
       assert.strictEqual(result, undefined);
+      assert.strictEqual(consumer.mock.calls.length, 1);
+      assert.equal(received.message.body.toString(), body);
     });
   });
 });

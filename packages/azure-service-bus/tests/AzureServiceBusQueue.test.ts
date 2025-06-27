@@ -1,5 +1,5 @@
 import assert from "node:assert";
-import test, { describe } from "node:test";
+import test, { describe, mock } from "node:test";
 import AzureServiceBusContainer, {
   StartedAzureServiceBusContainer,
 } from "./AzureServiceBusContainer.js";
@@ -7,6 +7,8 @@ import AzureServiceBusQueue from "../src/AzureServiceBusQueue.js";
 import AzureServiceBusOutgoingQueue from "../src/AzureServiceBusOutgoingQueue.js";
 import MSSQLContainer, { StartedMSSQLContainer } from "./MSSQLContainer.js";
 import { Network, StartedNetwork } from "testcontainers";
+import AzureServiceBusIncomingQueue from "../src/AzureServiceBusIncomingQueue.js";
+import { IncomingQueueMessageListenerInput } from "@mqueue/queue";
 
 const timeout = 180_000;
 const topic = "topic.1";
@@ -89,10 +91,16 @@ describe("AzureServiceBusQueue", { timeout }, () => {
 
   describe("Sending messages", { timeout }, () => {
     let connection: AzureServiceBusOutgoingQueue;
+    let incoming: AzureServiceBusIncomingQueue;
 
     test.before(
       async () => {
         connection = await AzureServiceBusQueue.Outgoing.connect(
+          container.getASBUrl(),
+          topic,
+        );
+
+        incoming = await AzureServiceBusQueue.Incoming.connect(
           container.getASBUrl(),
           topic,
         );
@@ -103,6 +111,7 @@ describe("AzureServiceBusQueue", { timeout }, () => {
     test.after(
       async () => {
         await connection.close();
+        await incoming.close();
       },
       { timeout },
     );
@@ -110,8 +119,18 @@ describe("AzureServiceBusQueue", { timeout }, () => {
     test("Should send a message", { timeout }, async () => {
       // Arrange
       const body = "This is a message";
+      const consumer = mock.fn<() => Promise<void>>();
 
       // Act
+      const receipt = new Promise<IncomingQueueMessageListenerInput>(
+        (resolve) => {
+          incoming.consume(async (payload) => {
+            await consumer();
+            resolve(payload);
+          });
+        },
+      );
+
       const result = await connection.sendMessage({
         headers: {
           Example: "Example",
@@ -119,8 +138,12 @@ describe("AzureServiceBusQueue", { timeout }, () => {
         body: Buffer.from(body),
       });
 
+      const received = await receipt;
+
       // Assert
       assert.strictEqual(result, undefined);
+      assert.strictEqual(consumer.mock.calls.length, 1);
+      assert.equal(received.message.body.toString(), body);
     });
   });
 });

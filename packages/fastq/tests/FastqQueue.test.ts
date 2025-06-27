@@ -1,8 +1,9 @@
 import assert from "node:assert";
-import test, { describe } from "node:test";
+import test, { describe, mock } from "node:test";
 import FastqQueue from "../src/FastqQueue.js";
 import FastqIncomingQueue from "../src/FastqIncomingQueue.js";
 import FastqOutgoingQueue from "../src/FastqOutgoingQueue.js";
+import { IncomingQueueMessageListenerInput } from "@mqueue/queue";
 
 const timeout = 180_000;
 describe("FastqQueue", { timeout }, () => {
@@ -73,8 +74,18 @@ describe("FastqQueue", { timeout }, () => {
     test("Should send a message", { timeout }, async () => {
       // Arrange
       const body = "This is a message";
+      const consumer = mock.fn<() => Promise<void>>();
 
       // Act
+      const receipt = new Promise<IncomingQueueMessageListenerInput>(
+        (resolve) => {
+          incoming.consume(async (payload) => {
+            await consumer();
+            resolve(payload);
+          });
+        },
+      );
+
       const result = await outgoing.sendMessage({
         headers: {
           Example: "Example",
@@ -82,8 +93,12 @@ describe("FastqQueue", { timeout }, () => {
         body: Buffer.from(body),
       });
 
+      const received = await receipt;
+
       // Assert
       assert.strictEqual(result, undefined);
+      assert.strictEqual(consumer.mock.calls.length, 1);
+      assert.equal(received.message.body.toString(), body);
     });
   });
 });
