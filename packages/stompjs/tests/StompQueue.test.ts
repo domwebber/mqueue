@@ -117,15 +117,6 @@ describe("StompQueue", { timeout }, () => {
       const consumer = mock.fn<() => Promise<void>>();
 
       // Act
-      const receipt = new Promise<IncomingQueueMessageListenerInput>(
-        (resolve) => {
-          incoming.consume(async (payload) => {
-            await consumer();
-            resolve(payload);
-          });
-        },
-      );
-
       const result = await connection.sendMessage({
         headers: {
           Example: "Example",
@@ -133,7 +124,14 @@ describe("StompQueue", { timeout }, () => {
         body: Buffer.from(body),
       });
 
-      const received = await receipt;
+      const received = await new Promise<IncomingQueueMessageListenerInput>(
+        (resolve) => {
+          incoming.consume(async (payload) => {
+            await consumer();
+            resolve(payload);
+          });
+        },
+      );
 
       // Assert
       assert.strictEqual(result, undefined);
