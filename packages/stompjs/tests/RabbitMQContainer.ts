@@ -18,17 +18,22 @@ export default class RabbitMQContainer extends GenericContainer {
     this.withExposedPorts(
       RabbitMQContainer.AMQP_PORT,
       RabbitMQContainer.AMQPS_PORT,
-      15674,
+      15674, // Web STOMP (WebSocket) port
+      61613, // STOMP TCP port
     )
       .withEnvironment({
         RABBITMQ_DEFAULT_USER: RabbitMQContainer.DEFAULT_USER,
         RABBITMQ_DEFAULT_PASS: RabbitMQContainer.DEFAULT_PASSWORD,
       })
-      // .withEntrypoint(["docker-entrypoint.sh"])
       .withCommand([
         "sh",
         "-c",
-        "rabbitmq-plugins enable --offline rabbitmq_stomp rabbitmq_web_stomp && echo 'loopback_users.guest = false' >> /etc/rabbitmq/rabbitmq.conf && echo 'web_stomp.ws_frame = binary' >> /etc/rabbitmq/rabbitmq.conf && docker-entrypoint.sh rabbitmq-server",
+        "rabbitmq-plugins enable --offline rabbitmq_stomp rabbitmq_web_stomp && " +
+          "echo 'loopback_users.guest = false' >> /etc/rabbitmq/rabbitmq.conf && " +
+          "echo 'stomp.listeners.tcp.default = 61613' >> /etc/rabbitmq/rabbitmq.conf && " +
+          "echo 'web_stomp.tcp.port = 15674' >> /etc/rabbitmq/rabbitmq.conf && " +
+          "echo 'web_stomp.ws_frame = binary' >> /etc/rabbitmq/rabbitmq.conf && " +
+          "docker-entrypoint.sh rabbitmq-server",
       ])
       .withWaitStrategy(Wait.forLogMessage("Server startup complete;"))
       .withStartupTimeout(60_000)
