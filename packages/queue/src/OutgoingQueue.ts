@@ -10,7 +10,8 @@ export default class OutgoingQueue {
   public on = {
     send: new HookSet<QueueMessage>(),
     healthcheck: new HookSet(),
-    close: new HookSet(),
+    beforeClose: new HookSet(),
+    afterClose: new HookSet(),
   };
 
   constructor(protected _adapter: OutgoingQueueAdapter) {}
@@ -27,8 +28,9 @@ export default class OutgoingQueue {
   }
 
   public async close(): Promise<void> {
-    await resolveHooks(this.on.close, undefined);
-    return this._adapter.healthcheck();
+    await resolveHooks(this.on.beforeClose, undefined);
+    this._adapter.close();
+    await resolveHooks(this.on.afterClose, undefined);
   }
 
   public async sendMessage(message: SendMessageOptions): Promise<void> {

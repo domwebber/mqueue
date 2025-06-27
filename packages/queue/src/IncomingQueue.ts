@@ -8,7 +8,8 @@ export default class IncomingQueue {
   public on = {
     receipt: new HookSet<IncomingQueueMessageListenerInput>(),
     healthcheck: new HookSet(),
-    close: new HookSet(),
+    beforeClose: new HookSet(),
+    afterClose: new HookSet(),
   };
 
   constructor(protected _adapter: IncomingQueueAdapter) {}
@@ -25,8 +26,9 @@ export default class IncomingQueue {
   }
 
   public async close(): Promise<void> {
-    await resolveHooks(this.on.close, undefined);
-    return this._adapter.healthcheck();
+    await resolveHooks(this.on.beforeClose, undefined);
+    this._adapter.close();
+    await resolveHooks(this.on.afterClose, undefined);
   }
 
   public consume(callback?: IncomingQueueMessageListener): Promise<void> {
