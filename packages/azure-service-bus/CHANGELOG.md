@@ -1,5 +1,16 @@
 # @mqueue/azure-service-bus
 
+## 0.0.3
+
+### Patch Changes
+
+- 9c52437: Add queue/topic/transport name to consumption parameters
+- 8b41c9f: Add integration testing
+- Updated dependencies [d5bd9d9]
+- Updated dependencies [9c52437]
+- Updated dependencies [8b41c9f]
+  - @mqueue/queue@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes
