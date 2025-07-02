@@ -30,6 +30,11 @@
       }
     }
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/domwebber/mqueue",
+    "directory": "packages/rhea"
+  },
   "scripts": {
     "build": "tsup src/index.ts --no-config --dts --format esm,cjs --cjsInterop --minify --sourcemap --splitting --treeshake",
     "typecheck": "tsc --noEmit",
