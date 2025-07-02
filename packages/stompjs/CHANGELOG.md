@@ -1,5 +1,14 @@
 # @mqueue/stompjs
 
+## 0.0.7
+
+### Patch Changes
+
+- 9a0d81f: Add repository information to package.json
+- Updated dependencies [9a0d81f]
+- Updated dependencies [7a8b670]
+  - @mqueue/queue@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes
