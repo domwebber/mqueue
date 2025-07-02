@@ -1,5 +1,11 @@
 # @mqueue/queue
 
+## 0.0.4
+
+### Patch Changes
+
+- fd0f800: Add missing build files
+
 ## 0.0.3
 
 ### Patch Changes
