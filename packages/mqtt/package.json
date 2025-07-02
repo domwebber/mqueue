@@ -1,6 +1,6 @@
 {
   "name": "@mqueue/mqtt",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "description": "MQueue adapter for MQTT",
   "author": "Dom Webber <dom.webber@hotmail.com>",
