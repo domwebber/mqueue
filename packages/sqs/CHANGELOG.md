@@ -1,5 +1,13 @@
 # @mqueue/sqs
 
+## 0.0.4
+
+### Patch Changes
+
+- fd0f800: Add missing build files
+- Updated dependencies [fd0f800]
+  - @mqueue/queue@0.0.4
+
 ## 0.0.3
 
 ### Patch Changes
