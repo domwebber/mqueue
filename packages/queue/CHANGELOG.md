@@ -1,5 +1,12 @@
 # @mqueue/queue
 
+## 0.0.7
+
+### Patch Changes
+
+- 9a0d81f: Add repository information to package.json
+- 7a8b670: Allow public access to MQueue.{Incoming,Outgoing}.adapter
+
 ## 0.0.6
 
 ### Patch Changes
