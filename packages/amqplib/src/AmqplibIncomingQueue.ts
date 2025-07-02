@@ -15,9 +15,9 @@ export default class AmqplibIncomingQueue implements IncomingQueueAdapter {
   public static async connect(
     url: string | Options.Connect,
     queueName: string,
-    options?: unknown,
+    { socketOptions }: { socketOptions?: Parameters<typeof connect>[1] } = {},
   ) {
-    const connection = await connect(url, options);
+    const connection = await connect(url, socketOptions);
     const connectionChannel = await connection.createChannel();
     await connectionChannel.prefetch(1);
     return new this(connectionChannel, queueName);
