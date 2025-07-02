@@ -1,5 +1,12 @@
 # @mqueue/azure-service-bus
 
+## 0.0.6
+
+### Patch Changes
+
+- Updated dependencies [1c61ee5]
+  - @mqueue/queue@0.0.6
+
 ## 0.0.5
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@mqueue/azure-service-bus",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "description": "MQueue adapter for Azure Service Bus",
   "author": "Dom Webber <dom.webber@hotmail.com>",
