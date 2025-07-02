@@ -1,6 +1,6 @@
 # fastq for MQueue
 
-An [fastq](https://github.com/mcollina/fastq) adapter for
+A [fastq](https://github.com/mcollina/fastq) adapter for
 [MQueue](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md),
 adding support for fastq queues with a multi-backend setup with MQueue.
 
