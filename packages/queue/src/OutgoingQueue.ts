@@ -14,7 +14,7 @@ export default class OutgoingQueue {
     afterClose: new HookSet(),
   };
 
-  constructor(protected _adapter: OutgoingQueueAdapter) {}
+  constructor(public adapter: OutgoingQueueAdapter) {}
 
   public async isConnected(): Promise<boolean> {
     return this.healthcheck()
@@ -24,12 +24,12 @@ export default class OutgoingQueue {
 
   public async healthcheck(): Promise<void> {
     await resolveHooks(this.on.healthcheck, undefined);
-    return this._adapter.healthcheck();
+    return this.adapter.healthcheck();
   }
 
   public async close(): Promise<void> {
     await resolveHooks(this.on.beforeClose, undefined);
-    this._adapter.close();
+    this.adapter.close();
     await resolveHooks(this.on.afterClose, undefined);
   }
 
@@ -44,6 +44,6 @@ export default class OutgoingQueue {
       body,
     });
 
-    return this._adapter.sendMessage(sendMessageOptions);
+    return this.adapter.sendMessage(sendMessageOptions);
   }
 }

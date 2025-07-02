@@ -12,7 +12,7 @@ export default class IncomingQueue {
     afterClose: new HookSet(),
   };
 
-  constructor(protected _adapter: IncomingQueueAdapter) {}
+  constructor(public adapter: IncomingQueueAdapter) {}
 
   public async isConnected(): Promise<boolean> {
     return this.healthcheck()
@@ -22,17 +22,17 @@ export default class IncomingQueue {
 
   public async healthcheck(): Promise<void> {
     await resolveHooks(this.on.healthcheck, undefined);
-    return this._adapter.healthcheck();
+    return this.adapter.healthcheck();
   }
 
   public async close(): Promise<void> {
     await resolveHooks(this.on.beforeClose, undefined);
-    this._adapter.close();
+    this.adapter.close();
     await resolveHooks(this.on.afterClose, undefined);
   }
 
   public consume(callback?: IncomingQueueMessageListener): Promise<void> {
-    return this._adapter.consume(async (input) => {
+    return this.adapter.consume(async (input) => {
       const payload = await resolveHooks(this.on.receipt, input);
       await callback?.(payload);
     });
