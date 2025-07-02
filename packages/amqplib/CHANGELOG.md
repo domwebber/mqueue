@@ -1,5 +1,13 @@
 # @mqueue/amqplib
 
+## 0.0.6
+
+### Patch Changes
+
+- a9d9e52: Update AmqplibIncomingQueue.connect options.socketOptions
+- Updated dependencies [1c61ee5]
+  - @mqueue/queue@0.0.6
+
 ## 0.0.5
 
 ### Patch Changes

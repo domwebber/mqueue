@@ -1,5 +1,11 @@
 # @mqueue/queue
 
+## 0.0.6
+
+### Patch Changes
+
+- 1c61ee5: Export MQueue as a default and named export
+
 ## 0.0.5
 
 ### Patch Changes
