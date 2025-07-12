@@ -1,5 +1,5 @@
 ---
-"@mqueue/queue": minor
+"@mqueue/queue": patch
 ---
 
 Add `SignatureHashHook` preset hook for adding and verifying digital signatures.
