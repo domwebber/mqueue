@@ -1,5 +1,13 @@
 # @mqueue/rhea
 
+## 0.0.8
+
+### Patch Changes
+
+- Updated dependencies [d72234a]
+- Updated dependencies [d4b9c7c]
+  - @mqueue/queue@0.0.8
+
 ## 0.0.7
 
 ### Patch Changes

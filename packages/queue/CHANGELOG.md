@@ -1,5 +1,23 @@
 # @mqueue/queue
 
+## 0.0.8
+
+### Patch Changes
+
+- d72234a: Add options to IncomingQueue and OutgoingQueue constructors
+- d4b9c7c: Add `SignatureHashHook` preset hook for adding and verifying digital
+  signatures.
+
+  ```ts
+  const outgoingQueue = new MQueue.Outgoing(adapter, {
+    onSend: [SignatureHashHook.outgoing()],
+  });
+
+  const incomingQueue = new MQueue.Incoming(adapter, {
+    onReceipt: [SignatureHashHook.incoming()],
+  });
+  ```
+
 ## 0.0.7
 
 ### Patch Changes
