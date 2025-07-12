@@ -1,6 +1,13 @@
 import OutgoingQueueAdapter from "./Adapter/OutgoingQueueAdapter.js";
 import QueueMessage from "./QueueMessage.js";
-import { HookSet, resolveHooks } from "./utils/hooks.js";
+import { Hook, HookSet, resolveHooks } from "./utils/hooks.js";
+
+export interface OutgoingQueueOptions {
+  onSend?: Hook<QueueMessage>[];
+  onHealthcheck?: Hook<unknown>[];
+  onBeforeClose?: Hook<unknown>[];
+  onAfterClose?: Hook<unknown>[];
+}
 
 export interface SendMessageOptions extends Omit<QueueMessage, "body"> {
   body: Buffer | string;
@@ -14,7 +21,15 @@ export default class OutgoingQueue {
     afterClose: new HookSet(),
   };
 
-  constructor(public adapter: OutgoingQueueAdapter) {}
+  constructor(
+    public adapter: OutgoingQueueAdapter,
+    options: OutgoingQueueOptions = {},
+  ) {
+    options.onSend?.map((hook) => this.on.send.add(hook));
+    options.onHealthcheck?.map((hook) => this.on.healthcheck.add(hook));
+    options.onBeforeClose?.map((hook) => this.on.beforeClose.add(hook));
+    options.onAfterClose?.map((hook) => this.on.afterClose.add(hook));
+  }
 
   public async isConnected(): Promise<boolean> {
     return this.healthcheck()

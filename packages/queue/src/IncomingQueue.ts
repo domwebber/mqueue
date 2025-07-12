@@ -2,7 +2,14 @@ import IncomingQueueAdapter, {
   IncomingQueueMessageListener,
   IncomingQueueMessageListenerInput,
 } from "./Adapter/IncomingQueueAdapter.js";
-import { HookSet, resolveHooks } from "./utils/hooks.js";
+import { Hook, HookSet, resolveHooks } from "./utils/hooks.js";
+
+export interface IncomingQueueOptions {
+  onReceipt?: Hook<IncomingQueueMessageListenerInput>[];
+  onHealthcheck?: Hook<unknown>[];
+  onBeforeClose?: Hook<unknown>[];
+  onAfterClose?: Hook<unknown>[];
+}
 
 export default class IncomingQueue {
   public on = {
@@ -12,7 +19,15 @@ export default class IncomingQueue {
     afterClose: new HookSet(),
   };
 
-  constructor(public adapter: IncomingQueueAdapter) {}
+  constructor(
+    public adapter: IncomingQueueAdapter,
+    options: IncomingQueueOptions = {},
+  ) {
+    options.onReceipt?.map((hook) => this.on.receipt.add(hook));
+    options.onHealthcheck?.map((hook) => this.on.healthcheck.add(hook));
+    options.onBeforeClose?.map((hook) => this.on.beforeClose.add(hook));
+    options.onAfterClose?.map((hook) => this.on.afterClose.add(hook));
+  }
 
   public async isConnected(): Promise<boolean> {
     return this.healthcheck()
