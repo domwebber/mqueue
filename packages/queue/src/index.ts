@@ -15,3 +15,4 @@ export * from "./IncomingQueue.js";
 export { default as IncomingQueue } from "./IncomingQueue.js";
 export * from "./OutgoingQueue.js";
 export { default as OutgoingQueue } from "./OutgoingQueue.js";
+export { default as SignatureHashHook } from "./Hook/SignatureHashHook.js";
