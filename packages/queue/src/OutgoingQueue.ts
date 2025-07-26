@@ -1,6 +1,7 @@
 import OutgoingQueueAdapter from "./Adapter/OutgoingQueueAdapter.js";
 import QueueMessage from "./QueueMessage.js";
 import { Hook, HookSet, resolveHooks } from "./utils/hooks.js";
+import { JsonValue } from "./utils/types.js";
 
 export interface OutgoingQueueOptions {
   onSend?: Hook<QueueMessage>[];
@@ -9,9 +10,15 @@ export interface OutgoingQueueOptions {
   onAfterClose?: Hook<unknown>[];
 }
 
-export interface SendMessageOptions extends Omit<QueueMessage, "body"> {
-  body: Buffer | string;
-}
+export type SendMessageOptions = Omit<QueueMessage, "body"> &
+  (
+    | {
+        body: Buffer | string;
+      }
+    | {
+        json: JsonValue;
+      }
+  );
 
 export default class OutgoingQueue {
   public on = {
@@ -49,10 +56,16 @@ export default class OutgoingQueue {
   }
 
   public async sendMessage(message: SendMessageOptions): Promise<void> {
-    const body =
-      typeof message.body === "string"
-        ? Buffer.from(message.body)
-        : message.body;
+    let body: Buffer;
+    if ("body" in message) {
+      body = Buffer.isBuffer(message.body)
+        ? message.body
+        : Buffer.from(message.body);
+    } else if ("json" in message) {
+      body = Buffer.from(JSON.stringify(message.json));
+    } else {
+      throw new Error("sendMessage options must specify either body or json");
+    }
 
     const sendMessageOptions = await resolveHooks(this.on.send, {
       ...message,
