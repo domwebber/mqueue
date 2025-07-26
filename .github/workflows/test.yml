@@ -45,4 +45,4 @@ jobs:
           --test-reporter-destination=coverage/junit.xml
         env:
           CI: true
-          DEBUG: testcontainers*
+          DEBUG: testcontainers:containers
