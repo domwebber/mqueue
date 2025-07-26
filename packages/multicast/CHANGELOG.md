@@ -1,5 +1,16 @@
 # @mqueue/multicast
 
+## 0.0.9
+
+### Patch Changes
+
+- bbe6b6f: Update tsconfig files
+- dca71b7: Export `*IncomingQueue` and `*OutgoingQueue` types
+- 225219a: Use generics for filtering
+- e2ccca9: Fix `filter` functionality
+- Updated dependencies [bbe6b6f]
+  - @mqueue/queue@0.0.9
+
 ## 0.0.8
 
 ### Patch Changes

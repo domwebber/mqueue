@@ -1,5 +1,14 @@
 # @mqueue/stompjs
 
+## 0.0.9
+
+### Patch Changes
+
+- bbe6b6f: Update tsconfig files
+- dca71b7: Export `*IncomingQueue` and `*OutgoingQueue` types
+- Updated dependencies [bbe6b6f]
+  - @mqueue/queue@0.0.9
+
 ## 0.0.8
 
 ### Patch Changes

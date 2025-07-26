@@ -1,5 +1,15 @@
 # @mqueue/amqplib
 
+## 0.0.9
+
+### Patch Changes
+
+- bbe6b6f: Update tsconfig files
+- c1c22f5: Add timeout param type to AMQPLib socketOptions
+- dca71b7: Export `*IncomingQueue` and `*OutgoingQueue` types
+- Updated dependencies [bbe6b6f]
+  - @mqueue/queue@0.0.9
+
 ## 0.0.8
 
 ### Patch Changes
