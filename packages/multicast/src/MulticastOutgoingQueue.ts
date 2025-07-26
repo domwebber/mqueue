@@ -2,6 +2,7 @@ import { OutgoingQueueAdapter, QueueMessage } from "@mqueue/queue";
 
 type MulticastOutgoingQueueFilter = (
   adapters: OutgoingQueueAdapter[],
+  message: QueueMessage,
 ) => OutgoingQueueAdapter[];
 
 export interface MulticastOutgoingQueueOptions {
@@ -26,7 +27,9 @@ export default class MulticastOutgoingQueue implements OutgoingQueueAdapter {
 
   public async sendMessage(message: QueueMessage): Promise<void> {
     await Promise.all(
-      this._adapters.map((adapter) => adapter.sendMessage(message)),
+      this._filter(this._adapters, message).map((adapter) =>
+        adapter.sendMessage(message),
+      ),
     );
   }
 
