@@ -23,7 +23,7 @@ describe("KafkaQueue", { timeout }, () => {
 
   test.after(
     async () => {
-      await container.stop({ timeout });
+      await container.stop({ timeout: 10_000 });
     },
     { timeout },
   );
@@ -98,6 +98,7 @@ describe("KafkaQueue", { timeout }, () => {
         incoming = await KafkaQueue.Incoming.connect({
           topic,
           clientOptions: {
+            clientId: "x",
             brokers: [
               `${container.getHost()}:${container.getMappedPort(9093)}`,
             ],
