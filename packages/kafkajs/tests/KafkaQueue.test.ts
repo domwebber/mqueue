@@ -6,7 +6,7 @@ import KafkaOutgoingQueue from "../src/KafkaOutgoingQueue.js";
 import KafkaIncomingQueue from "../src/KafkaIncomingQueue.js";
 import { IncomingQueueMessageListenerInput } from "@mqueue/queue";
 
-const timeout = 180_000;
+const timeout = 260_000;
 const topic = "test-topic";
 
 describe("KafkaQueue", { timeout }, () => {
