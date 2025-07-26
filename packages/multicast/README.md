@@ -44,6 +44,11 @@ const incomingQueue = new MQueue.Incoming(
 // Select one random adapter (for example)
 const filter = (adapters) => [adapters[randomInt(adapters.length)]];
 
+// Or filter by message detail
+cosnt filter = (adapters, message) => {
+  return message.headers.example === "something" ? adapter[0] : adapter;
+};
+
 const outgoingQueue = new MQueue.Outgoing(
   new MulticastQueue.Outgoing([
     await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
