@@ -1,22 +1,26 @@
 import { OutgoingQueueAdapter, QueueMessage } from "@mqueue/queue";
 
-type MulticastOutgoingQueueFilter = (
-  adapters: OutgoingQueueAdapter[],
-  message: QueueMessage,
-) => OutgoingQueueAdapter[];
+type MulticastOutgoingQueueFilter<
+  T extends [OutgoingQueueAdapter, ...OutgoingQueueAdapter[]],
+> = (adapters: T, message: QueueMessage) => OutgoingQueueAdapter[];
 
-export interface MulticastOutgoingQueueOptions {
-  filter?: MulticastOutgoingQueueFilter;
+export interface MulticastOutgoingQueueOptions<
+  T extends [OutgoingQueueAdapter, ...OutgoingQueueAdapter[]],
+> {
+  filter?: MulticastOutgoingQueueFilter<T>;
 }
 
-export default class MulticastOutgoingQueue implements OutgoingQueueAdapter {
+export default class MulticastOutgoingQueue<
+  T extends [OutgoingQueueAdapter, ...OutgoingQueueAdapter[]],
+> implements OutgoingQueueAdapter
+{
   public type = "multicast";
 
-  protected _filter: MulticastOutgoingQueueFilter;
+  protected _filter: MulticastOutgoingQueueFilter<T>;
 
   constructor(
-    protected _adapters: OutgoingQueueAdapter[],
-    options: MulticastOutgoingQueueOptions = {},
+    protected _adapters: T,
+    options: MulticastOutgoingQueueOptions<T> = {},
   ) {
     this._filter = options.filter ?? ((adapters) => adapters);
   }

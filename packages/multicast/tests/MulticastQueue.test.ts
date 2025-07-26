@@ -3,7 +3,7 @@ import test, { describe } from "node:test";
 import MulticastQueue from "../src/MulticastQueue.js";
 import MulticastIncomingQueue from "../src/MulticastIncomingQueue.js";
 import MulticastOutgoingQueue from "../src/MulticastOutgoingQueue.js";
-import { NullQueue } from "@mqueue/null";
+import { NullQueue, NullIncomingQueue, NullOutgoingQueue } from "@mqueue/null";
 
 const timeout = 12_000;
 describe("MulticastQueue", { timeout }, () => {
@@ -11,8 +11,8 @@ describe("MulticastQueue", { timeout }, () => {
     test("Should connect and disconnect", { timeout }, async () => {
       // Act
       const connection = new MulticastQueue.Outgoing([
-        new NullQueue.Outgoing(),
-        new NullQueue.Outgoing(),
+        new NullOutgoingQueue(),
+        new NullOutgoingQueue(),
       ]);
       await connection.healthcheck();
       await connection.close();
@@ -23,18 +23,22 @@ describe("MulticastQueue", { timeout }, () => {
   });
 
   describe("Healthchecking connection", { timeout }, () => {
-    let incoming: MulticastIncomingQueue;
-    let outgoing: MulticastOutgoingQueue;
+    let incoming: MulticastIncomingQueue<
+      [NullIncomingQueue, NullIncomingQueue]
+    >;
+    let outgoing: MulticastOutgoingQueue<
+      [NullOutgoingQueue, NullOutgoingQueue]
+    >;
 
     test.before(
       async () => {
         incoming = new MulticastQueue.Incoming([
-          new NullQueue.Incoming(),
-          new NullQueue.Incoming(),
+          new NullIncomingQueue(),
+          new NullIncomingQueue(),
         ]);
         outgoing = new MulticastQueue.Outgoing([
-          new NullQueue.Outgoing(),
-          new NullQueue.Outgoing(),
+          new NullOutgoingQueue(),
+          new NullOutgoingQueue(),
         ]);
       },
       { timeout },
@@ -58,8 +62,12 @@ describe("MulticastQueue", { timeout }, () => {
   });
 
   describe("Sending messages", { timeout }, () => {
-    let incoming: MulticastIncomingQueue;
-    let outgoing: MulticastOutgoingQueue;
+    let incoming: MulticastIncomingQueue<
+      [NullIncomingQueue, NullIncomingQueue]
+    >;
+    let outgoing: MulticastOutgoingQueue<
+      [NullOutgoingQueue, NullOutgoingQueue]
+    >;
 
     test.before(
       async () => {
