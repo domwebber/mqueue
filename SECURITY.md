@@ -1,7 +1,7 @@
 # Security Policy
 
 To report a security vulnerability, please post an issue in our repository for
-[Keyv](https://github.com/domwebber/mqueue/issues) and mark it with
+[MQueue](https://github.com/domwebber/mqueue/issues) and mark it with
 `security vulnerability`. You need to add in the issue description the following
 information:
 
