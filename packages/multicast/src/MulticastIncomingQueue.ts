@@ -3,22 +3,27 @@ import {
   IncomingQueueMessageListener,
 } from "@mqueue/queue";
 
-type MulticastIncomingQueueFilter = (
-  adapters: IncomingQueueAdapter[],
-) => IncomingQueueAdapter[];
+type MulticastIncomingQueueFilter<
+  T extends [IncomingQueueAdapter, ...IncomingQueueAdapter[]],
+> = (adapters: T) => IncomingQueueAdapter[];
 
-export interface MulticastIncomingQueueOptions {
-  filter?: MulticastIncomingQueueFilter;
+export interface MulticastIncomingQueueOptions<
+  T extends [IncomingQueueAdapter, ...IncomingQueueAdapter[]],
+> {
+  filter?: MulticastIncomingQueueFilter<T>;
 }
 
-export default class MulticastIncomingQueue implements IncomingQueueAdapter {
+export default class MulticastIncomingQueue<
+  T extends [IncomingQueueAdapter, ...IncomingQueueAdapter[]],
+> implements IncomingQueueAdapter
+{
   public type = "multicast";
 
-  protected _filter: MulticastIncomingQueueFilter;
+  protected _filter: MulticastIncomingQueueFilter<T>;
 
   constructor(
-    protected _adapters: IncomingQueueAdapter[],
-    options: MulticastIncomingQueueOptions = {},
+    protected _adapters: T,
+    options: MulticastIncomingQueueOptions<T> = {},
   ) {
     this._filter = options.filter ?? ((adapters) => adapters);
   }
