@@ -1,5 +1,11 @@
 # @mqueue/queue
 
+## 0.0.9
+
+### Patch Changes
+
+- bbe6b6f: Update tsconfig files
+
 ## 0.0.8
 
 ### Patch Changes
