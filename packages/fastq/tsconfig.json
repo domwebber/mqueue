@@ -4,14 +4,16 @@
     "outDir": "dist",
     "rootDir": ".",
     "lib": [
-      "dom",
-      "es5",
-      "scripthost",
-      "es2015.collection",
-      "es2015.promise",
-      "es2015.iterable"
+      "ESNext",
+      "DOM"
     ]
   },
-  "include": ["src", "tests"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "src",
+    "tests"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }
