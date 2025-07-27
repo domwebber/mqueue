@@ -4,6 +4,7 @@ import MulticastQueue from "../src/MulticastQueue.js";
 import MulticastIncomingQueue from "../src/MulticastIncomingQueue.js";
 import MulticastOutgoingQueue from "../src/MulticastOutgoingQueue.js";
 import { NullQueue, NullIncomingQueue, NullOutgoingQueue } from "@mqueue/null";
+import { QueueMessage } from "@mqueue/queue";
 
 const timeout = 12_000;
 describe("MulticastQueue", { timeout }, () => {
@@ -96,12 +97,14 @@ describe("MulticastQueue", { timeout }, () => {
       const body = "This is a message";
 
       // Act
-      const result = await outgoing.sendMessage({
-        headers: {
-          Example: "Example",
-        },
-        body: Buffer.from(body),
-      });
+      const result = await outgoing.sendMessage(
+        new QueueMessage({
+          headers: {
+            Example: "Example",
+          },
+          body: Buffer.from(body),
+        }),
+      );
 
       // Assert
       assert.strictEqual(result, undefined);

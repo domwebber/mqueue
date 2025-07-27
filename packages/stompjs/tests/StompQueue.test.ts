@@ -6,6 +6,7 @@ import RabbitMQContainer, {
 } from "./RabbitMQContainer.js";
 import StompOutgoingQueue from "../src/StompOutgoingQueue.js";
 import StompIncomingQueue from "../src/StompIncomingQueue.js";
+import { QueueMessage } from "@mqueue/queue";
 
 const timeout = 180_000;
 const queueName = "/topic/general";
@@ -125,12 +126,14 @@ describe("StompQueue", { timeout }, () => {
       //   },
       // );
 
-      const result = await connection.sendMessage({
-        headers: {
-          Example: "Example",
-        },
-        body: Buffer.from(body),
-      });
+      const result = await connection.sendMessage(
+        new QueueMessage({
+          headers: {
+            Example: "Example",
+          },
+          body: Buffer.from(body),
+        }),
+      );
 
       // const received = await receipt;
 

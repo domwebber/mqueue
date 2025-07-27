@@ -1,6 +1,6 @@
 import {
   IncomingQueueAdapter,
-  IncomingQueueMessageListener,
+  IncomingQueueMessageAdapterListener,
 } from "@mqueue/queue";
 import { Connection, ConnectionOptions, Receiver } from "rhea-promise";
 
@@ -45,7 +45,9 @@ export default class RheaIncomingQueue implements IncomingQueueAdapter {
     await this.receiver?.connection.close();
   }
 
-  public async consume(callback: IncomingQueueMessageListener): Promise<void> {
+  public async consume(
+    callback: IncomingQueueMessageAdapterListener,
+  ): Promise<void> {
     this.receiver = await this.connection.createReceiver({
       autoaccept: false,
       credit_window: 500,

@@ -1,8 +1,8 @@
 import * as AWS from "@aws-sdk/client-sqs";
 import {
   IncomingQueueAdapter,
-  IncomingQueueMessageListener,
-  Headers,
+  IncomingQueueMessageAdapterListener,
+  QueueMessageHeaders,
 } from "@mqueue/queue";
 import { Consumer } from "sqs-consumer";
 
@@ -15,7 +15,7 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
   public type = "sqs";
 
   protected _consumer: Consumer;
-  protected _callback?: IncomingQueueMessageListener;
+  protected _callback?: IncomingQueueMessageAdapterListener;
 
   constructor(
     public client: AWS.SQS,
@@ -61,7 +61,7 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
       throw new Error("Received message with no body");
     }
 
-    const headers: Headers = {};
+    const headers: QueueMessageHeaders = {};
     for (const [key, value] of Object.entries(
       message.MessageAttributes ?? {},
     )) {
@@ -107,7 +107,9 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
     });
   }
 
-  public async consume(callback: IncomingQueueMessageListener): Promise<void> {
+  public async consume(
+    callback: IncomingQueueMessageAdapterListener,
+  ): Promise<void> {
     this._callback = callback;
 
     this._consumer.on("error", (error) => {

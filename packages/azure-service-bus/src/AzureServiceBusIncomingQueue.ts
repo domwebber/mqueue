@@ -1,7 +1,7 @@
 import {
   IncomingQueueAdapter,
-  Headers,
-  IncomingQueueMessageListener,
+  QueueMessageHeaders,
+  IncomingQueueMessageAdapterListener,
 } from "@mqueue/queue";
 import {
   ServiceBusClient,
@@ -44,7 +44,9 @@ export default class AzureServiceBusIncomingQueue
     return await this.connection.close();
   }
 
-  public async consume(callback: IncomingQueueMessageListener): Promise<void> {
+  public async consume(
+    callback: IncomingQueueMessageAdapterListener,
+  ): Promise<void> {
     this.channel.subscribe(
       {
         processMessage: async (message) => {
@@ -60,7 +62,7 @@ export default class AzureServiceBusIncomingQueue
             throw new Error("Received message with no headers");
           }
 
-          const headers: Headers = {};
+          const headers: QueueMessageHeaders = {};
           for (const [key, value] of Object.entries(
             message.applicationProperties,
           )) {

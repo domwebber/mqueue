@@ -70,17 +70,9 @@ export default class OutgoingQueue {
       queueMessage = message;
     } else {
       if ("body" in message) {
-        queueMessage = new QueueMessage(
-          message.body,
-          message.headers ?? {},
-          message.isRedelivered,
-        );
+        queueMessage = new QueueMessage(message);
       } else if ("json" in message) {
-        queueMessage = QueueMessage.fromJSON(
-          message.json,
-          message.headers ?? {},
-          message.isRedelivered,
-        );
+        queueMessage = QueueMessage.fromJSON(message.json, message);
       } else {
         throw new Error("sendMessage options must specify either body or json");
       }

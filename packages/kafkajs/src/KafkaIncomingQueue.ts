@@ -1,6 +1,6 @@
 import {
-  Headers,
-  IncomingQueueMessageListener,
+  QueueMessageHeaders,
+  IncomingQueueMessageAdapterListener,
   IncomingQueueAdapter,
 } from "@mqueue/queue";
 import { Consumer, ConsumerConfig, Kafka, KafkaConfig } from "kafkajs";
@@ -36,7 +36,9 @@ export default class KafkaIncomingQueue implements IncomingQueueAdapter {
     await this.client.disconnect();
   }
 
-  public async consume(callback: IncomingQueueMessageListener): Promise<void> {
+  public async consume(
+    callback: IncomingQueueMessageAdapterListener,
+  ): Promise<void> {
     await this.client.subscribe({
       topics: [this.topic],
       fromBeginning: true,
@@ -49,7 +51,7 @@ export default class KafkaIncomingQueue implements IncomingQueueAdapter {
           throw new Error("Received message with no body");
         }
 
-        const headers: Headers = {};
+        const headers: QueueMessageHeaders = {};
         for (const [key, value] of Object.entries(message.headers ?? {})) {
           if (value === undefined) continue;
           headers[key] = value.toString();
@@ -63,9 +65,9 @@ export default class KafkaIncomingQueue implements IncomingQueueAdapter {
             name: this.topic,
           },
           message: {
-            isRedelivered: false,
-            headers,
             body: message.value,
+            headers,
+            isRedelivered: false,
           },
         });
       },

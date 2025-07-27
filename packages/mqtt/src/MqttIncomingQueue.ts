@@ -1,6 +1,6 @@
 import {
   IncomingQueueAdapter,
-  IncomingQueueMessageListener,
+  IncomingQueueMessageAdapterListener,
 } from "@mqueue/queue";
 import { connectAsync, MqttClient, OnMessageCallback } from "mqtt";
 
@@ -41,7 +41,9 @@ export default class MqttIncomingQueue implements IncomingQueueAdapter {
     await this.client.endAsync();
   }
 
-  public async consume(callback: IncomingQueueMessageListener): Promise<void> {
+  public async consume(
+    callback: IncomingQueueMessageAdapterListener,
+  ): Promise<void> {
     this._consumer = async (topic, payload, packet) => {
       console.log({ topic, payload, packet });
 

@@ -1,7 +1,7 @@
 import {
-  Headers,
+  QueueMessageHeaders,
   IncomingQueueAdapter,
-  IncomingQueueMessageListener,
+  IncomingQueueMessageAdapterListener,
 } from "@mqueue/queue";
 import {
   Client,
@@ -68,11 +68,13 @@ export default class StompIncomingQueue implements IncomingQueueAdapter {
     await disconnectPromise;
   }
 
-  public async consume(callback: IncomingQueueMessageListener): Promise<void> {
+  public async consume(
+    callback: IncomingQueueMessageAdapterListener,
+  ): Promise<void> {
     this._subscription = this.client.subscribe(
       this.destination,
       async (message) => {
-        const headers: Headers = {};
+        const headers: QueueMessageHeaders = {};
         for (const [key, value] of Object.entries(message.headers)) {
           if (!value.includes(";")) {
             headers[key] = value;
@@ -94,9 +96,9 @@ export default class StompIncomingQueue implements IncomingQueueAdapter {
           },
           message: {
             headers,
-            body: message.isBinaryBody
-              ? Buffer.from(message.binaryBody)
-              : Buffer.from(message.body),
+            body: Buffer.from(
+              message.isBinaryBody ? message.binaryBody : message.body,
+            ),
           },
         });
       },

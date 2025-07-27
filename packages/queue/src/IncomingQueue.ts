@@ -1,8 +1,20 @@
-import IncomingQueueAdapter, {
-  IncomingQueueMessageListener,
-  IncomingQueueMessageListenerInput,
-} from "./Adapter/IncomingQueueAdapter.js";
+import IncomingQueueAdapter from "./Adapter/IncomingQueueAdapter.js";
+import { QueueMessage } from "./QueueMessage.js";
 import { Hook, HookSet, resolveHooks } from "./utils/hooks.js";
+
+export type IncomingQueueMessageListenerInput = {
+  accept: () => Promise<void>;
+  reject: (error?: Error) => Promise<void>;
+  transport: {
+    name: string;
+  };
+  message: QueueMessage;
+  [key: string]: unknown;
+};
+
+export type IncomingQueueMessageListener = (
+  options: IncomingQueueMessageListenerInput,
+) => Promise<void>;
 
 export interface IncomingQueueOptions {
   onReceipt?: Hook<IncomingQueueMessageListenerInput>[];
@@ -48,7 +60,12 @@ export default class IncomingQueue {
 
   public consume(callback?: IncomingQueueMessageListener): Promise<void> {
     return this.adapter.consume(async (input) => {
-      const payload = await resolveHooks(this.on.receipt, input);
+      const options = {
+        ...input,
+        message: new QueueMessage(input.message),
+      };
+
+      const payload = await resolveHooks(this.on.receipt, options);
       await callback?.(payload);
     });
   }

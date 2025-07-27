@@ -2,6 +2,14 @@ import { JsonValue } from "./utils/types.js";
 
 export type QueueMessageHeaders = Record<string, string | string[] | undefined>;
 
+export interface QueueMessageOptions {
+  isRedelivered?: boolean;
+  headers?: QueueMessageHeaders;
+  body: Buffer;
+}
+
+export type QueueMessageFromJSONOptions = Omit<QueueMessageOptions, "body">;
+
 export interface QueueMessageType {
   /** Whether the message was redelivered */
   isRedelivered?: boolean;
@@ -20,11 +28,15 @@ export interface QueueMessageType {
 }
 
 export class QueueMessage implements QueueMessageType {
-  constructor(
-    public body: Buffer,
-    public headers: QueueMessageHeaders,
-    public isRedelivered = false,
-  ) {}
+  public body: Buffer;
+  public headers: QueueMessageHeaders;
+  public isRedelivered?: boolean;
+
+  constructor({ body, headers, isRedelivered = false }: QueueMessageOptions) {
+    this.body = body;
+    this.headers = headers ?? {};
+    this.isRedelivered = isRedelivered;
+  }
 
   public async json<T = unknown>(): Promise<T> {
     const text = await this.text();
@@ -37,9 +49,11 @@ export class QueueMessage implements QueueMessageType {
 
   public static fromJSON(
     json: JsonValue,
-    headers: QueueMessageHeaders,
-    isRedelivered = false,
+    options: QueueMessageFromJSONOptions,
   ) {
-    return new this(Buffer.from(JSON.stringify(json)), headers, isRedelivered);
+    return new this({
+      ...options,
+      body: Buffer.from(JSON.stringify(json)),
+    });
   }
 }

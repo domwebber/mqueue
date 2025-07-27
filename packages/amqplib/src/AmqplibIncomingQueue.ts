@@ -1,6 +1,6 @@
 import {
   IncomingQueueAdapter,
-  IncomingQueueMessageListener,
+  IncomingQueueMessageAdapterListener,
 } from "@mqueue/queue";
 import { connect, Options, type Channel } from "amqplib";
 
@@ -37,7 +37,9 @@ export default class AmqplibIncomingQueue implements IncomingQueueAdapter {
     await this.channel.close();
   }
 
-  public async consume(callback: IncomingQueueMessageListener): Promise<void> {
+  public async consume(
+    callback: IncomingQueueMessageAdapterListener,
+  ): Promise<void> {
     await this.channel.consume(
       this.queueName,
       async (message) => {

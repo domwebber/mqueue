@@ -5,7 +5,10 @@ import ElasticMQContainer, {
 } from "./ElasticMQContainer.js";
 import SQSQueue from "../src/SQSQueue.js";
 import SQSOutgoingQueue from "../src/SQSOutgoingQueue.js";
-import { IncomingQueueMessageListenerInput } from "@mqueue/queue";
+import {
+  IncomingQueueMessageAdapterListenerInput,
+  QueueMessage,
+} from "@mqueue/queue";
 import SQSIncomingQueue from "../src/SQSIncomingQueue.js";
 
 const timeout = 180_000;
@@ -122,7 +125,7 @@ describe("SQSQueue", { timeout }, () => {
       const consumer = mock.fn<() => Promise<void>>();
 
       // Act
-      const receipt = new Promise<IncomingQueueMessageListenerInput>(
+      const receipt = new Promise<IncomingQueueMessageAdapterListenerInput>(
         (resolve) => {
           incoming.consume(async (payload) => {
             await consumer();
@@ -131,12 +134,14 @@ describe("SQSQueue", { timeout }, () => {
         },
       );
 
-      const result = await connection.sendMessage({
-        headers: {
-          Example: "Example",
-        },
-        body: Buffer.from(body),
-      });
+      const result = await connection.sendMessage(
+        new QueueMessage({
+          headers: {
+            Example: "Example",
+          },
+          body: Buffer.from(body),
+        }),
+      );
 
       const received = await receipt;
 

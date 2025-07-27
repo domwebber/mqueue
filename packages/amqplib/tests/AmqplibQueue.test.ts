@@ -6,7 +6,10 @@ import RabbitMQContainer, {
 } from "./RabbitMQContainer.js";
 import AmqplibOutgoingQueue from "../src/AmqplibOutgoingQueue.js";
 import AmqplibIncomingQueue from "../src/AmqplibIncomingQueue.js";
-import { IncomingQueueMessageListenerInput } from "@mqueue/queue";
+import {
+  IncomingQueueMessageAdapterListenerInput,
+  QueueMessage,
+} from "@mqueue/queue";
 
 const timeout = 180_000;
 describe("AmqplibQueue", { timeout }, () => {
@@ -109,7 +112,7 @@ describe("AmqplibQueue", { timeout }, () => {
       const consumer = mock.fn<() => Promise<void>>();
 
       // Act
-      const receipt = new Promise<IncomingQueueMessageListenerInput>(
+      const receipt = new Promise<IncomingQueueMessageAdapterListenerInput>(
         (resolve) => {
           incoming.consume(async (payload) => {
             await consumer();
@@ -118,12 +121,14 @@ describe("AmqplibQueue", { timeout }, () => {
         },
       );
 
-      const result = await connection.sendMessage({
-        headers: {
-          Example: "Example",
-        },
-        body: Buffer.from(body),
-      });
+      const result = await connection.sendMessage(
+        new QueueMessage({
+          headers: {
+            Example: "Example",
+          },
+          body: Buffer.from(body),
+        }),
+      );
 
       const received = await receipt;
 

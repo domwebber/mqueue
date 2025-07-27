@@ -8,6 +8,7 @@ import AzureServiceBusOutgoingQueue from "../src/AzureServiceBusOutgoingQueue.js
 import MSSQLContainer, { StartedMSSQLContainer } from "./MSSQLContainer.js";
 import { Network, StartedNetwork } from "testcontainers";
 import AzureServiceBusIncomingQueue from "../src/AzureServiceBusIncomingQueue.js";
+import { QueueMessage } from "@mqueue/queue";
 
 const timeout = 180_000;
 const topic = "topic.1";
@@ -121,12 +122,14 @@ describe("AzureServiceBusQueue", { timeout }, () => {
       // const consumer = mock.fn<() => Promise<void>>();
 
       // Act
-      const result = await connection.sendMessage({
-        headers: {
-          Example: "Example",
-        },
-        body: Buffer.from(body),
-      });
+      const result = await connection.sendMessage(
+        new QueueMessage({
+          headers: {
+            Example: "Example",
+          },
+          body: Buffer.from(body),
+        }),
+      );
 
       // const received = await new Promise<IncomingQueueMessageListenerInput>(
       //   (resolve) => {

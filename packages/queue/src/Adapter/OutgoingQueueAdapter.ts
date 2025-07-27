@@ -1,5 +1,5 @@
 import QueueAdapter from "./QueueAdapter.js";
-import { QueueMessage } from "../QueueMessage.js";
+import { QueueMessageOptions } from "../QueueMessage.js";
 
 export default interface OutgoingQueueAdapter extends QueueAdapter {
   /**
@@ -7,5 +7,5 @@ export default interface OutgoingQueueAdapter extends QueueAdapter {
    *
    * @since 1.0.0
    */
-  sendMessage(message: QueueMessage): Promise<void>;
+  sendMessage(message: QueueMessageOptions): Promise<void>;
 }

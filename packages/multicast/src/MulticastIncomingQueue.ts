@@ -1,6 +1,6 @@
 import {
   IncomingQueueAdapter,
-  IncomingQueueMessageListener,
+  IncomingQueueMessageAdapterListener,
 } from "@mqueue/queue";
 
 type MulticastIncomingQueueFilter<
@@ -32,7 +32,9 @@ export default class MulticastIncomingQueue<
     await Promise.all(this._adapters.map((adapter) => adapter.healthcheck()));
   }
 
-  public async consume(callback: IncomingQueueMessageListener): Promise<void> {
+  public async consume(
+    callback: IncomingQueueMessageAdapterListener,
+  ): Promise<void> {
     await Promise.all(
       this._filter(this._adapters).map((adapter) => adapter.consume(callback)),
     );
