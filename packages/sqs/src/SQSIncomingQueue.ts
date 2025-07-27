@@ -76,14 +76,14 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
       }
 
       if (value.StringListValues) {
-        headers[key] = value.StringListValues;
+        headers[key] = value.StringListValues.join(";");
         continue;
       }
 
       if (value.BinaryListValues) {
         headers[key] = value.BinaryListValues.map((buffer) =>
           buffer.toString(),
-        );
+        ).join(";");
         continue;
       }
     }

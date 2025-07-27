@@ -1,7 +1,6 @@
 import {
   IncomingQueueAdapter,
   IncomingQueueMessageAdapterListener,
-  QueueMessageHeaders,
 } from "@mqueue/queue";
 import { PubSub, Topic, Subscription, Message } from "@google-cloud/pubsub";
 
@@ -38,16 +37,6 @@ export default class PubSubIncomingQueue implements IncomingQueueAdapter {
   }
 
   protected async _handleMessage(message: Message): Promise<void> {
-    const headers: QueueMessageHeaders = {};
-    for (const [key, value] of Object.entries(message.attributes)) {
-      if (!value.includes(";")) {
-        headers[key] = value;
-        continue;
-      }
-
-      headers[key] = value.split(";");
-    }
-
     await this._callback?.({
       accept: async () => {
         message.ack();
@@ -61,7 +50,7 @@ export default class PubSubIncomingQueue implements IncomingQueueAdapter {
       message: {
         isRedelivered: message.deliveryAttempt > 1,
         body: message.data,
-        headers,
+        headers: message.attributes,
       },
     });
   }

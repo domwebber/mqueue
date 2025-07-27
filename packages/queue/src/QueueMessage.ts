@@ -1,6 +1,6 @@
 import { JsonValue } from "./utils/types.js";
 
-export type QueueMessageHeaders = Record<string, string | string[] | undefined>;
+export type QueueMessageHeaders = Record<string, string | undefined>;
 
 export interface QueueMessageOptions {
   isRedelivered?: boolean;

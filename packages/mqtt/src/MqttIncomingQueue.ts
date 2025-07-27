@@ -1,6 +1,7 @@
 import {
   IncomingQueueAdapter,
   IncomingQueueMessageAdapterListener,
+  QueueMessageHeaders,
 } from "@mqueue/queue";
 import { connectAsync, MqttClient, OnMessageCallback } from "mqtt";
 
@@ -45,7 +46,17 @@ export default class MqttIncomingQueue implements IncomingQueueAdapter {
     callback: IncomingQueueMessageAdapterListener,
   ): Promise<void> {
     this._consumer = async (topic, payload, packet) => {
-      console.log({ topic, payload, packet });
+      const headers: QueueMessageHeaders = {};
+      for (const [key, value] of Object.entries(
+        packet.properties?.userProperties ?? {},
+      )) {
+        if (!Array.isArray(value)) {
+          headers[key] = value;
+          continue;
+        }
+
+        headers[key] = value.join(";");
+      }
 
       await callback({
         accept: async () => {},
@@ -54,7 +65,7 @@ export default class MqttIncomingQueue implements IncomingQueueAdapter {
           name: topic,
         },
         message: {
-          headers: packet.properties?.userProperties ?? {},
+          headers,
           body: payload,
         },
       });

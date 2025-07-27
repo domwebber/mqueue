@@ -1,5 +1,4 @@
 import {
-  QueueMessageHeaders,
   IncomingQueueAdapter,
   IncomingQueueMessageAdapterListener,
 } from "@mqueue/queue";
@@ -74,16 +73,6 @@ export default class StompIncomingQueue implements IncomingQueueAdapter {
     this._subscription = this.client.subscribe(
       this.destination,
       async (message) => {
-        const headers: QueueMessageHeaders = {};
-        for (const [key, value] of Object.entries(message.headers)) {
-          if (!value.includes(";")) {
-            headers[key] = value;
-            continue;
-          }
-
-          headers[key] = value.split(";");
-        }
-
         await callback({
           accept: async () => {
             message.ack();
@@ -95,7 +84,7 @@ export default class StompIncomingQueue implements IncomingQueueAdapter {
             name: this.destination,
           },
           message: {
-            headers,
+            headers: message.headers,
             body: Buffer.from(
               message.isBinaryBody ? message.binaryBody : message.body,
             ),
