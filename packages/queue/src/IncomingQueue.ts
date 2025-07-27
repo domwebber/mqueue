@@ -41,17 +41,20 @@ export default class IncomingQueue {
     options.onAfterClose?.map((hook) => this.on.afterClose.add(hook));
   }
 
+  /** Check that MQueue is connected under-the-hood */
   public async isConnected(): Promise<boolean> {
     return this.healthcheck()
       .then(() => true)
       .catch(() => false);
   }
 
+  /** Assert that MQueue is connected under-the-hood */
   public async healthcheck(): Promise<void> {
     await resolveHooks(this.on.healthcheck, undefined);
     return this.adapter.healthcheck();
   }
 
+  /** Close the queue connection */
   public async close(): Promise<void> {
     await resolveHooks(this.on.beforeClose, undefined);
     this.adapter.close();

@@ -15,6 +15,23 @@ export interface IncomingSignatureHashHookOptions
   throwOnInvalid?: boolean;
 }
 
+/**
+ * Enable Digital Signatures for Queue Messages via Hooks.
+ *
+ * ```ts
+ * const outgoingQueue = new MQueue.Outgoing(
+ *   outgoingQueueAdapter,
+ *   { onSend: [SignatureHashHook.outgoing()] },
+ * );
+ *
+ * // ...
+ *
+ * const incomingQueue = new MQueue.Incoming(
+ *   incomingQueueAdapter,
+ *   { onReceipt: [SignatureHashHook.incoming()] },
+ * );
+ * ```
+ */
 export default class SignatureHashHook {
   public static DEFAULT_HEADER = "signature" as const;
   public static DEFAULT_ALGORITHM = "sha256" as const;
@@ -24,6 +41,16 @@ export default class SignatureHashHook {
     return createHash(algorithm).update(content);
   }
 
+  /**
+   * Enable Digital Signatures for Outgoing Queue Messages.
+   *
+   * ```ts
+   * const outgoingQueue = new MQueue.Outgoing(
+   *   outgoingQueueAdapter,
+   *   { onSend: [SignatureHashHook.outgoing()] },
+   * );
+   * ```
+   */
   public static outgoing({
     header = this.DEFAULT_HEADER,
     algorithm = this.DEFAULT_ALGORITHM,
@@ -37,6 +64,16 @@ export default class SignatureHashHook {
     };
   }
 
+  /**
+   * Enable Digital Signatures for Incoming Queue Messages.
+   *
+   * ```ts
+   * const incomingQueue = new MQueue.Incoming(
+   *   incomingQueueAdapter,
+   *   { onReceipt: [SignatureHashHook.incoming()] },
+   * );
+   * ```
+   */
   public static incoming({
     header = this.DEFAULT_HEADER,
     algorithm = this.DEFAULT_ALGORITHM,

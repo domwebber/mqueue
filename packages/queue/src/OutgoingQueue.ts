@@ -46,23 +46,27 @@ export default class OutgoingQueue {
     options.onAfterClose?.map((hook) => this.on.afterClose.add(hook));
   }
 
+  /** Check that MQueue is connected under-the-hood */
   public async isConnected(): Promise<boolean> {
     return this.healthcheck()
       .then(() => true)
       .catch(() => false);
   }
 
+  /** Assert that MQueue is connected under-the-hood */
   public async healthcheck(): Promise<void> {
     await resolveHooks(this.on.healthcheck, undefined);
     return this.adapter.healthcheck();
   }
 
+  /** Close the queue connection */
   public async close(): Promise<void> {
     await resolveHooks(this.on.beforeClose, undefined);
     this.adapter.close();
     await resolveHooks(this.on.afterClose, undefined);
   }
 
+  /** Send a message to the queue */
   public async sendMessage(message: SendMessageOptions): Promise<void> {
     let queueMessage: QueueMessage;
 
