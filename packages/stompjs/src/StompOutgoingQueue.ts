@@ -62,7 +62,7 @@ export default class StompOutgoingQueue implements OutgoingQueueAdapter {
 
   public async sendMessage(message: QueueMessage): Promise<void> {
     const headers: StompHeaders = {};
-    for (const [key, value] of Object.entries(message.headers ?? {})) {
+    for (const [key, value] of Object.entries(message.headers)) {
       if (value === undefined) continue;
       headers[key] = Array.isArray(value) ? value.join(";") : value;
     }
