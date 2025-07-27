@@ -43,7 +43,7 @@ const incomingQueue = new MQueue.Incoming(
 ```
 
 ```ts
-// Example: Switching between AMQP v0.9.1 and SQS for live and production
+// Example: Switching between AMQP v0.9.1 and SQS for development and production
 const isProduction = process.env.NODE_ENV === "production";
 
 const outgoingQueue = new MQueue.Outgoing(
@@ -65,6 +65,34 @@ const incomingQueue = new MQueue.Incoming(
   isProduction
     ? await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name")
     : await SQSIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
+);
+```
+
+```ts
+// Adding digital signature verification
+import { SignatureHashHook } from "@mqueue/queue";
+
+const outgoingQueue = new MQueue.Outgoing(
+  await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
+  {
+    onSend: [SignatureHashHook.outgoing()],
+  }
+);
+
+outgoingQueue.sendMessage({
+  headers: {
+    "Account-ID": "123",
+  },
+  body: "...",
+});
+
+// ...
+
+const incomingQueue = new MQueue.Incoming(
+  await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
+  {
+    onReceipt: [SignatureHashHook.incoming()]
+  }
 );
 ```
 
