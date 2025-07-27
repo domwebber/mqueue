@@ -44,6 +44,7 @@ const incomingQueue = new MQueue.Incoming(
 - [`@mqueue/sqs`][]: AWS Simple Queue Service (SQS) queue adapter
 - [`@mqueue/rhea`][]: AMQP v1.0 queue adapter
 - [`@mqueue/azure-service-bus`][]: Azure Service Bus queue adapter
+- [`@mqueue/google-cloud-pubsub`][]: Google Cloud Pub/Sub
 - [`@mqueue/mqtt`][]: MQTT Queue Adapter
 - [`@mqueue/kafkajs`][]: Kafka Queue Adapter
 - [`@mqueue/stompjs`][]: STOMP Queue Adapter
