@@ -1,9 +1,6 @@
-name: Snapshot Checks
+name: Snapshot
 
-on:
-  push:
-    branches:
-      - snapshot
+on: workflow_dispatch
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
