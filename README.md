@@ -76,6 +76,7 @@ const incomingQueue = new MQueue.Incoming(
 | RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]              |
 | RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]              |
 | RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]           |
+| IBM MQ (AMQP v1.0)                            | [`@mqueue/rhea`][]              |
 
 [^1]:
     Better authentication integration may be achieved with Azure Service bus by
