@@ -31,5 +31,8 @@
     "turbo": "^2.5.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.34.1"
+  },
+  "dependencies": {
+    "@changesets/changelog-github": "^0.5.1"
   }
 }
