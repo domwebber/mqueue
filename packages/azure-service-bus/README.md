@@ -38,3 +38,7 @@ const incomingQueue = new MQueue.Incoming(
   ),
 );
 ```
+
+## License
+
+[MIT © Dom Webber](./LICENSE)

@@ -91,7 +91,7 @@ keep options open.
 
 ## License
 
-[MIT © Dom Webber](./LICENSE)
+[MIT © Dom Webber](https://github.com/domwebber/mqueue/blob/main/LICENSE)
 
 [`@mqueue/queue`]:
   https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md

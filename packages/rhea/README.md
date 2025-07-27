@@ -36,3 +36,7 @@ const incomingQueue = new MQueue.Incoming(
 - [Azure Service Bus](https://azure.microsoft.com/products/service-bus) -
   **Note**: identity and authentication is easier with the
   [dedicated Azure Service Bus queue adapter](https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md)
+
+## License
+
+[MIT © Dom Webber](./LICENSE)

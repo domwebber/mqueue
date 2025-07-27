@@ -42,60 +42,6 @@ const incomingQueue = new MQueue.Incoming(
 );
 ```
 
-```ts
-// Example: Switching between AMQP v0.9.1 and SQS for development and production
-const isProduction = process.env.NODE_ENV === "production";
-
-const outgoingQueue = new MQueue.Outgoing(
-  isProduction
-    ? await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name")
-    : await SQSOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
-);
-
-outgoingQueue.sendMessage({
-  headers: {
-    "Account-ID": "123",
-  },
-  body: "...",
-});
-
-// ...
-
-const incomingQueue = new MQueue.Incoming(
-  isProduction
-    ? await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name")
-    : await SQSIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
-);
-```
-
-```ts
-// Adding digital signature verification
-import { SignatureHashHook } from "@mqueue/queue";
-
-const outgoingQueue = new MQueue.Outgoing(
-  await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
-  {
-    onSend: [SignatureHashHook.outgoing()],
-  }
-);
-
-outgoingQueue.sendMessage({
-  headers: {
-    "Account-ID": "123",
-  },
-  body: "...",
-});
-
-// ...
-
-const incomingQueue = new MQueue.Incoming(
-  await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
-  {
-    onReceipt: [SignatureHashHook.incoming()]
-  }
-);
-```
-
 ## Queue Adapters
 
 - [`@mqueue/amqplib`][]: AMQP v0.9.1 queue adapter
@@ -159,3 +105,63 @@ const incomingQueue = new MQueue.Incoming(
   https://github.com/domwebber/mqueue/blob/main/packages/fastq/README.md
 [`@mqueue/multicast`]:
   https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
+
+## Examples
+
+```ts
+// Example: Switching between AMQP v0.9.1 and SQS for development and production
+const isProduction = process.env.NODE_ENV === "production";
+
+const outgoingQueue = new MQueue.Outgoing(
+  isProduction
+    ? await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name")
+    : await SQSOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
+);
+
+outgoingQueue.sendMessage({
+  headers: {
+    "Account-ID": "123",
+  },
+  body: "...",
+});
+
+// ...
+
+const incomingQueue = new MQueue.Incoming(
+  isProduction
+    ? await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name")
+    : await SQSIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
+);
+```
+
+```ts
+// Adding digital signature verification
+import { SignatureHashHook } from "@mqueue/queue";
+
+const outgoingQueue = new MQueue.Outgoing(
+  await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
+  {
+    onSend: [SignatureHashHook.outgoing()],
+  }
+);
+
+outgoingQueue.sendMessage({
+  headers: {
+    "Account-ID": "123",
+  },
+  body: "...",
+});
+
+// ...
+
+const incomingQueue = new MQueue.Incoming(
+  await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
+  {
+    onReceipt: [SignatureHashHook.incoming()]
+  }
+);
+```
+
+## License
+
+[MIT © Dom Webber](./LICENSE)

@@ -31,3 +31,7 @@ const incomingQueue = new MQueue.Incoming(
 ## Compatibility
 
 - [RabbitMQ](https://rabbitmq.com)
+
+## License
+
+[MIT © Dom Webber](./LICENSE)

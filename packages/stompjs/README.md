@@ -32,3 +32,7 @@ const incomingQueue = new MQueue.Incoming(
 
 - [RabbitMQ (with STOMP plugin)](https://rabbitmq.com)
 - [Apache ActiveMQ](https://activemq.apache.org)
+
+## License
+
+[MIT © Dom Webber](./LICENSE)

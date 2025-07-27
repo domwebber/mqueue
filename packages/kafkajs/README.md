@@ -33,3 +33,7 @@ const incomingQueue = new MQueue.Incoming(
 ## Compatibility
 
 - [Apache Kafka](https://kafka.apache.org)
+
+## License
+
+[MIT © Dom Webber](./LICENSE)

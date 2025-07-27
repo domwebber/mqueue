@@ -34,3 +34,7 @@ const incomingQueue = new MQueue.Incoming(
 
 - [AWS Simple Queue Service (SQS)](https://aws.amazon.com/sqs/)
 - [ElasticMQ (SQS-Compatible)](https://github.com/softwaremill/elasticmq)
+
+## License
+
+[MIT © Dom Webber](./LICENSE)

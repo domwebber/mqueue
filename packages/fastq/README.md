@@ -28,3 +28,7 @@ const incomingQueue = new MQueue.Incoming(new FastqQueue.Incoming(fastq));
 ## Compatibility
 
 - Single-Node NodeJS Applications
+
+## License
+
+[MIT © Dom Webber](./LICENSE)

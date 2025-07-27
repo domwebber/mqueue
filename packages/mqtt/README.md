@@ -31,3 +31,7 @@ const incomingQueue = new MQueue.Incoming(
 ## Compatibility
 
 - [Eclipse Mosquitto](https://mosquitto.org)
+
+## License
+
+[MIT © Dom Webber](./LICENSE)
