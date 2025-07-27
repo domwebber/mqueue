@@ -6,6 +6,13 @@ open.
 > Note: This project is currently a Work in Progress. Its not ready for
 > production use yet - [make a contribution](./CONTRIBUTING.md).
 
+## Getting Started
+
+To learn how to use MQueue, check out the [`@mqueue/queue`][] README. To learn
+how to use a specific queue adapter, check out the README for that adapter under
+[Queue Adapters](#queue-adapters).
+
+
 ```ts
 const outgoingQueue = new MQueue.Outgoing(
   await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
@@ -24,12 +31,7 @@ const incomingQueue = new MQueue.Incoming(
   await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
 );
 ```
-
-## Getting Started
-
-To learn how to use MQueue, check out the [`@mqueue/queue`][] README. To learn
-how to use a specific queue adapter, check out the README for that adapter under
-[Queue Adapters](#queue-adapters).
+> For more usage examples, see the [`@mqueue/queue` readme](https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md#examples).
 
 ## Packages
 
