@@ -43,9 +43,12 @@ jobs:
       - run: pnpm audit signatures
       - run: pnpm run build
       - run: pnpm changeset version --snapshot next
-      - run:
-          pnpm changeset version --snapshot next && pnpm changeset publish --tag
-          next
+      - name: Create .npmrc
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > .npmrc
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: |
+          pnpm changeset version --snapshot next && \
+          pnpm changeset publish --tag next
