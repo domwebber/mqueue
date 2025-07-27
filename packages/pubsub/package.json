@@ -1,0 +1,63 @@
+{
+  "name": "@mqueue/pubsub",
+  "version": "0.0.9",
+  "type": "module",
+  "description": "MQueue adapter for Google Cloud Pub/Sub",
+  "author": "Dom Webber <dom.webber@hotmail.com>",
+  "contributors": [
+    "Dom Webber <dom.webber@hotmail.com>"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "queue",
+    "mqueue",
+    "pub-sub"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/domwebber/mqueue",
+    "directory": "packages/pubsub"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --no-config --dts --format esm,cjs --cjsInterop --minify --sourcemap --splitting --treeshake",
+    "typecheck": "tsc --noEmit",
+    "test": "node --import tsx --test --test-reporter=spec tests/**/*.test.ts tests/*.test.ts",
+    "lint:publint": "publint"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public",
+    "provenance": false
+  },
+  "peerDependencies": {
+    "@mqueue/queue": "workspace:*"
+  },
+  "devDependencies": {
+    "@mqueue/queue": "workspace:*",
+    "publint": "^0.3.12",
+    "testcontainers": "^11.0.3",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@google-cloud/pubsub": "^5.1.0"
+  }
+}
