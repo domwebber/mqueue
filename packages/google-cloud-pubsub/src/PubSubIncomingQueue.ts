@@ -2,7 +2,13 @@ import {
   IncomingQueueAdapter,
   IncomingQueueMessageAdapterListener,
 } from "@mqueue/queue";
-import { PubSub, Topic, Subscription, Message } from "@google-cloud/pubsub";
+import {
+  PubSub,
+  Topic,
+  Subscription,
+  Message,
+  ClientConfig,
+} from "@google-cloud/pubsub";
 
 export default class PubSubIncomingQueue implements IncomingQueueAdapter {
   public type = "pubsub";
@@ -16,8 +22,12 @@ export default class PubSubIncomingQueue implements IncomingQueueAdapter {
     public subscriptionName: string,
   ) {}
 
-  public static async connect(topicName: string, subscriptionName: string) {
-    const client = new PubSub();
+  public static async connect(
+    config: ClientConfig,
+    topicName: string,
+    subscriptionName: string,
+  ) {
+    const client = new PubSub(config);
     const topic = client.topic(topicName);
     return new this(client, topic, subscriptionName);
   }

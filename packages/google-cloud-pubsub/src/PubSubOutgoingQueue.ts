@@ -1,5 +1,5 @@
 import { OutgoingQueueAdapter, QueueMessage } from "@mqueue/queue";
-import { PubSub, Topic } from "@google-cloud/pubsub";
+import { ClientConfig, PubSub, Topic } from "@google-cloud/pubsub";
 
 export default class PubSubOutgoingQueue implements OutgoingQueueAdapter {
   public type = "pubsub";
@@ -9,8 +9,8 @@ export default class PubSubOutgoingQueue implements OutgoingQueueAdapter {
     public topic: Topic,
   ) {}
 
-  public static async connect(topicName: string) {
-    const client = new PubSub();
+  public static async connect(config: ClientConfig, topicName: string) {
+    const client = new PubSub(config);
     const topic = client.topic(topicName);
     return new this(client, topic);
   }
