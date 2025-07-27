@@ -1,9 +1,9 @@
-name: Main Checks
+name: Snapshot Checks
 
 on:
   push:
     branches:
-      - main
+      - snapshot
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -59,7 +59,8 @@ jobs:
 
       - uses: changesets/action@v1
         with:
-          publish: pnpm changeset publish
+          version: pnpm changeset version --snapshot next
+          publish: pnpm changeset publish --tag next
           title: "chore(release): version packages"
           commit: "chore(release): version packages"
         env:
