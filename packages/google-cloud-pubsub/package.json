@@ -1,5 +1,5 @@
 {
-  "name": "@mqueue/pubsub",
+  "name": "@mqueue/google-cloud-pubsub",
   "version": "0.0.9",
   "type": "module",
   "description": "MQueue adapter for Google Cloud Pub/Sub",

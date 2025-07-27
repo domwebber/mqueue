@@ -60,23 +60,24 @@ const incomingQueue = new MQueue.Incoming(
 
 - **NodeJS** v18+, tested on v22+
 
-| Queue Platform                                | Queue Adapter                   |
-| --------------------------------------------- | ------------------------------- |
-| Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]              |
-| Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]              |
-| Apache ActiveMQ (STOMP)                       | [`@mqueue/stompjs`][]           |
-| Apache Kafka                                  | [`@mqueue/kafkajs`][]           |
-| AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]               |
-| Azure Service Bus                             | [`@mqueue/azure-service-bus`][] |
-| Azure Service Bus (AMQP v1.0) [^1]            | [`@mqueue/rhea`][]              |
-| Eclipe Mosquitto                              | [`@mqueue/mqtt`][]              |
-| ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]               |
-| Fastq                                         | [`@mqueue/fastq`][]             |
-| RabbitMQ (AMQP v0.9.1)                        | [`@mqueue/amqplib`][]           |
-| RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]              |
-| RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]              |
-| RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]           |
-| IBM MQ (AMQP v1.0)                            | [`@mqueue/rhea`][]              |
+| Queue Platform                                | Queue Adapter                     |
+| --------------------------------------------- | --------------------------------- |
+| Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]                |
+| Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]                |
+| Apache ActiveMQ (STOMP)                       | [`@mqueue/stompjs`][]             |
+| Apache Kafka                                  | [`@mqueue/kafkajs`][]             |
+| AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]                 |
+| Azure Service Bus                             | [`@mqueue/azure-service-bus`][]   |
+| Azure Service Bus (AMQP v1.0) [^1]            | [`@mqueue/rhea`][]                |
+| Eclipe Mosquitto                              | [`@mqueue/mqtt`][]                |
+| ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]                 |
+| Fastq                                         | [`@mqueue/fastq`][]               |
+| Google Cloud Pub/Sub                          | [`@mqueue/google-cloud-pubsub`][] |
+| RabbitMQ (AMQP v0.9.1)                        | [`@mqueue/amqplib`][]             |
+| RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]                |
+| RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]                |
+| RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]             |
+| IBM MQ (AMQP v1.0)                            | [`@mqueue/rhea`][]                |
 
 [^1]:
     Better authentication integration may be achieved with Azure Service bus by
@@ -115,5 +116,7 @@ keep options open.
   https://github.com/domwebber/mqueue/blob/main/packages/stompjs/README.md
 [`@mqueue/fastq`]:
   https://github.com/domwebber/mqueue/blob/main/packages/fastq/README.md
+[`@mqueue/google-cloud-pubsub`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/google-cloud-pubsub/README.md
 [`@mqueue/multicast`]:
   https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md

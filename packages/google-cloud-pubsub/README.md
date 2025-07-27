@@ -6,7 +6,7 @@ adapter for
 adding support for Google Cloud Pub/Sub with a multi-backend setup with MQueue.
 
 ```bash
-npm install --save @mqueue/queue @mqueue/pubsub
+npm install --save @mqueue/queue @mqueue/google-cloud-pubsub
 # or use pnpm/yarn
 ```
 
