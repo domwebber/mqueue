@@ -142,7 +142,7 @@ const outgoingQueue = new MQueue.Outgoing(
   await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
   {
     onSend: [SignatureHashHook.outgoing()],
-  }
+  },
 );
 
 outgoingQueue.sendMessage({
@@ -157,8 +157,8 @@ outgoingQueue.sendMessage({
 const incomingQueue = new MQueue.Incoming(
   await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
   {
-    onReceipt: [SignatureHashHook.incoming()]
-  }
+    onReceipt: [SignatureHashHook.incoming()],
+  },
 );
 ```
 
