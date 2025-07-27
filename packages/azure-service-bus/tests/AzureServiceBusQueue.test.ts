@@ -59,7 +59,7 @@ describe("AzureServiceBusQueue", { timeout }, () => {
       await connection.close();
 
       // Assert
-      await assert.rejects(connection.healthcheck);
+      await assert.rejects(connection.healthcheck());
     });
   });
 
