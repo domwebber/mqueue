@@ -36,8 +36,8 @@ describe("AzureServiceBusQueue", { timeout }, () => {
 
   test.after(
     async () => {
-      await container.stop({ timeout });
-      await sqledge.stop({ timeout });
+      await container.stop({ timeout: 10_000 });
+      await sqledge.stop({ timeout: 10_000 });
       await network.stop();
     },
     { timeout },
