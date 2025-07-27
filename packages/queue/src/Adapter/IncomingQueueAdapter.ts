@@ -1,5 +1,5 @@
 import QueueAdapter from "./QueueAdapter.js";
-import QueueMessage from "../QueueMessage.js";
+import { QueueMessage } from "../QueueMessage.js";
 
 export type IncomingQueueMessageListenerInput = {
   accept: () => Promise<void>;

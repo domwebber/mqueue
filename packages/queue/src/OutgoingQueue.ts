@@ -1,5 +1,5 @@
 import OutgoingQueueAdapter from "./Adapter/OutgoingQueueAdapter.js";
-import QueueMessage from "./QueueMessage.js";
+import { QueueMessage, QueueMessageHeaders } from "./QueueMessage.js";
 import { Hook, HookSet, resolveHooks } from "./utils/hooks.js";
 import { JsonValue } from "./utils/types.js";
 
@@ -10,15 +10,23 @@ export interface OutgoingQueueOptions {
   onAfterClose?: Hook<unknown>[];
 }
 
-export type SendMessageOptions = Omit<QueueMessage, "body"> &
-  (
-    | {
-        body: Buffer | string;
-      }
-    | {
-        json: JsonValue;
-      }
-  );
+export type SendMessageOptions =
+  | QueueMessage
+  | ({
+      /** Whether the message was redelivered */
+      isRedelivered?: boolean;
+
+      /** Message Headers */
+      headers?: QueueMessageHeaders;
+    } & (
+      | {
+          /** Body Content */
+          body: Buffer;
+        }
+      | {
+          json: JsonValue;
+        }
+    ));
 
 export default class OutgoingQueue {
   public on = {
@@ -56,21 +64,29 @@ export default class OutgoingQueue {
   }
 
   public async sendMessage(message: SendMessageOptions): Promise<void> {
-    let body: Buffer;
-    if ("body" in message) {
-      body = Buffer.isBuffer(message.body)
-        ? message.body
-        : Buffer.from(message.body);
-    } else if ("json" in message) {
-      body = Buffer.from(JSON.stringify(message.json));
+    let queueMessage: QueueMessage;
+
+    if (message instanceof QueueMessage) {
+      queueMessage = message;
     } else {
-      throw new Error("sendMessage options must specify either body or json");
+      if ("body" in message) {
+        queueMessage = new QueueMessage(
+          message.body,
+          message.headers ?? {},
+          message.isRedelivered,
+        );
+      } else if ("json" in message) {
+        queueMessage = QueueMessage.fromJSON(
+          message.json,
+          message.headers ?? {},
+          message.isRedelivered,
+        );
+      } else {
+        throw new Error("sendMessage options must specify either body or json");
+      }
     }
 
-    const sendMessageOptions = await resolveHooks(this.on.send, {
-      ...message,
-      body,
-    });
+    const sendMessageOptions = await resolveHooks(this.on.send, queueMessage);
 
     return this.adapter.sendMessage(sendMessageOptions);
   }

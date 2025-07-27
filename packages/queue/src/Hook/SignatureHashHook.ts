@@ -1,6 +1,6 @@
 import { BinaryToTextEncoding, createHash, timingSafeEqual } from "node:crypto";
 import { IncomingQueueMessageListenerInput } from "../Adapter/IncomingQueueAdapter.js";
-import QueueMessage from "../QueueMessage.js";
+import { QueueMessage } from "../QueueMessage.js";
 import { Hook } from "../utils/hooks.js";
 
 export interface SignatureHashHookOptions {

@@ -10,7 +10,6 @@ export { type default as OutgoingQueueAdapter } from "./Adapter/OutgoingQueueAda
 export * from "./Adapter/QueueAdapter.js";
 export { type default as QueueAdapter } from "./Adapter/QueueAdapter.js";
 export * from "./QueueMessage.js";
-export { type default as QueueMessage } from "./QueueMessage.js";
 export * from "./IncomingQueue.js";
 export { default as IncomingQueue } from "./IncomingQueue.js";
 export * from "./OutgoingQueue.js";
