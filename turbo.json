@@ -5,8 +5,12 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "typecheck": {},
-    "lint:publint": {},
+    "typecheck": {
+      "cache": false
+    },
+    "lint:publint": {
+      "cache": false
+    },
     "test": {
       "outputs": ["coverage/**"],
       "env": ["DEBUG"]
