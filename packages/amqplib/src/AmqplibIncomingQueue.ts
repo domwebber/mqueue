@@ -7,11 +7,38 @@ import { connect, Options, type Channel } from "amqplib";
 export default class AmqplibIncomingQueue implements IncomingQueueAdapter {
   public type = "amqplib";
 
+  /**
+   * Use a pre-connected Amqplib Channel to initialise MQueue.
+   *
+   * Note: You probably want `AmqplibQueue.Incoming.connect()`
+   *
+   * ```ts
+   * import { connect } from "amqplib";
+   * const connection = await connect(url);
+   * const channel = await connection.createChannel();
+   * const incomingQueue = new MQueue.Incoming(
+   *   new AmqplibQueue.Incoming(channel, "queue-name")
+   * );
+   * ```
+   */
   constructor(
     public channel: Channel,
     public queueName: string,
   ) {}
 
+  /**
+   * Connect to an AMQPv0.9.1 Queue and initialise MQueue.
+   *
+   * ```ts
+   * const incomingQueue = new MQueue.Incoming(
+   *   await AmqplibQueue.Incoming.connect(
+   *     "amqp://rabbitmq:5271",
+   *     "queue-name",
+   *     { socketOptions: { timeout: 100_000 } },
+   *   )
+   * );
+   * ```
+   */
   public static async connect(
     url: string | Options.Connect,
     queueName: string,

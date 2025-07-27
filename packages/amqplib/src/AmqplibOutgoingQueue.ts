@@ -1,21 +1,41 @@
 import { connect, type Channel, type Options as AmqplibOptions } from "amqplib";
 import { OutgoingQueueAdapter, QueueMessage } from "@mqueue/queue";
 
-interface AmqplibOutgoingQueueOptions {
-  queueName: string;
-}
-
 export default class AmqplibOutgoingQueue implements OutgoingQueueAdapter {
   public type = "amqplib";
-  public queueName: string;
 
+  /**
+   * Use a pre-connected Amqplib Channel to initialise MQueue.
+   *
+   * Note: You probably want `AmqplibQueue.Outgoing.connect()`
+   *
+   * ```ts
+   * import { connect } from "amqplib";
+   * const connection = await connect(url);
+   * const channel = await connection.createChannel();
+   * const outgoingQueue = new MQueue.Outgoing(
+   *   new AmqplibQueue.Outgoing(channel, "queue-name")
+   * );
+   * ```
+   */
   constructor(
     public client: Channel,
-    { queueName }: AmqplibOutgoingQueueOptions,
-  ) {
-    this.queueName = queueName;
-  }
+    public queueName: string,
+  ) {}
 
+  /**
+   * Connect to an AMQPv0.9.1 Queue and initialise MQueue.
+   *
+   * ```ts
+   * const outgoingQueue = new MQueue.Outgoing(
+   *   await AmqplibQueue.Outgoing.connect(
+   *     "amqp://rabbitmq:5271",
+   *     "queue-name",
+   *     { socketOptions: { timeout: 100_000 } },
+   *   )
+   * );
+   * ```
+   */
   public static async connect(
     options: string | AmqplibOptions.Connect,
     queueName: string,
@@ -27,7 +47,7 @@ export default class AmqplibOutgoingQueue implements OutgoingQueueAdapter {
   ) {
     const connection = await connect(options, socketOptions);
     const channel = await connection.createChannel();
-    return new this(channel, { queueName });
+    return new this(channel, queueName);
   }
 
   public async sendMessage(message: QueueMessage): Promise<void> {
@@ -39,7 +59,6 @@ export default class AmqplibOutgoingQueue implements OutgoingQueueAdapter {
 
     if (!result) {
       throw new Error(`Message failed to send to ${this.type} queue`);
-      // throw OutgoingQueueMessageSendFailedError.caused();
     }
   }
 
