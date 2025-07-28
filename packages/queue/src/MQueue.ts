@@ -8,6 +8,9 @@ import OutgoingQueue from "./OutgoingQueue.js";
 export default class MQueue {
   private constructor() {}
 
+  /** Initialise an Outgoing Queue to send messages */
   public static Outgoing = OutgoingQueue;
+
+  /** Initialise an Incoming Queue to receive messages */
   public static Incoming = IncomingQueue;
 }

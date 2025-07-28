@@ -1,4 +1,5 @@
 export default interface QueueAdapter {
+  /** Queue provider/type identifier */
   type: string;
 
   /**

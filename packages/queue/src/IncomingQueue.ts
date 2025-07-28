@@ -5,9 +5,12 @@ import { Hook, HookSet, resolveHooks } from "./utils/hooks.js";
 export type IncomingQueueMessageListenerInput = {
   accept: () => Promise<void>;
   reject: (error?: Error) => Promise<void>;
+
   transport: {
+    /** Queue/Topic Name this payload was received on */
     name: string;
   };
+
   message: QueueMessage;
   [key: string]: unknown;
 };
@@ -61,6 +64,7 @@ export default class IncomingQueue {
     await resolveHooks(this.on.afterClose, undefined);
   }
 
+  /** Listen and Consume queue messages */
   public consume(callback?: IncomingQueueMessageListener): Promise<void> {
     return this.adapter.consume(async (input) => {
       const options = {

@@ -11,13 +11,8 @@ export interface QueueMessageOptions {
 export type QueueMessageFromJSONOptions = Omit<QueueMessageOptions, "body">;
 
 export class QueueMessage {
-  /** Body Content */
   public body: Buffer;
-
-  /** Message Headers */
   public headers: QueueMessageHeaders;
-
-  /** Whether the message was redelivered */
   public isRedelivered?: boolean;
 
   constructor({ body, headers, isRedelivered = false }: QueueMessageOptions) {
