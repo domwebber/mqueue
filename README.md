@@ -12,6 +12,9 @@ To learn how to use MQueue, check out the [`@mqueue/queue`][] README. To learn
 how to use a specific queue adapter, check out the README for that adapter under
 [Queue Adapters](#queue-adapters).
 
+For queue and transport compatibility, see the compatibility table in the
+[`@mqueue/queue`][] README.
+
 ```ts
 import MQueue from "@mqueue/queue";
 // const MQueue = require("@mqueue/queue");
@@ -57,37 +60,6 @@ const incomingQueue = new MQueue.Incoming(
 
 - [`@mqueue/multicast`][]: Multi-queue simultaneous publishing/consumption
   strategy
-
-## Compatibility
-
-[Why might you need a Message Queue?](https://blog.bytebytego.com/p/why-do-we-need-a-message-queue)
-
-- **NodeJS** v18+, tested on v22+
-
-| Queue Platform                                | Queue Adapter                     |
-| --------------------------------------------- | --------------------------------- |
-| Apache ActiveMQ (AMQP v1.0)                   | [`@mqueue/rhea`][]                |
-| Apache ActiveMQ (MQTT)                        | [`@mqueue/mqtt`][]                |
-| Apache ActiveMQ (STOMP)                       | [`@mqueue/stompjs`][]             |
-| Apache Kafka                                  | [`@mqueue/kafkajs`][]             |
-| AWS Simple Queue Service (SQS)                | [`@mqueue/sqs`][]                 |
-| Azure Service Bus                             | [`@mqueue/azure-service-bus`][]   |
-| Azure Service Bus (AMQP v1.0) [^1]            | [`@mqueue/rhea`][]                |
-| Eclipe Mosquitto                              | [`@mqueue/mqtt`][]                |
-| ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]                 |
-| EMQX (MQTT)                                   | [`@mqueue/mqtt`][]                |
-| Fastq                                         | [`@mqueue/fastq`][]               |
-| Google Cloud Pub/Sub                          | [`@mqueue/google-cloud-pubsub`][] |
-| HiveMQ (MQTT)                                 | [`@mqueue/mqtt`][]                |
-| RabbitMQ (AMQP v0.9.1)                        | [`@mqueue/amqplib`][]             |
-| RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]                |
-| RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]                |
-| RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]             |
-| IBM MQ (AMQP v1.0)                            | [`@mqueue/rhea`][]                |
-
-[^1]:
-    Better authentication integration may be achieved with Azure Service bus by
-    using [`@mqueue/azure-service-bus`][] instead of [`@mqueue/rhea`][].
 
 ## Credit
 
