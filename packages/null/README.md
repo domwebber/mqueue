@@ -10,6 +10,11 @@ npm install --save @mqueue/queue @mqueue/null
 ```
 
 ```ts
+import MQueue from "@mqueue/queue";
+// const MQueue = require("@mqueue/queue");
+import { NullQueue } from "@mqueue/null";
+// const { NullQueue } = require("@mqueue/null");
+
 const outgoingQueue = new MQueue.Outgoing(new NullQueue.Outgoing());
 
 outgoingQueue.sendMessage({

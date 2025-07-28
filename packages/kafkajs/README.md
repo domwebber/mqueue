@@ -12,6 +12,11 @@ npm install --save @mqueue/queue @mqueue/kafkajs
 ```
 
 ```ts
+import MQueue from "@mqueue/queue";
+// const MQueue = require("@mqueue/queue");
+import { KafkaQueue } from "@mqueue/kafkajs";
+// const { KafkaQueue } = require("@mqueue/kafkajs");
+
 const outgoingQueue = new MQueue.Outgoing(
   await KafkaQueue.Outgoing.connect("amqp://rabbitmq:5271", "queue-name"),
 );

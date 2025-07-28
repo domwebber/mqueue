@@ -10,6 +10,11 @@ npm install --save @mqueue/queue @mqueue/mqtt
 ```
 
 ```ts
+import MQueue from "@mqueue/queue";
+// const MQueue = require("@mqueue/queue");
+import { MqttQueue } from "@mqueue/mqtt";
+// const { MqttQueue } = require("@mqueue/mqtt");
+
 const outgoingQueue = new MQueue.Outgoing(
   await MqttQueue.Outgoing.connect("amqp://rabbitmq:5271", "queue-name"),
 );

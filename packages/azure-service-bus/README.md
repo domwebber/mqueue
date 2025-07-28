@@ -15,6 +15,11 @@ npm install --save @mqueue/queue @mqueue/azure-service-bus
 ```
 
 ```ts
+import MQueue from "@mqueue/queue";
+// const MQueue = require("@mqueue/queue");
+import { AzureServiceBusQueue } from "@mqueue/azure-service-bus";
+// const { AzureServiceBusQueue } = require("@mqueue/azure-service-bus");
+
 const outgoingQueue = new MQueue.Outgoing(
   await AzureServiceBusQueue.Outgoing.connect(
     "amqp://rabbitmq:5271",

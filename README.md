@@ -13,6 +13,9 @@ how to use a specific queue adapter, check out the README for that adapter under
 [Queue Adapters](#queue-adapters).
 
 ```ts
+import MQueue from "@mqueue/queue";
+// const MQueue = require("@mqueue/queue");
+
 const outgoingQueue = new MQueue.Outgoing(
   await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
 );
