@@ -16,7 +16,11 @@ import MQueue from "@mqueue/queue"; // or require("@mqueue/queue")
 import { SQSQueue } from "@mqueue/fastq"; // or require("@mqueue/fastq");
 
 const outgoingQueue = new MQueue.Outgoing(
-  await SQSQueue.Outgoing.connect("amqp://rabbitmq:5271", "queue-name"),
+  await SQSQueue.Outgoing.connect("/queue1", {
+    credentials: { accessKeyId: "x", secretAccessKey: "x" },
+    region: "elasticmq", // or applicable AWS region for SQS
+    endpoint: "http://elasticmq:9324",
+  }),
 );
 
 outgoingQueue.sendMessage({
@@ -29,7 +33,11 @@ outgoingQueue.sendMessage({
 // ...
 
 const incomingQueue = new MQueue.Incoming(
-  await SQSQueue.Incoming.connect("amqp://rabbitmq:5271", "queue-name"),
+  await SQSQueue.Incoming.connect("/queue1", {
+    credentials: { accessKeyId: "x", secretAccessKey: "x" },
+    region: "elasticmq", // or applicable AWS region for SQS
+    endpoint: "http://elasticmq:9324",
+  }),
 );
 
 // Start listening to the queue

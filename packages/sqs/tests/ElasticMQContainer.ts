@@ -77,6 +77,6 @@ export class StartedElasticMQContainer extends AbstractStartedContainer {
   }
 
   public getSQSUrl(): string {
-    return `http://${this.useAlias ? "activemq" : this.getHost()}:${this.getRestPort()}`;
+    return `http://${this.useAlias ? "elasticmq" : this.getHost()}:${this.getRestPort()}`;
   }
 }
