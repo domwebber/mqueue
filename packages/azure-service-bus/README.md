@@ -37,6 +37,15 @@ const incomingQueue = new MQueue.Incoming(
     "queue-name",
   ),
 );
+
+// Start listening to the queue
+await incomingQueue.consume(async (payload) => {
+  const topicOrQueueName = payload.transport.name;
+  const headers = payload.message.headers;
+  const data = await payload.message.json();
+  await payload.accept(); // or await payload.reject();
+  // ...
+});
 ```
 
 ## License

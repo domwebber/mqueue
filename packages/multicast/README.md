@@ -36,6 +36,15 @@ const incomingQueue = new MQueue.Incoming(
     await AmqplibIncomingQueue.connect("amqp://rabbitmq:5272", "queue-name2"),
   ]),
 );
+
+// Start listening to the queue
+await incomingQueue.consume(async (payload) => {
+  const topicOrQueueName = payload.transport.name;
+  const headers = payload.message.headers;
+  const data = await payload.message.json();
+  await payload.accept(); // or await payload.reject();
+  // ...
+});
 ```
 
 ## Filtering & Randomisation
@@ -66,6 +75,15 @@ const incomingQueue = new MQueue.Incoming(
   ]),
   { filter },
 );
+
+// Start listening to the queue
+await incomingQueue.consume(async (payload) => {
+  const topicOrQueueName = payload.transport.name;
+  const headers = payload.message.headers;
+  const data = await payload.message.json();
+  await payload.accept(); // or await payload.reject();
+  // ...
+});
 ```
 
 ## License
