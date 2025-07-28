@@ -74,6 +74,7 @@ const incomingQueue = new MQueue.Incoming(
 | ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]                 |
 | Fastq                                         | [`@mqueue/fastq`][]               |
 | Google Cloud Pub/Sub                          | [`@mqueue/google-cloud-pubsub`][] |
+| HiveMQ                                        | [`@mqueue/mqtt`][]                |
 | RabbitMQ (AMQP v0.9.1)                        | [`@mqueue/amqplib`][]             |
 | RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]                |
 | RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]                |
