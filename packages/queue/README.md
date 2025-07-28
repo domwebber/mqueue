@@ -29,6 +29,7 @@ const outgoingQueue = new MQueue.Outgoing(
   await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
 );
 
+// Send a message to the queue
 outgoingQueue.sendMessage({
   headers: {
     "Account-ID": "123",
@@ -41,6 +42,15 @@ outgoingQueue.sendMessage({
 const incomingQueue = new MQueue.Incoming(
   await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
 );
+
+// Start listening to the queue
+await incomingQueue.consume(async (payload) => {
+  const topicOrQueueName = payload.transport.name;
+  const headers = payload.message.headers;
+  const data = await payload.message.json();
+  await payload.accept(); // or await payload.reject();
+  // ...
+});
 ```
 
 ## Queue Adapters
@@ -85,33 +95,6 @@ const incomingQueue = new MQueue.Incoming(
 | RabbitMQ (with STOMP Plugin)                  | [`@mqueue/stompjs`][]             |
 | IBM MQ (AMQP v1.0)                            | [`@mqueue/rhea`][]                |
 
-[^1]:
-    Better authentication integration may be achieved with Azure Service bus by
-    using [`@mqueue/azure-service-bus`][] instead of [`@mqueue/rhea`][].
-
-[`@mqueue/queue`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md
-[`@mqueue/amqplib`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md
-[`@mqueue/sqs`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md
-[`@mqueue/rhea`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md
-[`@mqueue/azure-service-bus`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md
-[`@mqueue/mqtt`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/mqtt/README.md
-[`@mqueue/kafkajs`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/kafkajs/README.md
-[`@mqueue/stompjs`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/stompjs/README.md
-[`@mqueue/fastq`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/fastq/README.md
-[`@mqueue/google-cloud-pubsub`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/google-cloud-pubsub/README.md
-[`@mqueue/multicast`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
-
 ## Examples
 
 ```ts
@@ -146,9 +129,7 @@ import { SignatureHashHook } from "@mqueue/queue";
 
 const outgoingQueue = new MQueue.Outgoing(
   await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
-  {
-    onSend: [SignatureHashHook.outgoing()],
-  },
+  { onSend: [SignatureHashHook.outgoing()] },
 );
 
 outgoingQueue.sendMessage({
@@ -162,12 +143,37 @@ outgoingQueue.sendMessage({
 
 const incomingQueue = new MQueue.Incoming(
   await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
-  {
-    onReceipt: [SignatureHashHook.incoming()],
-  },
+  { onReceipt: [SignatureHashHook.incoming()] },
 );
 ```
 
 ## License
 
 [MIT © Dom Webber](./LICENSE)
+
+[^1]:
+    Better authentication integration may be achieved with Azure Service bus by
+    using [`@mqueue/azure-service-bus`][] instead of [`@mqueue/rhea`][].
+
+[`@mqueue/queue`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md
+[`@mqueue/amqplib`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md
+[`@mqueue/sqs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md
+[`@mqueue/rhea`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md
+[`@mqueue/azure-service-bus`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md
+[`@mqueue/mqtt`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/mqtt/README.md
+[`@mqueue/kafkajs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/kafkajs/README.md
+[`@mqueue/stompjs`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/stompjs/README.md
+[`@mqueue/fastq`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/fastq/README.md
+[`@mqueue/google-cloud-pubsub`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/google-cloud-pubsub/README.md
+[`@mqueue/multicast`]:
+  https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
