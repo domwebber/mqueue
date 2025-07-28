@@ -32,7 +32,9 @@ export default class SQSOutgoingQueue implements OutgoingQueueAdapter {
     });
   }
 
-  public async close() {}
+  public async close() {
+    this.client.destroy();
+  }
 
   public async sendMessage(message: QueueMessage): Promise<void> {
     const messageAttributes: Record<string, MessageAttributeValue> = {};

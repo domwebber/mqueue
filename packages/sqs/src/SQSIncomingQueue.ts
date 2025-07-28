@@ -52,6 +52,7 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
 
   public async close() {
     this._consumer.stop();
+    this.client.destroy();
   }
 
   protected async _handleMessage(
