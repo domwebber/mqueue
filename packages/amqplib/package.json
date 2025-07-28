@@ -8,7 +8,7 @@
     "Dom Webber <dom.webber@hotmail.com>"
   ],
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "files": [
     "dist"
@@ -23,10 +23,6 @@
       "import": {
         "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
       }
     }
   },
@@ -36,7 +32,7 @@
     "directory": "packages/amqplib"
   },
   "scripts": {
-    "build": "tsup src/index.ts --no-config --dts --format esm,cjs --cjsInterop --minify --sourcemap --splitting --treeshake",
+    "build": "tsup src/index.ts --no-config --dts --format esm --cjsInterop --minify --sourcemap --splitting --treeshake",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test --test-reporter=spec tests/**/*.test.ts tests/*.test.ts",
     "lint:publint": "publint"
