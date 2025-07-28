@@ -10,8 +10,8 @@ npm install --save @mqueue/queue @mqueue/fastq
 ```
 
 ```ts
-const fastq = new FastqQueue.Outgoing();
-const outgoingQueue = new MQueue.Outgoing(fastq);
+const incomingQueue = new FastqQueue.Incoming(1);
+const outgoingQueue = new FastqQueue.Outgoing(incomingQueue.queue);
 
 outgoingQueue.sendMessage({
   headers: {
@@ -22,7 +22,9 @@ outgoingQueue.sendMessage({
 
 // ...
 
-const incomingQueue = new MQueue.Incoming(new FastqQueue.Incoming(fastq));
+await incomingQueue.consume(async (payload) => {
+  // ...
+});
 ```
 
 ## Compatibility

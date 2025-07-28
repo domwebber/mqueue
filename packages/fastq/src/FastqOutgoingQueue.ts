@@ -15,6 +15,7 @@ export default class FastqOutgoingQueue implements OutgoingQueueAdapter {
   }
 
   public async close() {
+    this.queue.pause();
     this.queue.kill();
   }
 
