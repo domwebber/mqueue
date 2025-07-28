@@ -6,6 +6,7 @@ import PubSubOutgoingQueue from "../src/PubSubOutgoingQueue.js";
 import { QueueMessage } from "@mqueue/queue";
 import PubSubIncomingQueue from "../src/PubSubIncomingQueue.js";
 
+const projectId = "tokyo-rain-123";
 const timeout = 180_000;
 const topic = "some-topic";
 describe("PubSubQueue", { timeout }, () => {
@@ -34,6 +35,7 @@ describe("PubSubQueue", { timeout }, () => {
         {
           apiEndpoint: container.getEndpoint(),
           emulatorMode: true,
+          projectId,
         },
         // container.getASBUrl(),
         topic,
@@ -55,6 +57,7 @@ describe("PubSubQueue", { timeout }, () => {
           {
             apiEndpoint: container.getEndpoint(),
             emulatorMode: true,
+            projectId,
           },
           topic,
         );
@@ -88,6 +91,7 @@ describe("PubSubQueue", { timeout }, () => {
           {
             apiEndpoint: container.getEndpoint(),
             emulatorMode: true,
+            projectId,
           },
           topic,
         );
@@ -96,6 +100,7 @@ describe("PubSubQueue", { timeout }, () => {
           {
             apiEndpoint: container.getEndpoint(),
             emulatorMode: true,
+            projectId,
           },
           topic,
           "subscription-123",
