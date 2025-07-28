@@ -107,12 +107,12 @@ const isProduction = process.env.NODE_ENV === "production";
 
 const outgoingQueue = new MQueue.Outgoing(
   isProduction
-    ? await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name")
-    : await SQSOutgoingQueue.connect("/queue1", {
+    ? await SQSOutgoingQueue.connect("/queue1", {
         credentials: { accessKeyId: "x", secretAccessKey: "x" },
         region: "elasticmq", // or applicable AWS region for SQS
         endpoint: "http://elasticmq:9324",
-      }),
+      })
+    : await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
 );
 
 outgoingQueue.sendMessage({
@@ -126,12 +126,12 @@ outgoingQueue.sendMessage({
 
 const incomingQueue = new MQueue.Incoming(
   isProduction
-    ? await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name")
-    : await SQSIncomingQueue.connect("/queue1", {
+    ? await SQSIncomingQueue.connect("/queue1", {
         credentials: { accessKeyId: "x", secretAccessKey: "x" },
         region: "elasticmq", // or applicable AWS region for SQS
         endpoint: "http://elasticmq:9324",
-      }),
+      })
+    : await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
 );
 ```
 
