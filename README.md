@@ -24,9 +24,7 @@ const outgoingQueue = new MQueue.Outgoing(
 );
 
 outgoingQueue.sendMessage({
-  headers: {
-    "Account-ID": "123",
-  },
+  headers: { "Account-ID": "123" },
   body: "...",
 });
 
