@@ -72,9 +72,10 @@ const incomingQueue = new MQueue.Incoming(
 | Azure Service Bus (AMQP v1.0) [^1]            | [`@mqueue/rhea`][]                |
 | Eclipe Mosquitto                              | [`@mqueue/mqtt`][]                |
 | ElasticMQ (SQS-Compatible)                    | [`@mqueue/sqs`][]                 |
+| EMQX (MQTT)                                   | [`@mqueue/mqtt`][]                |
 | Fastq                                         | [`@mqueue/fastq`][]               |
 | Google Cloud Pub/Sub                          | [`@mqueue/google-cloud-pubsub`][] |
-| HiveMQ                                        | [`@mqueue/mqtt`][]                |
+| HiveMQ (MQTT)                                 | [`@mqueue/mqtt`][]                |
 | RabbitMQ (AMQP v0.9.1)                        | [`@mqueue/amqplib`][]             |
 | RabbitMQ (AMQP v1.0 or with AMQP v1.0 Plugin) | [`@mqueue/rhea`][]                |
 | RabbitMQ (with MQTT Plugin)                   | [`@mqueue/mqtt`][]                |
