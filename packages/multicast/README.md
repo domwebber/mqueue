@@ -50,10 +50,8 @@ await incomingQueue.consume(async (payload) => {
 ## Filtering & Randomisation
 
 ```ts
-import MQueue from "@mqueue/queue";
-// const MQueue = require("@mqueue/queue");
-import { MulticastQueue } from "@mqueue/multicast";
-// const { MulticastQueue } = require("@mqueue/multicast");
+import MQueue from "@mqueue/queue"; // or require("@mqueue/queue");
+import { MulticastQueue } from "@mqueue/multicast"; // or require("@mqueue/multicast");
 
 // Select one random adapter (for example)
 const filter = (adapters) => [adapters[randomInt(adapters.length)]];

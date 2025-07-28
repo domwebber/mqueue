@@ -10,10 +10,8 @@ npm install --save @mqueue/queue @mqueue/stompjs
 ```
 
 ```ts
-import MQueue from "@mqueue/queue";
-// const MQueue = require("@mqueue/queue");
-import { StompQueue } from "@mqueue/stompjs";
-// const { StompQueue } = require("@mqueue/stompjs");
+import MQueue from "@mqueue/queue"; // or require("@mqueue/queue");
+import { StompQueue } from "@mqueue/stompjs"; // or require("@mqueue/stompjs");
 
 const outgoingQueue = new MQueue.Outgoing(
   await StompQueue.Outgoing.connect("amqp://rabbitmq:5271", "queue-name"),

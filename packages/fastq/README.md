@@ -10,10 +10,8 @@ npm install --save @mqueue/queue @mqueue/fastq
 ```
 
 ```ts
-import MQueue from "@mqueue/queue";
-// const MQueue = require("@mqueue/queue");
-import { FastqQueue } from "@mqueue/fastq";
-// const { FastqQueue } = require("@mqueue/fastq");
+import MQueue from "@mqueue/queue"; // or require("@mqueue/queue")
+import { FastqQueue } from "@mqueue/fastq"; // or require("@mqueue/fastq")
 
 const incomingQueue = new FastqQueue.Incoming(1);
 const outgoingQueue = new FastqQueue.Outgoing(incomingQueue.queue);

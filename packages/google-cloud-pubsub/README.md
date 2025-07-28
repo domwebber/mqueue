@@ -11,10 +11,8 @@ npm install --save @mqueue/queue @mqueue/google-cloud-pubsub
 ```
 
 ```ts
-import MQueue from "@mqueue/queue";
-// const MQueue = require("@mqueue/queue");
-import { PubSubQueue } from "@mqueue/google-cloud-pubsub";
-// const { PubSubQueue } = require("@mqueue/google-cloud-pubsub");
+import MQueue from "@mqueue/queue"; // or require("@mqueue/queue");
+import { PubSubQueue } from "@mqueue/google-cloud-pubsub"; // or require("@mqueue/google-cloud-pubsub");
 
 const outgoingQueue = new MQueue.Outgoing(
   await PubSubQueue.Outgoing.connect(...),

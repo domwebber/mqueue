@@ -25,8 +25,7 @@ npm install --save @mqueue/fastq
 ```
 
 ```ts
-import MQueue from "@mqueue/queue";
-// const MQueue = require("@mqueue/queue");
+import MQueue from "@mqueue/queue"; // or require("@mqueue/queue");
 
 const outgoingQueue = new MQueue.Outgoing(
   await AmqplibOutgoingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
