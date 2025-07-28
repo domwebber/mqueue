@@ -1,6 +1,6 @@
 {
   "name": "@mqueue/google-cloud-pubsub",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "type": "module",
   "description": "MQueue adapter for Google Cloud Pub/Sub",
   "author": "Dom Webber <dom.webber@hotmail.com>",
