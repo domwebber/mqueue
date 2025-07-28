@@ -1,7 +1,6 @@
 import MQueue from "./MQueue.js";
 
 export default MQueue;
-export { MQueue };
 export * from "./Adapter/IncomingQueueAdapter.js";
 export { type default as IncomingQueueAdapter } from "./Adapter/IncomingQueueAdapter.js";
 export * from "./MQueue.js";
