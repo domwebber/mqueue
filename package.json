@@ -29,9 +29,7 @@
     "tsx": "^4.20.3",
     "turbo": "^2.5.4",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.34.1"
-  },
-  "dependencies": {
+    "typescript-eslint": "^8.34.1",
     "@changesets/changelog-github": "^0.5.1"
   }
 }
