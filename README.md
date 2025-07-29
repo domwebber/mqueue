@@ -1,5 +1,10 @@
 # mqueue (Multi-Queue)
 
+[![npm (scoped)][]][sdk-npmjs]
+
+[npm (scoped)]: https://img.shields.io/npm/v/%40mqueue/queue
+[sdk-npmjs]: https://www.npmjs.com/package/@mqueue/queue
+
 Simple queue interface with support for multiple backends. Keep your options
 open.
 
