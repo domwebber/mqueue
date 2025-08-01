@@ -27,7 +27,7 @@
     "prettier": "^3.5.3",
     "publint": "^0.3.12",
     "tsx": "^4.20.3",
-    "turbo": "^2.5.4",
+    "turbo": "^2.5.5",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.34.1",
     "@changesets/changelog-github": "^0.5.1"
