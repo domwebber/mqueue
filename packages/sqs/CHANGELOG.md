@@ -1,5 +1,13 @@
 # @mqueue/sqs
 
+## 1.0.1
+
+### Patch Changes
+
+- [`273446e`](https://github.com/domwebber/mqueue/commit/273446e2c26b1f63a177a504fbe52d9f2bc5114d)
+  Thanks [@domwebber](https://github.com/domwebber)! - Update
+  `@aws-sdk/client-sqs` to `v3.859.0`
+
 ## 1.0.0
 
 ### Major Changes

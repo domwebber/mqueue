@@ -1,5 +1,13 @@
 # @mqueue/kafkajs
 
+## 1.0.1
+
+### Patch Changes
+
+- [`b099ec1`](https://github.com/domwebber/mqueue/commit/b099ec1b1d503b805cc4d202d2da7e2d164c4acb)
+  Thanks [@domwebber](https://github.com/domwebber)! - Move
+  `@testcontainers/kafka` to devDependencies and update to `v11.5.0`
+
 ## 1.0.0
 
 ### Major Changes
