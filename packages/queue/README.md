@@ -101,6 +101,8 @@ await incomingQueue.consume(async (payload) => {
 
 ## Examples
 
+**Instantiation**:
+
 ```ts
 // Example: Switching between AMQP v0.9.1 and SQS for development and production
 const isProduction = process.env.NODE_ENV === "production";
@@ -134,6 +136,8 @@ const incomingQueue = new MQueue.Incoming(
     : await AmqplibIncomingQueue.connect("amqp://rabbitmq:5271", "queue-name"),
 );
 ```
+
+**Hash Header Verification**:
 
 ```ts
 // Adding digital signature verification
