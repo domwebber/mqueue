@@ -18,8 +18,8 @@ importers:
         specifier: ^9.29.0
         version: 9.32.0
       '@types/node':
-        specifier: ^24.0.3
-        version: 24.1.0
+        specifier: ^24.2.0
+        version: 24.2.0
       eslint:
         specifier: ^9.32.0
         version: 9.32.0
@@ -1234,11 +1234,8 @@ packages:
   '@types/node@18.19.121':
     resolution: {integrity: sha512-bHOrbyztmyYIi4f1R0s17QsPs1uyyYnGcXeZoGEd227oZjry0q6XQBQxd82X1I57zEfwO8h9Xo+Kl5gX1d9MwQ==}
 
-  '@types/node@24.0.3':
-    resolution: {integrity: sha512-R4I/kzCYAdRLzfiCabn9hxWfbuHS573x+r0dJMkkzThEa7pbrcDWK+9zu3e7aBOouf+rQAciqPFMnxwr0aWgKg==}
-
-  '@types/node@24.1.0':
-    resolution: {integrity: sha512-ut5FthK5moxFKH2T1CUOC6ctR67rQRvvHdFLCD2Ql6KXmMuCrjsSsRI9UsLCm9M18BMwClv4pn327UvB7eeO1w==}
+  '@types/node@24.2.0':
+    resolution: {integrity: sha512-3xyG3pMCq3oYCNg7/ZP+E1ooTaGB4cG8JWRsqqOYQdbWNY4zbaV0Ennrd7stjiJEFZCaybcIgpTjJWHRfBSIDw==}
 
   '@types/readable-stream@4.0.21':
     resolution: {integrity: sha512-19eKVv9tugr03IgfXlA9UVUVRbW6IuqRO5B92Dl4a6pT7K8uaGrNS0GkxiZD0BOk6PLuXl5FhWl//eX/pzYdTQ==}
@@ -2817,8 +2814,8 @@ packages:
   undici-types@5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
 
-  undici-types@7.8.0:
-    resolution: {integrity: sha512-9UJ2xGDvQ43tYyVMpuHlsgApydB8ZKfVYTsLDhXkFL/6gfkp+U8xTGdh8pMJv1SpZna0zxG1DwsKZsreLbXBxw==}
+  undici-types@7.10.0:
+    resolution: {integrity: sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag==}
 
   undici@7.13.0:
     resolution: {integrity: sha512-l+zSMssRqrzDcb3fjMkjjLGmuiiK2pMIcV++mJaAc9vhjSGpvM7h43QgP+OAMb1GImHmbPyG2tBXeuyG5iY4gA==}
@@ -4181,19 +4178,19 @@ snapshots:
 
   '@types/amqplib@0.10.7':
     dependencies:
-      '@types/node': 24.0.3
+      '@types/node': 24.2.0
 
   '@types/caseless@0.12.5': {}
 
   '@types/docker-modem@3.0.6':
     dependencies:
-      '@types/node': 24.1.0
+      '@types/node': 24.2.0
       '@types/ssh2': 1.15.5
 
   '@types/dockerode@3.3.42':
     dependencies:
       '@types/docker-modem': 3.0.6
-      '@types/node': 24.1.0
+      '@types/node': 24.2.0
       '@types/ssh2': 1.15.5
 
   '@types/estree@1.0.7': {}
@@ -4202,7 +4199,7 @@ snapshots:
 
   '@types/is-buffer@2.0.2':
     dependencies:
-      '@types/node': 24.1.0
+      '@types/node': 24.2.0
 
   '@types/json-schema@7.0.15': {}
 
@@ -4212,32 +4209,28 @@ snapshots:
     dependencies:
       undici-types: 5.26.5
 
-  '@types/node@24.0.3':
+  '@types/node@24.2.0':
     dependencies:
-      undici-types: 7.8.0
-
-  '@types/node@24.1.0':
-    dependencies:
-      undici-types: 7.8.0
+      undici-types: 7.10.0
 
   '@types/readable-stream@4.0.21':
     dependencies:
-      '@types/node': 24.1.0
+      '@types/node': 24.2.0
 
   '@types/request@2.48.12':
     dependencies:
       '@types/caseless': 0.12.5
-      '@types/node': 24.1.0
+      '@types/node': 24.2.0
       '@types/tough-cookie': 4.0.5
       form-data: 2.5.5
 
   '@types/ssh2-streams@0.1.12':
     dependencies:
-      '@types/node': 24.1.0
+      '@types/node': 24.2.0
 
   '@types/ssh2@0.5.52':
     dependencies:
-      '@types/node': 24.1.0
+      '@types/node': 24.2.0
       '@types/ssh2-streams': 0.1.12
 
   '@types/ssh2@1.15.5':
@@ -4248,7 +4241,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 24.0.3
+      '@types/node': 24.2.0
 
   '@typescript-eslint/eslint-plugin@8.38.0(@typescript-eslint/parser@8.38.0(eslint@9.32.0)(typescript@5.9.2))(eslint@9.32.0)(typescript@5.9.2)':
     dependencies:
@@ -5492,7 +5485,7 @@ snapshots:
       '@protobufjs/path': 1.1.2
       '@protobufjs/pool': 1.1.0
       '@protobufjs/utf8': 1.1.0
-      '@types/node': 24.1.0
+      '@types/node': 24.2.0
       long: 5.3.2
 
   publint@0.3.12:
@@ -5966,7 +5959,7 @@ snapshots:
 
   undici-types@5.26.5: {}
 
-  undici-types@7.8.0: {}
+  undici-types@7.10.0: {}
 
   undici@7.13.0: {}
 
