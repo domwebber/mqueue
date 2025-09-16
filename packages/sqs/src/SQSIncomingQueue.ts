@@ -58,7 +58,8 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
   protected async _handleMessage(
     message: AWS.Message,
   ): Promise<AWS.Message | void> {
-    if (!message.Body) {
+    const body = message.Body;
+    if (!body) {
       throw new Error("Received message with no body");
     }
 
@@ -89,22 +90,27 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
       }
     }
 
-    await this._callback?.({
-      // raw: message,
-      accept: async () => {
-        await this.client.deleteMessage({
-          QueueUrl: this._queueURL,
-          ReceiptHandle: message.ReceiptHandle,
-        });
-      },
-      reject: async () => {},
-      transport: {
-        name: this._queueURL,
-      },
-      message: {
-        headers,
-        body: Buffer.from(message.Body),
-      },
+    return new Promise<AWS.Message | undefined>((resolve, reject) => {
+      this._callback?.({
+        // raw: message,
+        accept: async () => {
+          resolve(message);
+          await this.client.deleteMessage({
+            QueueUrl: this._queueURL,
+            ReceiptHandle: message.ReceiptHandle,
+          });
+        },
+        reject: async () => {
+          reject();
+        },
+        transport: {
+          name: this._queueURL,
+        },
+        message: {
+          headers,
+          body: Buffer.from(body),
+        },
+      });
     });
   }
 
