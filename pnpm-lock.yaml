@@ -298,8 +298,8 @@ importers:
         specifier: ^3.859.0
         version: 3.883.0
       sqs-consumer:
-        specifier: ^12.0.0
-        version: 12.0.0(@aws-sdk/client-sqs@3.883.0)
+        specifier: ^13.0.0
+        version: 13.0.0(@aws-sdk/client-sqs@3.883.0)
     devDependencies:
       '@mqueue/queue':
         specifier: workspace:*
@@ -2604,11 +2604,11 @@ packages:
   sprintf-js@1.1.3:
     resolution: {integrity: sha512-Oo+0REFV59/rz3gfJNKQiBlwfHaSESl1pcGyABQsnnIfWOFt6JNj5gCog2U6MLZ//IGYD+nA8nI+mTShREReaA==}
 
-  sqs-consumer@12.0.0:
-    resolution: {integrity: sha512-UHav6VbrAyZaocmC0D7N1HDldw81lfT3MJMSMZB7EvAG2/OMNdeW2aU0RKiK9qkJkKgRl5XrLFhdgYiztT4RMQ==}
+  sqs-consumer@13.0.0:
+    resolution: {integrity: sha512-9wr6rXJym9MSw6s5b83tlul/HxqECgroinR2ZhVGAm3jv+OPzEhQtKwyVkSy8VO+wCYB87A8HDAmP9ZUNHsdLw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
-      '@aws-sdk/client-sqs': ^3.723.0
+      '@aws-sdk/client-sqs': ^3.876.0
 
   ssh-remote-port-forward@1.0.4:
     resolution: {integrity: sha512-x0LV1eVDwjf1gmG7TTnfqIzf+3VPRz7vrNIjX6oYLbeCrf/PeVY6hkT68Mg+q02qXxQhrLjB0jfgvhevoCRmLQ==}
@@ -5727,7 +5727,7 @@ snapshots:
 
   sprintf-js@1.1.3: {}
 
-  sqs-consumer@12.0.0(@aws-sdk/client-sqs@3.883.0):
+  sqs-consumer@13.0.0(@aws-sdk/client-sqs@3.883.0):
     dependencies:
       '@aws-sdk/client-sqs': 3.883.0
       debug: 4.4.1
