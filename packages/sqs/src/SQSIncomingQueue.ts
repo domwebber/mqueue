@@ -90,28 +90,32 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
       }
     }
 
-    return new Promise<AWS.Message | undefined>((resolve, reject) => {
-      this._callback?.({
-        // raw: message,
-        accept: async () => {
-          resolve(message);
-          await this.client.deleteMessage({
-            QueueUrl: this._queueURL,
-            ReceiptHandle: message.ReceiptHandle,
-          });
-        },
-        reject: async () => {
-          reject();
-        },
-        transport: {
-          name: this._queueURL,
-        },
-        message: {
-          headers,
-          body: Buffer.from(body),
-        },
-      });
+    let isAccepted = false;
+    await this._callback?.({
+      // raw: message,
+      accept: async () => {
+        isAccepted = true;
+      },
+      reject: async () => {},
+      transport: {
+        name: this._queueURL,
+      },
+      message: {
+        headers,
+        body: Buffer.from(body),
+      },
     });
+
+    if (isAccepted) {
+      await this.client.deleteMessage({
+        QueueUrl: this._queueURL,
+        ReceiptHandle: message.ReceiptHandle,
+      });
+
+      return message;
+    }
+
+    // Void treated as rejection
   }
 
   public async consume(
