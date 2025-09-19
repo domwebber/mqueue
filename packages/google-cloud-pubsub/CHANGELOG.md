@@ -1,5 +1,13 @@
 # @mqueue/pubsub
 
+## 1.0.1
+
+### Patch Changes
+
+- [`1158d95`](https://github.com/domwebber/mqueue/commit/1158d950bcd174d82056f96c12f624f27a72c078)
+  Thanks [@domwebber](https://github.com/domwebber)! - Update
+  `@google-cloud/pubsub` to `v5.2.0`
+
 ## 1.0.0
 
 ### Major Changes

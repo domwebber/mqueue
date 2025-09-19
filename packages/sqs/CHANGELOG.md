@@ -1,5 +1,23 @@
 # @mqueue/sqs
 
+## 2.0.0
+
+### Major Changes
+
+- [`cccf217`](https://github.com/domwebber/mqueue/commit/cccf217762e04d18429a22f14be448d67d2f4de4)
+  Thanks [@domwebber](https://github.com/domwebber)! - BREAKING: Update
+  `sqs-consumer` to `v13.0.0`
+
+### Minor Changes
+
+- [`99f7ba0`](https://github.com/domwebber/mqueue/commit/99f7ba095d21b0a37ddd7321adfeeeffd33b0e7f)
+  Thanks [@domwebber](https://github.com/domwebber)! - Add `batchSize` option to
+  SQSIncomingQueue options
+
+- [`5db4610`](https://github.com/domwebber/mqueue/commit/5db46101b86d3161f6d107717dcdc59ab045eef7)
+  Thanks [@domwebber](https://github.com/domwebber)! - Add `beforeSend` hook to
+  SQSOutgoingQueue
+
 ## 1.0.1
 
 ### Patch Changes
