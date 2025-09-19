@@ -2,28 +2,42 @@ import { OutgoingQueueAdapter, QueueMessage } from "@mqueue/queue";
 import { MessageAttributeValue } from "@aws-sdk/client-sqs";
 import * as AWS from "@aws-sdk/client-sqs";
 
+export type SQSOutgoingQueueBeforeSendHook = (
+  request: AWS.SendMessageRequest,
+) => Promise<AWS.SendMessageRequest> | AWS.SendMessageRequest;
+
 export interface SQSOutgoingQueueConnectOptions {
   sdk?: typeof AWS;
   clientConfig?: AWS.SQSClientConfig;
+  beforeSend?: SQSOutgoingQueueBeforeSendHook;
 }
 
 export default class SQSOutgoingQueue implements OutgoingQueueAdapter {
   public type = "sqs";
 
+  protected _beforeSend?: SQSOutgoingQueueBeforeSendHook;
+
   constructor(
     public client: AWS.SQS,
     protected _queueURL: string,
-  ) {}
+    { beforeSend }: { beforeSend?: SQSOutgoingQueueBeforeSendHook } = {},
+  ) {
+    this._beforeSend = beforeSend;
+  }
 
   public static async connect(
     url: string,
-    { clientConfig, sdk = AWS }: SQSOutgoingQueueConnectOptions = {},
+    {
+      clientConfig,
+      sdk = AWS,
+      beforeSend,
+    }: SQSOutgoingQueueConnectOptions = {},
   ) {
     const connection = new sdk.SQS({
       ...clientConfig,
     });
 
-    return new this(connection, url);
+    return new this(connection, url, { beforeSend });
   }
 
   public async healthcheck() {
@@ -53,10 +67,16 @@ export default class SQSOutgoingQueue implements OutgoingQueueAdapter {
       };
     }
 
-    await this.client.sendMessage({
+    let options: AWS.SendMessageRequest = {
       QueueUrl: this._queueURL,
       MessageBody: message.body.toString(),
       MessageAttributes: messageAttributes,
-    });
+    };
+
+    if (this._beforeSend) {
+      options = await this._beforeSend(options);
+    }
+
+    await this.client.sendMessage(options);
   }
 }
