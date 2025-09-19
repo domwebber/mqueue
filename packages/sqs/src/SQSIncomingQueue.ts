@@ -6,7 +6,11 @@ import {
 } from "@mqueue/queue";
 import { Consumer } from "sqs-consumer";
 
-export interface SQSIncomingQueueConnectOptions {
+export interface InternalSQSIncomingQueueConnectOptions {
+  batchSize?: number;
+}
+export interface SQSIncomingQueueConnectOptions
+  extends InternalSQSIncomingQueueConnectOptions {
   sdk?: typeof AWS;
   clientConfig?: AWS.SQSClientConfig;
 }
@@ -20,6 +24,7 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
   constructor(
     public client: AWS.SQS,
     protected _queueURL: string,
+    protected _options: InternalSQSIncomingQueueConnectOptions = {},
   ) {
     this._consumer = Consumer.create({
       extendedAWSErrors: true,
@@ -27,7 +32,7 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
       sqs: this.client,
       attributeNames: ["All"],
       messageAttributeNames: ["All"],
-      batchSize: 10,
+      batchSize: this._options.batchSize,
       // waitTimeSeconds: 20,
       handleMessage: async (message) => this._handleMessage(message),
     });
@@ -35,13 +40,17 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
 
   public static async connect(
     url: string,
-    { clientConfig, sdk = AWS }: SQSIncomingQueueConnectOptions = {},
+    {
+      clientConfig,
+      sdk = AWS,
+      ...options
+    }: SQSIncomingQueueConnectOptions = {},
   ) {
     const connection = new sdk.SQS({
       ...clientConfig,
     });
 
-    return new this(connection, url);
+    return new this(connection, url, options);
   }
 
   public async healthcheck() {
