@@ -1,6 +1,6 @@
 {
   "name": "@mqueue/amqplib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "MQueue adapter for amqplib AMQP v0.9.1",
   "author": "Dom Webber <dom.webber@hotmail.com>",

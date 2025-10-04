@@ -1,6 +1,6 @@
 {
   "name": "@mqueue/null",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "description": "Dead-end/testing MQueue adapter",
   "author": "Dom Webber <dom.webber@hotmail.com>",

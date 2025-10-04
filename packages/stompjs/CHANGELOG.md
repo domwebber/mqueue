@@ -1,5 +1,24 @@
 # @mqueue/stompjs
 
+## 1.0.1
+
+### Patch Changes
+
+- [`505501d`](https://github.com/domwebber/mqueue/commit/505501db28a292c8538998e988e542ac984cfbbb)
+  Thanks [@domwebber](https://github.com/domwebber)! - Update dependencies:
+  - `ws`
+  - `@stomp/stompjs`
+
+- [`505501d`](https://github.com/domwebber/mqueue/commit/505501db28a292c8538998e988e542ac984cfbbb)
+  Thanks [@domwebber](https://github.com/domwebber)! - Update dependencies:
+  - testcontainers
+  - tsx
+  - typescript
+
+- Updated dependencies
+  [[`505501d`](https://github.com/domwebber/mqueue/commit/505501db28a292c8538998e988e542ac984cfbbb)]:
+  - @mqueue/queue@1.0.1
+
 ## 1.0.0
 
 ### Major Changes

@@ -1,5 +1,15 @@
 # @mqueue/queue
 
+## 1.0.1
+
+### Patch Changes
+
+- [`505501d`](https://github.com/domwebber/mqueue/commit/505501db28a292c8538998e988e542ac984cfbbb)
+  Thanks [@domwebber](https://github.com/domwebber)! - Update dependencies:
+  - testcontainers
+  - tsx
+  - typescript
+
 ## 1.0.0
 
 ### Major Changes
