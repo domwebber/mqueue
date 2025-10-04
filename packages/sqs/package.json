@@ -55,7 +55,7 @@
     "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@aws-sdk/client-sqs": "^3.893.0",
+    "@aws-sdk/client-sqs": "^3.901.0",
     "sqs-consumer": "^14.0.0"
   }
 }
