@@ -30,7 +30,10 @@ export default class KafkaIncomingQueue implements IncomingQueueAdapter {
     return new this(consumer, topic);
   }
 
-  public async healthcheck(): Promise<void> {}
+  public async healthcheck(): Promise<void> {
+    // See: https://github.com/tulios/kafkajs/issues/452
+    // And: https://github.com/tulios/kafkajs/issues/591
+  }
 
   public async close(): Promise<void> {
     await this.client.disconnect();
