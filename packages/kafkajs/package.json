@@ -51,8 +51,8 @@
     "testcontainers": "^11.0.3",
     "@testcontainers/kafka": "^11.7.1",
     "tsup": "^8.5.0",
-    "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "kafkajs": "^2.2.4"

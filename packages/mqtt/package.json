@@ -50,10 +50,10 @@
     "publint": "^0.3.12",
     "testcontainers": "^11.7.1",
     "tsup": "^8.5.0",
-    "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "mqtt": "^5.13.1"
+    "mqtt": "^5.14.1"
   }
 }

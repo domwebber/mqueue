@@ -51,11 +51,11 @@
     "publint": "^0.3.12",
     "testcontainers": "^11.7.1",
     "tsup": "^8.5.0",
-    "tsx": "^4.20.3",
-    "typescript": "^5.8.3"
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@aws-sdk/client-sqs": "^3.893.0",
+    "@aws-sdk/client-sqs": "^3.901.0",
     "sqs-consumer": "^14.0.0"
   }
 }
