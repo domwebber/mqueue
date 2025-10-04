@@ -1,6 +1,6 @@
 {
   "name": "@mqueue/sqs",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "description": "MQueue adapter for Amazon Web Services Simple Queue Service",
   "author": "Dom Webber <dom.webber@hotmail.com>",
