@@ -56,6 +56,6 @@
   },
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.901.0",
-    "sqs-consumer": "^14.0.0"
+    "sqs-consumer": "^14.0.1"
   }
 }
