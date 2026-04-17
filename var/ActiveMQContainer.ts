@@ -7,12 +7,12 @@ import type { StartedTestContainer } from "testcontainers";
 
 export default class ActiveMQContainer extends GenericContainer {
   public static WEB_CONSOLE_PORT = 8161;
-  public static TCP_PORT = 61616;
+  public static TCP_PORT = 61_616;
   public static HORNETQ_STOMP_PORT = 5445;
   public static AMQP_PORT = 5672;
-  public static STOMP_PORT = 61613;
+  public static STOMP_PORT = 61_613;
   public static MQTT_PORT = 1883;
-  public static WS_PORT = 61614;
+  public static WS_PORT = 61_614;
 
   public static DEFAULT_USER = "guest";
   public static DEFAULT_PASSWORD = "guest";

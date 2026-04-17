@@ -7,6 +7,7 @@
     "changeset": "changeset",
     "build": "tsdown -W",
     "fix": "pnpm run /^fix:.*/",
+    "fix:eslint": "eslint . --fix",
     "fix:prettier": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "test": "turbo test",

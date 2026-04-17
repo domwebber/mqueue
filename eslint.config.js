@@ -15,9 +15,6 @@ export default defineConfig([
       globals: { ...globals.browser, ...globals.node },
     },
     rules: {
-      "formatjs/no-offset": "error",
-      "formatjs/enforce-description": "warn",
-
       // "unicorn/prefer-top-level-await": "off",
       "unicorn/filename-case": "off",
       "unicorn/custom-error-definition": "off",

@@ -55,14 +55,17 @@ export default class OutgoingQueue {
 
   /** Assert that MQueue is connected under-the-hood */
   public async healthcheck(): Promise<void> {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     await resolveHooks(this.on.healthcheck, undefined);
     return this.adapter.healthcheck();
   }
 
   /** Close the queue connection */
   public async close(): Promise<void> {
+    // eslint-disable-next-line unicorn/no-useless-undefined
     await resolveHooks(this.on.beforeClose, undefined);
     this.adapter.close();
+    // eslint-disable-next-line unicorn/no-useless-undefined
     await resolveHooks(this.on.afterClose, undefined);
   }
 

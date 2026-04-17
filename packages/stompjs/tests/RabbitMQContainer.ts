@@ -18,8 +18,8 @@ export default class RabbitMQContainer extends GenericContainer {
     this.withExposedPorts(
       RabbitMQContainer.AMQP_PORT,
       RabbitMQContainer.AMQPS_PORT,
-      15674, // Web STOMP (WebSocket) port
-      61613, // STOMP TCP port
+      15_674, // Web STOMP (WebSocket) port
+      61_613, // STOMP TCP port
     )
       .withEnvironment({
         RABBITMQ_DEFAULT_USER: RabbitMQContainer.DEFAULT_USER,
@@ -83,7 +83,7 @@ export class StartedRabbitMQContainer extends AbstractStartedContainer {
   }
 
   public getStompUrl(): string {
-    return `ws://${this.useAlias ? "broker" : this.getHost()}:${this.getMappedPort(15674)}/ws`;
+    return `ws://${this.useAlias ? "broker" : this.getHost()}:${this.getMappedPort(15_674)}/ws`;
   }
 
   public getAmqpUrl(): string {
