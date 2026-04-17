@@ -25,6 +25,8 @@
     "@testcontainers/kafka": "^11.14.0",
     "@types/node": "^25.6.0",
     "eslint": "^10.2.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-unicorn": "^64.0.0",
     "globals": "^17.5.0",
     "lodash": "^4.18.1",
     "prettier": "^3.8.3",

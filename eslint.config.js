@@ -1,20 +1,28 @@
 import js from "@eslint/js";
+import eslintConfigPrettier from "eslint-config-prettier/flat";
+import eslintPluginUnicorn from "eslint-plugin-unicorn";
+import { defineConfig, globalIgnores } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
-import { defineConfig } from "eslint/config";
 
 export default defineConfig([
+  js.configs.recommended,
+  tseslint.configs.recommended,
+  eslintPluginUnicorn.configs.all,
+  eslintConfigPrettier,
   {
-    ignores: ["**/dist/**"],
-  },
-  {
-    files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-    plugins: { js },
-    extends: ["js/recommended"],
-  },
-  {
-    files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
-    languageOptions: { globals: { ...globals.browser, ...globals.node } },
+    languageOptions: {
+      globals: { ...globals.browser, ...globals.node },
+    },
+    rules: {
+      "formatjs/no-offset": "error",
+      "formatjs/enforce-description": "warn",
+
+      // "unicorn/prefer-top-level-await": "off",
+      "unicorn/filename-case": "off",
+      "unicorn/custom-error-definition": "off",
+    },
   },
   tseslint.configs.recommended,
+  globalIgnores(["**/__generated/**", "**/dist/**", "**/coverage/**"]),
 ]);
