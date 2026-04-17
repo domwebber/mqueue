@@ -1,16 +1,6 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "tasks": {
-    "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
-    },
-    "typecheck": {
-      "cache": false
-    },
-    "lint:publint": {
-      "cache": false
-    },
     "test": {
       "outputs": ["coverage/**"],
       "env": ["DEBUG"]
