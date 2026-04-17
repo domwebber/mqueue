@@ -1,5 +1,49 @@
 # @mqueue/amqplib
 
+## 2.0.0
+
+### Major Changes
+
+- [`34cff73`](https://github.com/domwebber/mqueue/commit/34cff7386252d4b4d2fa51b2f7193d93197d1e6c)
+  Thanks [@domwebber](https://github.com/domwebber)! - Update `amqplib` to `v1`
+  - Updates minimum NodeJS version to v18 -
+    https://github.com/amqp-node/amqplib/blob/main/CHANGELOG.md#v100
+
+### Patch Changes
+
+- [`033491f`](https://github.com/domwebber/mqueue/commit/033491f122654908d2adcc361966ca4d78f00697)
+  Thanks [@domwebber](https://github.com/domwebber)! - Move `typescript` and
+  `tsx` to monorepo root, out of installed-package dependencies
+
+- [`e242a16`](https://github.com/domwebber/mqueue/commit/e242a167b93b484b28c5818ea06985b106d4c20e)
+  Thanks [@domwebber](https://github.com/domwebber)! - Move `publint` to
+  monorepo root, out of installed-package dependencies
+
+- [`6d95fb4`](https://github.com/domwebber/mqueue/commit/6d95fb4424014998b74dc8d1add625e4b0be6051)
+  Thanks [@domwebber](https://github.com/domwebber)! - Move `testcontainers` to
+  monorepo root, out of installed-package dependencies
+
+- [`c002052`](https://github.com/domwebber/mqueue/commit/c0020521cd56c296f084f65a3f774792d2b70a27)
+  Thanks [@domwebber](https://github.com/domwebber)! - Update various
+  dependencies
+
+- [`c002052`](https://github.com/domwebber/mqueue/commit/c0020521cd56c296f084f65a3f774792d2b70a27)
+  Thanks [@domwebber](https://github.com/domwebber)! - Updated TypeScript to
+  `v6`
+
+- [`85cb3d9`](https://github.com/domwebber/mqueue/commit/85cb3d945539691292f3ecf624eaed618e64d65c)
+  Thanks [@domwebber](https://github.com/domwebber)! - Migrate bundling to
+  `tsdown` (Rolldown)
+
+- Updated dependencies
+  [[`033491f`](https://github.com/domwebber/mqueue/commit/033491f122654908d2adcc361966ca4d78f00697),
+  [`e242a16`](https://github.com/domwebber/mqueue/commit/e242a167b93b484b28c5818ea06985b106d4c20e),
+  [`6d95fb4`](https://github.com/domwebber/mqueue/commit/6d95fb4424014998b74dc8d1add625e4b0be6051),
+  [`c002052`](https://github.com/domwebber/mqueue/commit/c0020521cd56c296f084f65a3f774792d2b70a27),
+  [`c002052`](https://github.com/domwebber/mqueue/commit/c0020521cd56c296f084f65a3f774792d2b70a27),
+  [`85cb3d9`](https://github.com/domwebber/mqueue/commit/85cb3d945539691292f3ecf624eaed618e64d65c)]:
+  - @mqueue/queue@1.0.2
+
 ## 1.0.1
 
 ### Patch Changes
