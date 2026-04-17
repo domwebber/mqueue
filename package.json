@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "changeset": "changeset",
-    "build": "turbo build",
+    "build": "tsdown -W",
     "fix": "pnpm run /^fix:.*/",
     "fix:prettier": "prettier --write .",
     "typecheck": "turbo typecheck",

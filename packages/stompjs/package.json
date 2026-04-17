@@ -32,7 +32,6 @@
     "directory": "packages/stompjs"
   },
   "scripts": {
-    "build": "tsdown src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test --test-reporter=spec tests/**/*.test.ts tests/*.test.ts"
   },
@@ -46,9 +45,7 @@
   },
   "devDependencies": {
     "@mqueue/queue": "workspace:*",
-    "@types/ws": "^8.18.1",
-    "tsx": "^4.21.0",
-    "typescript": "^6.0.3"
+    "@types/ws": "^8.18.1"
   },
   "dependencies": {
     "@stomp/stompjs": "^7.3.0",

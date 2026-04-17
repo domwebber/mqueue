@@ -32,7 +32,6 @@
     "directory": "packages/kafkajs"
   },
   "scripts": {
-    "build": "tsdown src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test --test-reporter=spec tests/**/*.test.ts tests/*.test.ts"
   },
@@ -45,9 +44,7 @@
     "@mqueue/queue": "workspace:*"
   },
   "devDependencies": {
-    "@mqueue/queue": "workspace:*",
-    "tsx": "^4.21.0",
-    "typescript": "^6.0.3"
+    "@mqueue/queue": "workspace:*"
   },
   "dependencies": {
     "kafkajs": "^2.2.4"

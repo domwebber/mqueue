@@ -31,7 +31,6 @@
     "directory": "packages/multicast"
   },
   "scripts": {
-    "build": "tsdown src/index.ts",
     "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test --test-reporter=spec tests/**/*.test.ts tests/*.test.ts"
   },
@@ -45,8 +44,6 @@
   },
   "devDependencies": {
     "@mqueue/queue": "workspace:*",
-    "@mqueue/null": "workspace:*",
-    "tsx": "^4.21.0",
-    "typescript": "^6.0.3"
+    "@mqueue/null": "workspace:*"
   }
 }

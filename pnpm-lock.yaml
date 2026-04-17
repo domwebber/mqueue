@@ -66,12 +66,6 @@ importers:
       '@types/amqplib':
         specifier: ^0.10.8
         version: 0.10.8
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
   packages/azure-service-bus:
     dependencies:
@@ -82,12 +76,6 @@ importers:
       '@mqueue/queue':
         specifier: workspace:*
         version: link:../queue
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
   packages/fastq:
     dependencies:
@@ -98,12 +86,6 @@ importers:
       '@mqueue/queue':
         specifier: workspace:*
         version: link:../queue
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
   packages/google-cloud-pubsub:
     dependencies:
@@ -114,12 +96,6 @@ importers:
       '@mqueue/queue':
         specifier: workspace:*
         version: link:../queue
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
   packages/kafkajs:
     dependencies:
@@ -130,12 +106,6 @@ importers:
       '@mqueue/queue':
         specifier: workspace:*
         version: link:../queue
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
   packages/mqtt:
     dependencies:
@@ -146,12 +116,6 @@ importers:
       '@mqueue/queue':
         specifier: workspace:*
         version: link:../queue
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
   packages/multicast:
     devDependencies:
@@ -161,33 +125,14 @@ importers:
       '@mqueue/queue':
         specifier: workspace:*
         version: link:../queue
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
   packages/null:
     devDependencies:
       '@mqueue/queue':
         specifier: workspace:*
         version: link:../queue
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
-  packages/queue:
-    devDependencies:
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
+  packages/queue: {}
 
   packages/rhea:
     dependencies:
@@ -201,12 +146,6 @@ importers:
       '@mqueue/queue':
         specifier: workspace:*
         version: link:../queue
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
   packages/sqs:
     dependencies:
@@ -220,12 +159,6 @@ importers:
       '@mqueue/queue':
         specifier: workspace:*
         version: link:../queue
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
   packages/stompjs:
     dependencies:
@@ -242,12 +175,6 @@ importers:
       '@types/ws':
         specifier: ^8.18.1
         version: 8.18.1
-      tsx:
-        specifier: ^4.21.0
-        version: 4.21.0
-      typescript:
-        specifier: ^6.0.3
-        version: 6.0.3
 
 packages:
 
