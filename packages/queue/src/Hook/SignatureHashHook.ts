@@ -9,8 +9,7 @@ export interface SignatureHashHookOptions {
   encoding?: BinaryToTextEncoding;
 }
 
-export interface IncomingSignatureHashHookOptions
-  extends SignatureHashHookOptions {
+export interface IncomingSignatureHashHookOptions extends SignatureHashHookOptions {
   throwOnMissing?: boolean;
   throwOnInvalid?: boolean;
 }

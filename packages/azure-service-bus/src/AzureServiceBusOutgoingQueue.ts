@@ -9,9 +9,7 @@ export interface AzureServiceBusOutgoingQueueConnectOptions {
   clientOptions?: ServiceBusClientOptions;
 }
 
-export default class AzureServiceBusOutgoingQueue
-  implements OutgoingQueueAdapter
-{
+export default class AzureServiceBusOutgoingQueue implements OutgoingQueueAdapter {
   public type = "azure-service-bus";
 
   constructor(

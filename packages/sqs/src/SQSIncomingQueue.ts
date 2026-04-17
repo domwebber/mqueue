@@ -9,8 +9,7 @@ import { Consumer } from "sqs-consumer";
 export interface InternalSQSIncomingQueueConnectOptions {
   batchSize?: number;
 }
-export interface SQSIncomingQueueConnectOptions
-  extends InternalSQSIncomingQueueConnectOptions {
+export interface SQSIncomingQueueConnectOptions extends InternalSQSIncomingQueueConnectOptions {
   sdk?: typeof AWS;
   clientConfig?: AWS.SQSClientConfig;
 }

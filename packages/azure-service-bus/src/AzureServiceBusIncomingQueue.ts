@@ -9,9 +9,7 @@ import {
   type ServiceBusReceiver,
 } from "@azure/service-bus";
 
-export default class AzureServiceBusIncomingQueue
-  implements IncomingQueueAdapter
-{
+export default class AzureServiceBusIncomingQueue implements IncomingQueueAdapter {
   public type = "azure-service-bus";
 
   constructor(

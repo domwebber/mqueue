@@ -12,8 +12,7 @@ export interface MulticastOutgoingQueueOptions<
 
 export default class MulticastOutgoingQueue<
   T extends [OutgoingQueueAdapter, ...OutgoingQueueAdapter[]],
-> implements OutgoingQueueAdapter
-{
+> implements OutgoingQueueAdapter {
   public type = "multicast";
 
   protected _filter: MulticastOutgoingQueueFilter<T>;
