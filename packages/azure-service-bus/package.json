@@ -46,6 +46,7 @@
     "@mqueue/queue": "workspace:*"
   },
   "dependencies": {
-    "@azure/service-bus": "^7.9.5"
+    "@azure/service-bus": "^7.9.5",
+    "fast-xml-parser": "^5.6.0"
   }
 }
