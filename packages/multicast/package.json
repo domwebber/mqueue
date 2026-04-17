@@ -31,7 +31,6 @@
     "directory": "packages/multicast"
   },
   "scripts": {
-    "typecheck": "tsc --noEmit",
     "test": "node --import tsx --test --test-reporter=spec tests/**/*.test.ts tests/*.test.ts"
   },
   "license": "MIT",

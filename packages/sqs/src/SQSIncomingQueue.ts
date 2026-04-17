@@ -34,7 +34,8 @@ export default class SQSIncomingQueue implements IncomingQueueAdapter {
       messageAttributeNames: ["All"],
       batchSize: this._options.batchSize,
       // waitTimeSeconds: 20,
-      handleMessage: async (message) => this._handleMessage(message),
+      handleMessage: async (message) =>
+        this._handleMessage(message).then((result) => result ?? undefined),
     });
   }
 
