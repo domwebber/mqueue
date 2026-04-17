@@ -1,9 +1,9 @@
+import type { StartedTestContainer } from "testcontainers";
 import {
   AbstractStartedContainer,
   GenericContainer,
   Wait,
 } from "testcontainers";
-import type { StartedTestContainer } from "testcontainers";
 
 export default class MosquittoContainer extends GenericContainer {
   public static MQTT_PORT = 1883;
@@ -34,7 +34,7 @@ export default class MosquittoContainer extends GenericContainer {
             "guest:$7$1$sy45mfgHqvp9h7VS$CCqVS31nddGUeeIblCgr32bZoNud+9r/0O0vhbLBTc8WNApPmuYsYVU9iffVYxYwOBBgxkg17qxdOlsxwuopjQ==",
           ].join("\n"),
           target: "/mosquitto/config/passwd",
-          mode: parseInt("0700", 8),
+          mode: 0o644,
         },
       ])
       .withStartupTimeout(50_000)
