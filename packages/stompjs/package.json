@@ -48,14 +48,14 @@
   "devDependencies": {
     "@mqueue/queue": "workspace:*",
     "@types/ws": "^8.18.1",
-    "publint": "^0.3.12",
-    "testcontainers": "^11.7.1",
-    "tsup": "^8.5.0",
-    "tsx": "^4.20.6",
-    "typescript": "^5.9.3"
+    "publint": "^0.3.18",
+    "testcontainers": "^11.14.0",
+    "tsup": "^8.5.1",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
   },
   "dependencies": {
-    "@stomp/stompjs": "^7.2.0",
-    "ws": "^8.18.3"
+    "@stomp/stompjs": "^7.3.0",
+    "ws": "^8.20.0"
   }
 }
