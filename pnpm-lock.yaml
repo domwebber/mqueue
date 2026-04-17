@@ -75,9 +75,6 @@ importers:
       '@azure/service-bus':
         specifier: ^7.9.5
         version: 7.9.5
-      fast-xml-parser:
-        specifier: ^5.6.0
-        version: 5.6.0
     devDependencies:
       '@mqueue/queue':
         specifier: workspace:*
