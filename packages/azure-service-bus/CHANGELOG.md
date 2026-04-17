@@ -1,5 +1,13 @@
 # @mqueue/azure-service-bus
 
+## 1.0.3
+
+### Patch Changes
+
+- [`24ec320`](https://github.com/domwebber/mqueue/commit/24ec320315a8663e9c9e8fbe07a6f6de1e6cae16)
+  Thanks [@domwebber](https://github.com/domwebber)! - Fix version pinning for
+  `fast-xml-parser`
+
 ## 1.0.2
 
 ### Patch Changes
