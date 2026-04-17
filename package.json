@@ -13,7 +13,7 @@
     "lint": "pnpm run /^lint:.*/",
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
-    "lint:publint": "turbo lint:publint",
+    "lint:publint": "pnpm -r exec publint",
     "lint:typecheck": "npm run typecheck"
   },
   "license": "MIT",

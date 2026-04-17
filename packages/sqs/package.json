@@ -29,14 +29,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/domwebber/mqueue",
+    "url": "git+https://github.com/domwebber/mqueue.git",
     "directory": "packages/sqs"
   },
   "scripts": {
     "build": "tsdown src/index.ts",
     "typecheck": "tsc --noEmit",
-    "test": "node --import tsx --test --test-reporter=spec tests/**/*.test.ts tests/*.test.ts",
-    "lint:publint": "publint"
+    "test": "node --import tsx --test --test-reporter=spec tests/**/*.test.ts tests/*.test.ts"
   },
   "license": "MIT",
   "publishConfig": {
@@ -48,7 +47,6 @@
   },
   "devDependencies": {
     "@mqueue/queue": "workspace:*",
-    "publint": "^0.3.18",
     "tsx": "^4.21.0",
     "typescript": "^6.0.3"
   },
