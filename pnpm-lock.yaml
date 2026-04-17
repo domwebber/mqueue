@@ -17,6 +17,9 @@ importers:
       '@eslint/js':
         specifier: ^10.0.1
         version: 10.0.1(eslint@10.2.0)
+      '@testcontainers/kafka':
+        specifier: ^11.14.0
+        version: 11.14.0
       '@types/node':
         specifier: ^25.6.0
         version: 25.6.0
@@ -32,6 +35,9 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
+      testcontainers:
+        specifier: ^11.14.0
+        version: 11.14.0
       tsdown:
         specifier: ^0.21.9
         version: 0.21.9(publint@0.3.18)(typescript@6.0.3)
@@ -63,9 +69,6 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -85,9 +88,6 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -107,9 +107,6 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -129,9 +126,6 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -148,15 +142,9 @@ importers:
       '@mqueue/queue':
         specifier: workspace:*
         version: link:../queue
-      '@testcontainers/kafka':
-        specifier: ^11.14.0
-        version: 11.14.0
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsup:
         specifier: ^8.5.1
         version: 8.5.1(tsx@4.21.0)(typescript@6.0.3)(yaml@2.8.3)
@@ -179,9 +167,6 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -200,9 +185,6 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -218,9 +200,6 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -233,9 +212,6 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -258,9 +234,6 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -283,9 +256,6 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -311,9 +281,6 @@ importers:
       publint:
         specifier: ^0.3.18
         version: 0.3.18
-      testcontainers:
-        specifier: ^11.14.0
-        version: 11.14.0
       tsx:
         specifier: ^4.21.0
         version: 4.21.0

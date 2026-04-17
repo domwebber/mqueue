@@ -30,6 +30,8 @@
     "tsdown": "^0.21.9",
     "tsx": "^4.21.0",
     "turbo": "^2.9.6",
+    "testcontainers": "^11.14.0",
+    "@testcontainers/kafka": "^11.14.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.58.2"
   }
