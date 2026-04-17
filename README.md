@@ -2,14 +2,10 @@
 
 [![npm (scoped)][]][sdk-npmjs]
 
-[npm (scoped)]: https://img.shields.io/npm/v/%40mqueue/queue
-[sdk-npmjs]: https://www.npmjs.com/package/@mqueue/queue
-
 Simple queue interface with support for multiple backends. Keep your options
 open.
 
-> Note: This project is currently a Work in Progress. Its not ready for
-> production use yet - [make a contribution](./CONTRIBUTING.md).
+> [Make a contribution](./CONTRIBUTING.md).
 
 ## Getting Started
 
@@ -79,25 +75,31 @@ keep options open.
 
 [MIT © Dom Webber](https://github.com/domwebber/mqueue/blob/main/LICENSE)
 
-[`@mqueue/queue`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md
-[`@mqueue/amqplib`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md
-[`@mqueue/sqs`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md
-[`@mqueue/rhea`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md
-[`@mqueue/azure-service-bus`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md
-[`@mqueue/mqtt`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/mqtt/README.md
-[`@mqueue/kafkajs`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/kafkajs/README.md
-[`@mqueue/stompjs`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/stompjs/README.md
-[`@mqueue/fastq`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/fastq/README.md
-[`@mqueue/google-cloud-pubsub`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/google-cloud-pubsub/README.md
-[`@mqueue/multicast`]:
-  https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
+https://github.com/domwebber/mqueue/blob/main/packages/queue/README.md
+
+https://github.com/domwebber/mqueue/blob/main/packages/amqplib/README.md
+
+https://github.com/domwebber/mqueue/blob/main/packages/sqs/README.md
+
+https://github.com/domwebber/mqueue/blob/main/packages/rhea/README.md
+
+https://github.com/domwebber/mqueue/blob/main/packages/azure-service-bus/README.md
+
+https://github.com/domwebber/mqueue/blob/main/packages/mqtt/README.md
+
+https://github.com/domwebber/mqueue/blob/main/packages/kafkajs/README.md
+
+https://github.com/domwebber/mqueue/blob/main/packages/stompjs/README.md
+
+https://github.com/domwebber/mqueue/blob/main/packages/fastq/README.md
+
+https://github.com/domwebber/mqueue/blob/main/packages/google-cloud-pubsub/README.md
+
+https://github.com/domwebber/mqueue/blob/main/packages/multicast/README.md
+
+[`@mqueue/amqplib`]: [`@mqueue/azure-service-bus`]: [`@mqueue/fastq`]:
+[`@mqueue/google-cloud-pubsub`]: [`@mqueue/kafkajs`]: [`@mqueue/mqtt`]:
+[`@mqueue/multicast`]: [`@mqueue/queue`]: [`@mqueue/rhea`]: [`@mqueue/sqs`]:
+[`@mqueue/stompjs`]: [npm (scoped)]:
+https://img.shields.io/npm/v/%40mqueue/queue [sdk-npmjs]:
+https://www.npmjs.com/package/@mqueue/queue
