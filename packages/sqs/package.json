@@ -47,7 +47,7 @@
     "@mqueue/queue": "workspace:*"
   },
   "dependencies": {
-    "@aws-sdk/client-sqs": "^3.1031.0",
+    "@aws-sdk/client-sqs": "^3.1032.0",
     "sqs-consumer": "^14.2.6"
   }
 }
